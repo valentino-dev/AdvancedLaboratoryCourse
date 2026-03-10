@@ -93,4 +93,18 @@ For $m_{\tau}=\SI{1776.86+-0.12}{MeV}$ and no uncertainty on the center-of-mass 
 \begin{align}
   |\vec{p}_{\tau}| = \SI{1.756+-0.068}{GeV}
 \end{align}
+\subsection{Graphic Display of Particle Reactions}
+For this part the abilities of the graphical program Atlantis are investigated. Atlantis is a software designed for analysis of detected events from ATLAS. It allows to make cuts to filter out events that are not of current interest and identify particles by their traces in different parts of the detector. Therefor, it visualises the trajectories and deposed energy in the calorimeters.
+\subsection{Calibration of Electrons}
+As for every detector, also ATLAS experiences some losses in the signal, namely the amount of energy deposed in the calorimeters in comparison to the true energy of the measured event or particle. It is assumed that those losses are caused by irregularities of the used material and also the fact that particles take longer to cross the detector, when they pass in a steeper angle tangent to the detector surface of a given layer. Thus already by the latter, it can be assumed that the losses are especially depended on the pseudo-rapidity $\eta$ and also, less significant, on the angle $\phi$. Further it can be assumed that the loss is dependent on the momentum. To correct the detected raw energy, it is multiplied by a certain coefficient. For the calibration the $Z^0\rightarrow e^-e^+$ decay is used, where the detected energy of the electrons has to be mass of the $Z^0$-boson. Therefore the calibration is complete when those match. In addition, the distribution needs to follow the Breit-Wigner function 
+\begin{align}
+  F(M_{ee})=\frac{\Gamma_Z^2/4}{(M_{ee}-M_{Z})^2+\Gamma^2_Z/4},
+\end{align}
+which is an approximation of the more general function of eq. 6.1 in the lab manuel\cite{bonn_physics601_atlas_2025}.
+To account for smearing, the function is convoluted with the gauss distribution. This yields the Voigt function.
+Thus the calibration is complete when the energy of the electrons match the boson mass, i.e. the peak of the Voigt function is at the boson mass, and the Voigt function function is optimally fitted to the distribution. In conclusion, the free parameter of the peak is set to the boson mass, and only $\chi^2$ needs to be minimized.
+
+In to calculate the Voigt function in practice numerical integration is used.
+
+% TODO: parameters from script?
 \end{document}

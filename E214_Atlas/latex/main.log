@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.14)  2 MAR 2026 17:26
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.14)  3 MAR 2026 13:44
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1288,7 +1288,7 @@ Package natbib Warning: Citation `cern_org' on page 1 undefined on input line 65
 
 Package natbib Warning: Citation `bonn_physics601_atlas_2025' on page 1 undefined on input line 65.
 
-<../images/ATLAS-Experiment-Schematic-2022-Labels-People.png, id=32, 1445.4pt x 886.31125pt>
+<../images/ATLAS-Experiment-Schematic-2022-Labels-People.png, id=40, 1445.4pt x 886.31125pt>
 File: ../images/ATLAS-Experiment-Schematic-2022-Labels-People.png Graphic file (type png)
 <use ../images/ATLAS-Experiment-Schematic-2022-Labels-People.png>
 Package pdftex.def Info: ../images/ATLAS-Experiment-Schematic-2022-Labels-People.png  used on input line 68.
@@ -1367,6 +1367,9 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [3]
 
+Package natbib Warning: Citation `bonn_physics601_atlas_2025' on page 4 undefined on input line 103.
+
+
 Package natbib Warning: There were undefined citations.
 
 
@@ -1385,21 +1388,21 @@ LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.47935pt have occurred.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: F0A3F3E48D959C2AA24D4893AE492EF5;1086.
+(rerunfilecheck)             Checksum: 2D8D5E3B2FAFC20D53BC1EE7387313CF;1521.
  ) 
 Here is how much of TeX's memory you used:
- 36995 strings out of 473579
- 720227 string characters out of 5728233
+ 37000 strings out of 473579
+ 720299 string characters out of 5728233
  1072800 words of memory out of 5000000
- 59264 multiletter control sequences out of 15000+600000
+ 59266 multiletter control sequences out of 15000+600000
  600554 words of font info for 151 fonts, out of 8000000 for 9000
  1151 hyphenation exceptions out of 8191
  90i,11n,133p,2093b,929s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/newtx/NewTXMI.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/newtx/NewTXMI7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/newtx/txsys.pfb>
-Output written on main.pdf (4 pages, 654267 bytes).
+Output written on main.pdf (4 pages, 659367 bytes).
 PDF statistics:
- 140 PDF objects out of 1000 (max. 8388607)
- 102 compressed objects within 2 object streams
- 18 named destinations out of 1000 (max. 500000)
- 66 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 150 PDF objects out of 1000 (max. 8388607)
+ 112 compressed objects within 2 object streams
+ 21 named destinations out of 1000 (max. 500000)
+ 82 words of extra memory for PDF output out of 10000 (max. 10000000)
 

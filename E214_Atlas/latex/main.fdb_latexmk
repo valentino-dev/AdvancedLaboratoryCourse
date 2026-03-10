@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1772468778.0112 "main.tex" "main.pdf" "main" 1772468779.047 0
+["pdflatex"] 1772541897.08194 "main.tex" "main.pdf" "main" 1772541898.81553 0
   "../images/ATLAS-Experiment-Schematic-2022-Labels-People.png" 1681997300 564811 07075d5ab557f3ac838a966c5efebcfa ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -262,9 +262,9 @@
   "/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1728937341 5474851 4ed67577533af4c9bcc5e8bed469707c ""
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1728937456 3325958 03a95b99139dcaa92fad834a3bb8117a ""
   "/usr/local/texlive/2024/texmf.cnf" 1728937336.35001 455 5b996dcaa0eb4ef14a83b026bc0a008c ""
-  "main.aux" 1772468778.96798 2195 11bb5a523b2361a71d2ebcbfd4661cb0 "pdflatex"
-  "main.out" 1772468778.96966 1086 f0a3f3e48d959c2aa24d4893ae492ef5 "pdflatex"
-  "main.tex" 1772468776.86197 7118 7ce205527097fb127e3612fb42d69a29 ""
+  "main.aux" 1772541898.67496 2508 b8d8ea248208d31be9242d1d847c8992 "pdflatex"
+  "main.out" 1772541898.67659 1521 2d8d5e3b2fafc20d53bc1ee7387313cf "pdflatex"
+  "main.tex" 1772541896.22391 9376 b14bfb0199a741f510ec858cab95eb22 ""
   "sn-jnl.cls" 1771855465.46658 55331 2adf3041e7f64a0f542a04760be0043f ""
   (generated)
   "main.aux"
