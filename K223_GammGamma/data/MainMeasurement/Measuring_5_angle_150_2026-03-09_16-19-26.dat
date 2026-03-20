@@ -1,0 +1,17 @@
+Measurment 5 of 78
+current angle:	150.00	°
+System time:	719,996.07	±	0.01	ms	11' 59.996"
+Timer time:	719,985	±	1	ms	11' 59.985"
+Live time:	0	±	20	ms	00.000"
+Real time:	0	±	20	ms	00.000"
+start:	2026-03-09 16:07:25
+total counts:	2,802,811.00
+System time total ticks/s:	3,892.814
+Real time total ticks/s:	0.00
+live time total  ticks/s:	0.00
+
+ch	N	ticks/s
+0	1247464	1732.59835344803
+1	1545358	2146.34228024836
+2	4408	6.12225566589411
+3	5581	7.75143123215858

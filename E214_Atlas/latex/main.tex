@@ -59,7 +59,7 @@
 \affil*[1]{Rheinische Friedrich--Wilhelms--Universität, Bonn}
 \maketitle
 \section{Introduction}
-For this laboratory course simulated Atlas data is analysed. Particles like the gluon or muon are identified through the graphical program Atlantis. For quantitativ analysis the detector is calibrated with the Z-Boson mass and then used to measure the W-Boson mass.
+For this laboratory course simulated Atlas data is analysed. Particles like electrons or muons are identified through the graphical program Atlantis. For quantitativ analysis the detector is calibrated with the Z-Boson mass and then used to measure the W-Boson mass.
 \subsection{ATLAS detector}
 The Atlas (A Toroidal LHC ApparatuS) detector is located at CERN (European Organization for Nuclear Research) to detect products of proton-proton collisions done through the LHC (Large Hadron Collider) at \SI{14}{TeV}\cite{cern_org}.
 It consists of four main areas, the tracking system, the ECAL, the HCAL and the muon chambers. The tracking system is placed in the inner detector, being the closest to the collision with \SI{3.3}{cm} from the beam line. There, four layers of silicon pixel detectors, one layer of silicon sensors and another layer of straws, made up of a gold plated tungsten wire surrounded by gas, get for a specific trajectory multiple hits through which the original trajectory can be reconstructed.\cite{cern_org} Because of an externally applied magnetic field, the trajectory is curved through the relativistic Lorentz force. This way the momentum of charged particles is measured. To measure the energy of the particles the ECAL and HCAL is introduced. The ECAL (Electromagnetic CALoremeter) is build with a material transmissive enough to let heavy particles like hadrons, muons or tauons pass, but so dense that electrons collide with the constituting atoms such that they emit bremsstrahlung. The photons produced by this, given a high enough energy, produce themself electron positron pairs. This forms a so-called electromagnetic shower, which deposits its charge in the ECAL. This charge is read out by anodes and corresponds to an energy in quantisations of the electron charge. Similarly this is done in the HCAL (Hadron CALorimeter), where the more heavy particles deposit their charge. Except, here no EM showers are formed, but jets through the hadronization of fast quarks and gluons. Lastly in the muon chamber, the muons are detected.\cite{bonn_physics601_atlas_2025} Their trajectory also curves, due to a second external magnetic field, which is orthogonal to the field of the inner detector. When viewing the whole detector in polar coordinates, where the z-axis is directed along the particle beam, the outer magnetic field of the muon chambers is oriented along the rotation with the $\phi$-angle and the inner magnetic field is oriented with the z-axis. A schematic illustration of the whole detector can be seen in \Cref{fig:atlas}.
@@ -70,7 +70,7 @@ It consists of four main areas, the tracking system, the ECAL, the HCAL and the 
 	\caption{Schematic illustration of the ATLAS experiment, including new systems installed during Long Shutdown 2 (LS2).\cite{cern_org}}\label{fig:atlas}
 \end{figure}
 \section{Event Displays and Calibration}
-The first task is to work with the graphical event display Atlantis, where different simulated events of the for an ATLAS detection are investigated. Furthermore the raw data needs to be calibrated with the well measured Z-Boson mass $m_Z$, though multiplicative scalar corrections of the energy for different angles $\theta$ and $\phi$. This is a good point to introduce the Lorentz invariant rapidity \[y=\frac{1}{2}\ln{\frac{E+p_z}{E-p_z}}\] Its usefulness gets apparent, when using the high energy approximation, where it gets reduced to the pseudo-rapidity \[\eta=-\ln{\tan{\frac{\theta}{2}}}\] Here it is seen that the non-Lorentz invariant angle $\theta$ can be replaced by the pseudo-rapidity, which will be Lorentz invariant for boosts along the z-axes. Together with the azimuthal angle $\phi$, the Lorentz invariant distance \[\Delta R = \sqrt{{\Delta\phi}^2+{\Delta\eta}^2}\] can be introduced.
+The first task is to work with the graphical event display Atlantis, where different simulated events of an ATLAS detection are investigated. Furthermore the raw data needs to be calibrated with the well measured Z-Boson mass $m_Z$, though multiplicative scalar corrections of the energy for different angles $\theta$ and $\phi$ and other cuts. This is a good point to introduce the Lorentz invariant rapidity \[y=\frac{1}{2}\ln{\frac{E+p_z}{E-p_z}}\] Its usefulness gets apparent, when using the high energy approximation, where it gets reduced to the pseudo-rapidity \[\eta=-\ln{\tan{\frac{\theta}{2}}}\] Here it is seen that the non-Lorentz invariant angle $\theta$ can be replaced by the pseudo-rapidity, which will be Lorentz invariant for boosts along the z-axes.
 \subsection{Questions to be answered before the lab}
 \subsubsection{Decay of the $Z^0$ boson}
 If a given $Z^0$ is at rest, the momentum of the electrons of the decay products $Z^0\rightarrow e^+ e^-$ are calculated through momentum and energy conservation. Using
@@ -81,30 +81,191 @@ If a given $Z^0$ is at rest, the momentum of the electrons of the decay products
 \end{align}
 the energy conservation \[E_{Z^0}=E_{e^+}+E_{e^-}\] can be rearranged to \[|\vec{p}_{e^-}|=\sqrt{\frac{m^2_{e^+}}{4}-m^2_{e^-}}\] Using $m_{Z^0}=\SI{91.1880+-0.0020}{GeV}$ and $m(e^-)=\SI{0.51099885069+-0.00000000016}{MeV}$, the momentum of the electron is \[|\vec{p}_{e^-}|=\SI{45.5940+-0.0010}{GeV}.\] Here, the electron mass and uncertainty could have been neglected.
 \subsubsection{Scattering reaction $e^+e^-\rightarrow \tau^+\tau^-$}
-In the center-of-mass system, given $\sqrt{s}=E_{\text{COM}}=\SI{5}{GeV}$ and
+In the center-of-mass system of a $e^+e^-\rightarrow \tau^+\tau^-$ reaction, given $\sqrt{s}=E_{\text{COM}}=\SI{5}{GeV}$ and
 \begin{align}
 	E_{\text{COM}}=E_{\tau^-}+E_{\tau^+},
 \end{align}
-\Crefrange{eq:mom}{eq:energy} can be used again to obtain
+\Crefrange{eq:mom}{eq:energy} can be used again to determine the tau momentum
 \begin{align}
 	|\vec{p}_\tau| = \sqrt{\left(\frac{\sqrt{s}}{2}\right)^2-m^2_{\tau}}
 \end{align}
 For $m_{\tau}=\SI{1776.86+-0.12}{MeV}$ and no uncertainty on the center-of-mass energy, the momentum of the tauon is
 \begin{align}
-  |\vec{p}_{\tau}| = \SI{1.756+-0.068}{GeV}
+	|\vec{p}_{\tau}| = \SI{1.756+-0.068}{GeV}
 \end{align}
 \subsection{Graphic Display of Particle Reactions}
 For this part the abilities of the graphical program Atlantis are investigated. Atlantis is a software designed for analysis of detected events from ATLAS. It allows to make cuts to filter out events that are not of current interest and identify particles by their traces in different parts of the detector. Therefor, it visualises the trajectories and deposed energy in the calorimeters.
+\subsubsection{Identification of Common Particles}
+Using example events for electrons, muons, tauons and photons the characteristic signatures in the detector are analyzed to gain an intuition on identifying those common particles.
+\subsubsection{Energy-Momentum Relation of Electrons}
+10 different Electrons from the electron-learning dataset are loaded and the in the inner detector detected momentum and in the ECAL deposed energy are determent and their ratio ploted. See \Cref{fig:meratio} and \Cref{tab:meratio}.
+
+\begin{table}
+	\begin{tabular}{ccc}
+		$p_e/\text{GeV}$ & $E/\text{GeV}$ & $\frac{p_e}{E}$ \\
+		\hline
+		-7.55            & 56.6           & -0.133392226    \\
+		-3.27            & 47.7           & -0.0685534591   \\
+		-89.35           & 86.5           & -1.03294798     \\
+		-50.35           & 0.6            & -83.9166667     \\
+		-28.62           & 28.1           & -1.01850534     \\
+		-32.92           & 64.3           & -0.511975117    \\
+		-34.3            & 0.6            & -57.1666667     \\
+		-36.4            & 33.8           & -1.07692308     \\
+		-55.46           & 48.8           & -1.13647541     \\
+		-69.17           & 49.2           & -1.40589431     \\
+	\end{tabular}
+	\caption{Momentum, Energy and Ratio}\label{tab:meratio}
+\end{table}
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=1\textwidth]{../images/ME-ratio.pdf}
+	\end{center}
+	\caption{Momentum-Energy Ratio $\frac{|p|}{E}$}\label{fig:meratio}
+\end{figure}
+
+In the following when talking about the ratio, the absolute value of the ratio is meant, since the negative sign stems from the momentum, where the sign indicates the charge. 
+
+Two outliers are seen at ratios of \SI{-83.9}{} and \SI{-57.2}{}. Those result from to low energies or to high momenta. Assuming the energy to be higher then the momentum, these events should not be possible and thus not correspond to electrons. Another explanation could be, that they are just faulty measurements or the electrons escaped the detector before hitting the ECAL.
+
+Using only the measurements with a ratio close to 1, a vague gauss distribution can bee seen. Though for this conclusion more data points need to be taken. Also with the assumption, that the energy has to be higher as the momentum, only ratios below 1 should be expected. Observing the gauss distribution, the ratios being close to 1 and a few ratios being higher than 1, hints that the resolution of the detected energy and momentum is too low and the electrons move to close to the speed of light, to obtain only events where all measurements are correct.
+
+For assuming something like all the electrons being close to the speed of light or the determination of a resolution of the detector or distribution of the electron ratios, more data points are needed.
+
+
+
+
+\subsubsection{Identification of a Mystery-Process}
+A given set of events for a process, named \verb|mystery-005-f.zip|, is provided which has to be identified. Firstly, the events are investigated regarding their missing transverse momentum. All events show a low $E_T^{\text{miss}}$ in comparison to the total momentum $\sum E_T$; examples listed in \Cref{tab:events}. This excludes the process being an interaction with a W-Boson, since low missing transverse momenta suggests low amounts of neutrinos. Although jets are produced, the total deposed energy in the HCAL is relatively low with e.g. \SI{8.6}{GeV} in event 11, \SI{12.8}{GeV} in event 23 and \SI{3.4}{GeV} in event 30. Thus no hadrons were produced and no gluon or tauon decayed. The primary observation of the data shows, that there is often a highly energetic muon-antimuon or electron-positron pair present. Three examples are listed in \Cref{tab:events} and other incidences can be spotted in the \Crefrange{fig:myst1}{fig:myst5}.
+
+%TODO: explain, that jets position is named on the bottom panel
+\begin{table}
+	\begin{tabular}{c c c c c c c}
+		\hline
+		Event & $\sum E_T$/GeV & $E_T^{\text{miss}}$/GeV & $p_{p_1}$/GeV   & $p_{p_2}$/GeV     & $E_{j_1}$/GeV & $E_{j_2}$/GeV \\
+		\hline
+		23    & 338.782        & 27.343                  & $\mu^+$: 136.34 & $\mu^-$: -311.43  & BL: 57.8      & --            \\
+		30    & 656.309        & 12.214                  & $\mu^+$: 51.63  & $\mu^-$: -3506.59 & TL: 212.0     & --            \\
+		119   & 205.393        & 11.980                  & $e^+$: 95.87    & $e^-$: -56.98     & T: 14.9       & B: 1.0        \\
+		\hline
+	\end{tabular}
+  \caption{Events and their high-energy leptons with momenta $p_p$ for particle $p\in\{e, \mu\}$ and jets $j_i$ for jets $i\in\{1, 2\}$; B=Bottom, L=Left, T=Top. The named positions of the jets are seen in the lower panel of \Cref{fig:myst2}, \Cref{fig:myst3} and \Cref{fig:myst4}.}\label{tab:events}
+\end{table}
+
+This can be seen, since a large number of events have high deposition of energy in the ECAL suggesting electrons, and trajectories in muon chambers suggesting multiple muons. Often, the most energetic electrons are opposite charged also suggesting them being electron-positron pairs. Further, when multiple muons present, the muons are also observed with opposite charge, suggesting muon-antimuon pairs.
+
+Now having excluded gluon, tauon and W-Boson processes, while observing pair production of leptons, the $Z^0$ decay seems likely being the unknown process. The only, but large, contra argument is, that the hadronic branching ratio of the $Z^0$-Boson decay is \SI{69.91+-0.06}{\%}\cite{PDG2024}. So the majority of energy should be deposed in the HCAL, which is not observed here. A reason for the absence of energy in the HCAL, could be that the dataset has been previously filtered, where all hadronic events have been removed. Another interesting observation is the significant energy of the jets, see \Cref{tab:events}. A possible explanation could be, that the decayed $Z^0$ coupled beforehand to a hadron. Though, then a significant energy should be observed to be deposited in the HCAL. By now it should be noticed that there is no definite conclusion. The authors best guess is, that $Z^0$ coupled to a quark and then decayed into a electron-positron or muon-antimuon pair where all datasets have been removed where the jets deposed a significant amount of energy in the HCAL.
 \subsection{Calibration of Electrons}
-As for every detector, also ATLAS experiences some losses in the signal, namely the amount of energy deposed in the calorimeters in comparison to the true energy of the measured event or particle. It is assumed that those losses are caused by irregularities of the used material and also the fact that particles take longer to cross the detector, when they pass in a steeper angle tangent to the detector surface of a given layer. Thus already by the latter, it can be assumed that the losses are especially depended on the pseudo-rapidity $\eta$ and also, less significant, on the angle $\phi$. Further it can be assumed that the loss is dependent on the momentum. To correct the detected raw energy, it is multiplied by a certain coefficient. For the calibration the $Z^0\rightarrow e^-e^+$ decay is used, where the detected energy of the electrons has to be mass of the $Z^0$-boson. Therefore the calibration is complete when those match. In addition, the distribution needs to follow the Breit-Wigner function 
+As for every detector, also ATLAS experiences some losses in the signal, namely the amount of energy deposed in the calorimeters in comparison to the true energy of the measured event or particle. It is assumed that those losses are caused by irregularities of the used material and also the fact that particles take longer to cross the detector, when they pass in a steeper angle tangent to the detector surface of a given layer. Thus already by the latter, it can be assumed that the losses are especially depended on the pseudo-rapidity $\eta$ and also, less significant, on the angle $\phi$ and some other cuts. Further it can be assumed that the loss is dependent on the momentum.
+
+To correct the detected raw energy, it is multiplied by a certain coefficient. For the calibration, the $Z^0\rightarrow e^-e^+$ decay is used, where the detected energy of the electrons has to be the mass of the $Z^0$-boson $m_{Z^0}=\SI{91.1876+-0.0021}{GeV}$\cite{PDG2024}. Therefore the calibration is complete when those match. The uncalibrated energy spectrum is shown in \Cref{fig:uncal}.
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=1\textwidth]{../images/UnCalibrated.pdf}
+	\end{center}
+	\caption{Energy spectrum with uncalibrated energies and no cuts.}\label{fig:uncal}
+\end{figure}
+
+In addition, the distribution needs to follow the Breit-Wigner function
 \begin{align}
-  F(M_{ee})=\frac{\Gamma_Z^2/4}{(M_{ee}-M_{Z})^2+\Gamma^2_Z/4},
+	F(M_{ee})=\frac{\Gamma_Z^2/4}{(M_{ee}-M_{Z})^2+\Gamma^2_Z/4},
 \end{align}
 which is an approximation of the more general function of eq. 6.1 in the lab manuel\cite{bonn_physics601_atlas_2025}.
 To account for smearing, the function is convoluted with the gauss distribution. This yields the Voigt function.
-Thus the calibration is complete when the energy of the electrons match the boson mass, i.e. the peak of the Voigt function is at the boson mass, and the Voigt function function is optimally fitted to the distribution. In conclusion, the free parameter of the peak is set to the boson mass, and only $\chi^2$ needs to be minimized.
+Thus the calibration is complete when the energy of the electrons match the boson mass, i.e. the peak of the Voigt function is at the boson mass, and the Voigt function function yields a high resolution.
 
-In to calculate the Voigt function in practice numerical integration is used.
+To achieve this, the function is repeatedly only fitted to a cut representing the correction. For example, when determining the coefficient for an if-statement, i.e. cut, \verb|else if (fabs(eta)>2.0 && fabs(eta)<2.5) energy = energy * 91.2/89.9;|, the fit is done without this correction, but with a cut corresponding to \verb|z.Fit("2.0TMath::Abs(el_eta) && TMath::Abs(el_eta)<2.5")|. Here the fit yields the mass \SI{89.9}{GeV}, thus it has been put into the statement as a ratio with the true mass, to yield the coefficient to correct the raw mass to the true mass. The energy spectra with different cuts and uncalibrated energies are shown in \Cref{fig:uncals} as an example.
 
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=1\textwidth]{../images/Cut.pdf}
+	\end{center}
+	\caption{Energy spectrum with uncalibrated energies for different cuts.}\label{fig:uncals}
+\end{figure}
+
+Using this procedure the following calibration-code is obtained:
+
+\begin{verbatim}
+#include "math.h"
+#include "TMath.h"
+
+double ElecCalib(double e_raw, double pt, double eta, 
+		 double phi, double etiso, double eoverp, double mindrjet)
+{
+  double dummy=pt*eta*phi*etiso*eoverp*mindrjet;
+  double energy = e_raw;
+
+
+  if (fabs(eta)>0.0 && fabs(eta)<0.5) energy = energy * 91.2/91.5;
+  else if (fabs(eta)>0.5 && fabs(eta)<1.0) energy = energy * 91.2/91.2;
+  else if (fabs(eta)>1.0 && fabs(eta)<1.5) energy = energy * 91.2/90.9;
+  else if (fabs(eta)>1.5 && fabs(eta)<2.0) energy = energy * 91.2/92.5;
+  else if (fabs(eta)>2.0 && fabs(eta)<2.5) energy = energy * 91.2/89.9;
+
+  if (phi>-0.5*3.2 && phi<-0.25*3.2) energy = energy * 91.2/89.9;
+  else if (phi>-0.25*3.2 && phi<-0.*3.2) energy = energy * 91.2/89.8;
+  else if (phi>0.0*3.2 && phi<0.25*3.2) energy = energy * 91.2/89.8;
+  else if (phi>0.25*3.2 && phi<0.5*3.2) energy = energy * 91.2/89.9;
+
+  else if (phi>0.5*3.2 && phi<0.75*3.2) energy = energy * 91.2/89.9;
+  else if (phi>0.75*3.2 && phi<1*3.2) energy = energy * 91.2/89.8;
+  else if (phi>-1*3.2 && phi<-0.75*3.2) energy = energy * 91.2/89.9;
+  else if (phi>-0.75*3.2 && phi<-0.5*3.2) energy = energy * 91.2/89.8;
+  
+  if (pt>0 && pt<25) energy = energy * 91.2/89.8;
+  else if (pt>25 && pt<50) energy = energy * 91.2/91.1;
+  else if (pt>50 && pt<75) energy = energy * 91.2/92.1;
+  else if (pt>75 && pt<100) energy = energy * 91.2/91.8;
+  else if (pt>100) energy = energy * 91.2/92.1;
+
+  return energy;
+} 
+\end{verbatim}
+Usually an open bin has to exist for every cut, but $\phi$ is only defined for $[-\pi, \pi]$ and $|\eta|$ has no data beyond $2.5$.
+
+As result of the calibration \Cref{fig:cal} is obtained.
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=1\textwidth]{../images/Calibrated.pdf}
+	\end{center}
+	\caption{Calibrated energy spectrum.}\label{fig:cal}
+\end{figure}
+
+Here a mass of \SI{91.2+-0}{GeV} and resolution of \SI{2.43+-0.03}{GeV} is obtained. In comparison to the uncalibrated spectrum, only a small improvement of the resolution \SI{2.588+-0.026}{GeV} is observed. Though, per definition of the used calibration method, the raw, i.e. original, boson mass \SI{89.897+-0.02}{GeV} is massively improved to the exact value.
 % TODO: parameters from script?
+
+\section{Appendix A}
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=1\textwidth]{../images/Myst-1-Muon_detection.pdf}
+	\end{center}
+	\caption{Event 11 with two detected muons}\label{fig:myst1}
+\end{figure}
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=1\textwidth]{../images/Myst-2-Muon_and_jet_detection.pdf}
+	\end{center}
+	\caption{Event 23 with two detected muons an jets}\label{fig:myst2}
+\end{figure}
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=1\textwidth]{../images/Myst-3-Muon_and_jet_detection.pdf}
+	\end{center}
+	\caption{Event 30 with two detected muons and jets}\label{fig:myst3}
+\end{figure}
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=1\textwidth]{../images/Myst-4-Electron_and_jet_detection.pdf}
+	\end{center}
+	\caption{Event 119 with two high energetic electrons and jets}\label{fig:myst4}
+\end{figure}
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=1\textwidth]{../images/Myst-5-Electron_and_jet_detection.pdf}
+	\end{center}
+	\caption{Event 127 with two high energetic electrons and jets}\label{fig:myst5}
+\end{figure}
+
 \end{document}
