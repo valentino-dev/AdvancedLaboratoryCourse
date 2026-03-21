@@ -1,0 +1,50 @@
+\documentclass{article}
+\let\olddiv\div
+\usepackage{physics}
+\usepackage{gensymb}
+\usepackage{adjustbox}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{placeins}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{authblk}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{mathtools}
+\usepackage[backend=biber,style=numeric,sorting=none]{biblatex}
+\addbibresource{References.bib} 
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+% \usepackage[none]{hyphenat}
+\usepackage{longtable}
+\usepackage{xcolor}
+\usepackage[a4paper, total={6.5in, 10in}]{geometry}
+\usepackage[symbol]{footmisc}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+\title{ATLAS Lab Report}
+\author{Dhruv Pisharody, Angelo Brade}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\newpage
+
+\section{Theory}
+\input{Theory}
+
+\section{Questions to be answered before the lab}
+\input{Pre-lab Qs}
+ 
+\section{Experimental Procedure and Analysis}
+\input{Procedure}
+
+\end{document}

@@ -1,0 +1,22 @@
+\babel@toc {american}{}\relax 
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}ATLAS detector}{2}{subsection.1.1}%
+\contentsline {section}{\numberline {2}Event Displays and Calibration}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Questions to be answered before the lab}{3}{subsection.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.1}Decay of the $Z^0$ boson}{3}{subsubsection.2.1.1}%
+\contentsline {subsubsection}{\numberline {2.1.2}Scattering reaction $e^+e^-\rightarrow \tau ^+\tau ^-$}{3}{subsubsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.2}Graphic Display of Particle Reactions}{3}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Identification of Common Particles}{4}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}Energy-Momentum Relation of Electrons}{4}{subsubsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.3}Identification of a Mystery-Process}{4}{subsubsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.3}Calibration of Electrons}{6}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Setup}{8}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Verification of electron calibration}{8}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}Inspection of Kinematic Variables}{9}{subsection.2.6}%
+\contentsline {subsection}{\numberline {2.7}Gauge curve W-boson mass versus half-maximum point}{11}{subsection.2.7}%
+\contentsline {subsection}{\numberline {2.8}Other systematic effects and error sources}{13}{subsection.2.8}%
+\contentsline {section}{\numberline {3}Appendix A}{14}{section.3}%
+\contentsline {section}{\numberline {4}Theory}{18}{section.4}%
+\contentsline {section}{\numberline {5}Questions to be answered before the lab}{19}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Estimated Transverse Momentum}{19}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Propagation of Correlated Errors}{19}{subsection.5.2}%

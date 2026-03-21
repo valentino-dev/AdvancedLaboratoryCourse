@@ -270,7 +270,7 @@ Overall, the time stability is poorly since the count rate is always dependent o
 
 To improve the measurement, it is advisable to make more runs and measure for less time per angle per run. For this measurement each angle was measured 12 minutes per run for a total of 6 runs and thus 936 minutes or 15 hours and 36 minutes. Doing e.g. 3 minutes per run for total of 24 runs would reduce the time dependency significantly, though taking the same amount. Of course the moving detector contributes a few extra seconds for repositioning but this should be neglectable. During the experiment the detector was noticed to take 2 to 4 seconds for moving.
 \subsection{Correction for Random Coincidences}
-From here on the random coincidences from the direct measurement in \Cref{sec:dm} are subtracted from the main measurement.
+From here on the random coincidences from the direct measurement in \Cref{sec:dm} are subtracted from the main measurement. The distinguishment between different angles is kept in case angular dependent photon sources skew the measurement.
 \subsection{Misalignment Correction}
 Considering that the source is not perfectly centered, its misalignment is investigated. For this an angle dependent correction factor
 \begin{align}
@@ -296,9 +296,10 @@ The main measurement data is used to show this ratio $\alpha$ in \Cref{fig:mis}
 	\end{center}
 	\caption{Misalignment Measurement}\label{fig:mis}
 \end{figure}
-As a result the displacement $r_s=\SI{64.9\pm1.3}{\mu m}$ at angle $\theta_s=\SI{116.5\pm1.4}{\degree}$ with a fit quality of $\chi^2/\text{ddof}=\num{9.82}$ is found. The $\chi^2$ is very high and shows that during the experiment and analysis larger systematic uncertainties have not been accounted for or wrong assumptions have been made, e.g. the movable detector is in fact not at the same distance and is not the exact same model as the stationary detector, changing the distance from the source.
+As a result the displacement $r_s=\SI{64.9\pm1.3}{\mu m}$ at angle $\theta_s=\SI{116.5\pm1.4}{\degree}$ with a fit quality of $\chi^2/\text{ddof}=\num{9.82}$ is found. The $\chi^2$ is very high and shows that during the experiment and analysis larger systematic uncertainties have not been accounted for or wrong assumptions have been made.
+%, e.g. the movable detector is in fact not at the same distance and is not the exact same model as the stationary detector, changing the distance from the source.
 
-This correction ratio $\alpha(\theta)$ can now be applied for the final analysis by multiplying the ratio with the count rates. It will correct of up to 4.5\% as seen in \Cref{fig:mis}.
+This correction ratio $\alpha(\theta)$ can now be applied for the final analysis by multiplying the ratio with the count rates. It will correct of up to 3.5\% as seen in \Cref{fig:mis}.
 
 
 \subsection{Solid Angle Corrections}
@@ -310,10 +311,10 @@ of the expansion of the angular correlation function
 \begin{align}
 	W(\theta)=N_0\cdot(1+A_{22}P_2(\cos\theta)+A_{44}P_4(\cos\theta))\label{eq:acf}
 \end{align}
-Since the in the previous section determined displacement of \SI{64.9\pm1.3}{\mu m} is within the uncertainty of \SI{1}{mm} of the authors ability to measure the distances, the source can be seen as centered. Additionally it is assumed that the detectors have the same distance to the source, \Cref{eq:fds} can be simplified with $r_1=r_2=r=\frac{d}{2}$ where $d=\SI{90+-1}{mm}$ is the distance from detector 1 to detector 2. Additionally it is assumed that the scintillator is \SI{5}{mm} deep into the detector, making the total distance $\SI{10+-1}{mm}$. Therefore the detectors are separated by \SI{5}{cm} from the source. Numerical values are given for the correction factors where they depend on this distance and the energy of the photon \cite{siegbahn}. Even though the observed transitions happen at \SI{1173.2}{keV} and \SI{1332.5}{keV}, the correction factors plateau beyond \SI{1}{MeV}. Thus the correction factors $Q_{22}(r)=\SI{0.9057}{}$ and $Q_{44}(r)=\SI{0.7113}{}$ for photons of \SI{1}{MeV} are used.
+Since the in the previous section determined displacement of \SI{64.9\pm1.3}{\mu m} is within the uncertainty of \SI{1}{mm} of the authors ability to measure the distances, the source can be seen as centered. Additionally assuming that the detectors have the same distance to the source, \Cref{eq:fds} can be simplified with $r_1=r_2=r=\frac{d}{2}$ where $d=\SI{90+-1}{mm}$ is the distance from detector 1 to detector 2. Additionally it i assumed that the scintillator is \SI{5}{mm} deep into the detector, making the total distance $\SI{10+-1}{mm}$. Therefore the detectors are separated by \SI{5}{cm} from the source. Numerical values are given for the correction factors where they depend on this distance and the energy of the photon \cite{siegbahn}. Even though the observed transitions happen at \SI{1173.2}{keV} and \SI{1332.5}{keV}, the correction factors plateau beyond \SI{1}{MeV}. Thus the correction factors $Q_{22}(r)=\SI{0.9057}{}$ and $Q_{44}(r)=\SI{0.7113}{}$ for photons of \SI{1}{MeV} are used.
 
 \subsection{Angular Correlation Function}
-The count rates are now corrected by misalignment and random coincidences multiplying with the correction factor $\alpha(\theta)$ and subtracting the random coincidences
+The count rates are now corrected by misalignment and random coincidences by multiplying with the correction factor $\alpha(\theta)$ and subtracting the random coincidences
 \begin{align}
 	N_\text{corr}(\theta) = N(\theta)\cdot\alpha(\theta)-N_\text{rand}(\theta)
 \end{align}
@@ -324,9 +325,9 @@ Here the random coincidence function $N_\text{rand}(\theta)$ corresponds to \Cre
 	\end{center}
 	\caption{Main Measurement}\label{fig:main}
 \end{figure}
-Here the fit to the angular correlation function in \Cref{eq:acf} is done. The quality $\chi^2/\text{ddof}=\SI{0.22}{}$ with parameters $N_0=\SI{5.411+-0.011}{}$, $A_{22}^\text{exp}=\SI{0.0799+-0.0037}{}$ and $A_{44}^\text{exp}=\SI{0.0067+-0.0047}{}$ is achieved. With the correction from the previous section the coefficients are adjusted to $A_{22}=\SI{0.097+-0.013}{}$ and $A_{44}=\SI{0.0045+-0.0093}{}$. Given their large uncertainties, they lie within $1\sigma$ of the literature values $A_{22}^\text{lit}=\SI{0.1020}{}$ and $A_{44}^\text{lit}=\SI{0.0091}{}$ \cite{siegbahn}. Especially $A_{44}=\SI{0.0045+-0.0093}{}$ has an uncertainty larger then the value itself.
+Here the fit to the angular correlation function in \Cref{eq:acf} is done. The quality $\chi^2/\text{ddof}=\SI{0.22}{}$ with parameters $N_0=\SI{5.411+-0.011}{}$, $A_{22}^\text{exp}=\SI{0.0799+-0.0037}{}$ and $A_{44}^\text{exp}=\SI{0.0067+-0.0047}{}$ is achieved. The $\chi^2$ is very small showing that at some point the uncertainties overestimated or plainly more data is needed to reduce the error. With the correction from the previous section the coefficients are adjusted to $A_{22}=\SI{0.097+-0.013}{}$ and $A_{44}=\SI{0.0045+-0.0093}{}$. Given their large uncertainties, they lie within $1\sigma$ of the literature values $A_{22}^\text{lit}=\SI{0.1020}{}$ and $A_{44}^\text{lit}=\SI{0.0091}{}$ \cite{siegbahn}. Especially $A_{44}=\SI{0.0045+-0.0093}{}$ has an uncertainty larger then the value itself.
 
-Last but not leas, other cascades are are fitted to the experimental distribution. The chosen cascades and the fit results are in \Cref{fig:maincas} with \Cref{tab:casc}. Here the coefficients $A_{ii}=F_i(L_1L_1I_iI)\cdot F_i(L_2L_2I_fI)$ for a $I_i(L_1)I(L_2)I_f$ cascade are set to literature values of the corresponding cascade\cite{siegbahn} and only the normalisation $N_0$ is optimized.
+Last but not leas, other cascades are fitted to the experimental distribution. The chosen cascades and the fit results are in \Cref{fig:maincas} with \Cref{tab:casc}. Here the coefficients $A_{ii}=F_i(L_1L_1I_iI)\cdot F_i(L_2L_2I_fI)$ for a $I_i(L_1)I(L_2)I_f$ cascade are set to literature values of the corresponding cascade\cite{siegbahn} and only the normalisation $N_0$ is optimized.
 \begin{figure}[H]
 	\begin{center}
 		\includegraphics[width=1\textwidth]{../images/main_other.pdf}
@@ -348,10 +349,17 @@ Last but not leas, other cascades are are fitted to the experimental distributio
 As seen, the assumed $4-2-0$ is most likely correct since the quality is here best, even though the $\chi^2$ is quite low, which shows, that more data is needed.
 
 \section{Conclusion}
-The experiment started by adjusting the different components for the final setup. For this the amplifier gain wa
+% Dhruv stuff
 
+After collecting the data from the random and main measurement, the main analysis started. For this the random coincidence rate was determined by directly measuring the coincidence, ranging from (\SI{1.3}{\frac{1}{s}} to \SI{1.75}{\frac{1}{s}}) and by calculating it with the single count rates of the moving and stationary detector and the resolving time ($\bar{N}=\SI{0.1125+-0.0042}{\frac{1}{s}}$.
 
-After collection the data from the random and main measurement, the analysis started. For this the random coincidence rate was determined by directly measuring the coincidence (and by calculating it with the single count rates of the moving and stationary detector and the resolving time. A 
+Following the stability is measured by comparing the over-time-fluctuations with the uncertainty. There it is seen that the measurement is not stable over time. The influence on the date should still remain marginal though, each angle was measured at multiple time points.
+
+Correcting for misalignment as been done by multiplying by a factor corresponding to an increment in count rate by being closer to the source for specific angles. Here it could also be determined that the source is off-center by \SI{64.9+-1.3}{\mu m} at an angle of \SI{116.5+-1.4}{\degree} from the stationary detector.
+
+The last correction made is caused by the spacial volume of the used detector. Therefor the expansion coefficients in the angular correlation function have been corrected by a factor corresponding to a distance of \SI{50}{mm} and already known from literature\cite{siegbahn}.
+
+Finally, the angular correlation is plotted and fitted to the expansion. There coefficients $A_{22}^\text{exp}=\SI{0.0799+-0.0037}{}$ and $A_{44}^\text{exp}=\SI{0.0067+-0.0047}{}$ are measured. They are within $1\sigma$ of the literature values $A_{22}^\text{lit}=\SI{0.1020}{}$ and $A_{44}^\text{lit}=\SI{0.0091}{}$ due to their large uncertainty. Also, other cascades have been considered. There it could bee seen that the presumed 4-2-0 cascade is most likely.
 
 
 

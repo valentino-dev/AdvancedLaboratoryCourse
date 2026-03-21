@@ -1,5 +1,10 @@
-\documentclass{article}
-\let\olddiv\div
+\RequirePackage{amsthm} %https://tex.stackexchange.com/questions/687324/unknown-theoremstyle-warning-with-springer-nature-template
+\documentclass[sn-mathphys-num,icol]{sn-jnl}
+%\documentclass[sn-mathphys-num,iicol]{jnl}
+
+%\usepackage{sn-jnl.sty}
+\usepackage[pscoord]{eso-pic}% The zero point of the coordinate systemis the lower left corner of the page (the default).
+
 \usepackage[absolute,overlay]{textpos}
 \usepackage[dvipsnames]{xcolor}
 \usepackage{tikz}
@@ -27,43 +32,37 @@
 \usepackage[american]{babel}
 \usepackage{cleveref}
 
-\usepackage{physics}
-\usepackage{gensymb}
-\usepackage{adjustbox}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{graphicx}
-\usepackage{placeins}
-\usepackage{float}
-\usepackage{enumitem}
-\usepackage{authblk}
-\usepackage{caption}
-\usepackage{subcaption}
+
+
 \usepackage{multicol}
 \usepackage{multirow}
-\usepackage{array}
-\usepackage{mathtools}
-\usepackage[backend=biber,style=numeric,sorting=none]{biblatex}
-\addbibresource{References.bib} 
-\usepackage[colorlinks=true, allcolors=blue]{hyperref}
-% \usepackage[none]{hyphenat}
-\usepackage{longtable}
-\usepackage{xcolor}
-\usepackage[a4paper, total={6.5in, 10in}]{geometry}
-\usepackage[symbol]{footmisc}
-\renewcommand{\thefootnote}{\fnsymbol{footnote}}
 
-\title{ATLAS Lab Report}
-\author{Dhruv Pisharody, Angelo Brade}
-\date{\today}
+\usetikzlibrary{arrows.meta, positioning, shapes.geometric, decorations.markings}
+
+\theoremstyle{thmstyleone}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\theoremstyle{thmstyletwo}
+\newtheorem{remark}{Remark}
+
+\theoremstyle{thmstylethree}
+\newtheorem{definition}{Definition}
+
+\raggedbottom
+
+\newcommand{\td}{\text{d}}
+
+\titleformat{\subsection}{}{\thesubsection}{1em}{\itshape}
+\titleformat{\subsubsection}{}{\thesubsubsection}{1em}{\itshape}
 
 \begin{document}
 
+\title{E214: ATLAS}
+\author*[1]{\fnm{Dhruv} \sur{Pisharody}}\email{s36drohi@uni-bonn.de}
+\author*[1]{\fnm{Angelo} \sur{Brade}}\email{s72abrad@uni-bonn.de}
+\affil*[1]{Rheinische Friedrich--Wilhelms--Universität, Bonn}
 \maketitle
-
-\tableofcontents
-
-\newpage
 \section{Introduction}
 For this laboratory course simulated Atlas data is analysed. Particles like electrons or muons are identified through the graphical program Atlantis. For quantitativ analysis the detector is calibrated with the Z-Boson mass and then used to measure the W-Boson mass.
 \subsection{ATLAS detector}
@@ -242,9 +241,21 @@ As result of the calibration \Cref{fig:cal} is obtained.
 Here a mass of \SI{91.2+-0}{GeV} and resolution of \SI{2.43+-0.03}{GeV} is obtained. In comparison to the uncalibrated spectrum, only a small improvement of the resolution \SI{2.588+-0.026}{GeV} is observed. Though, per definition of the used calibration method, the raw, i.e. original, boson mass \SI{89.897+-0.02}{GeV} is massively improved to the exact value.
 % TODO: parameters from script?
 
+\section{Theory for Day 2}
+\input{Theory}
 
+\section{Questions to be answered before the lab of Day 2}
+\input{Pre-lab Qs}
+
+\section{Day 2}
 \input{Procedure}
 
+\section{Conclusion}
+In this experiment, we studied data from the ATLAS detector at CERN, learning how to identify the tracks of different elementary particles in the detector. With this, we were able to identify the mystery process given to us as most likely to be a $Z^0$ decay based on the jets and lepton-anti-lepton pairs observed; this identification however is not certain since the more likely decay of a Z boson to hadrons is not observed in the expected quantities.\\
+
+We then calibrated the electron data to match the observed mass of the Z-boson with the true, expected mass. The calibration was successfully done, resulting in an improvement of the mass from $89.897(20)\,$GeV to $91.2\,$GeV.\\
+
+Finally, we calculated the mass of the W-boson by measuring the location of the Jacobi peak in the distribution of the transverse momentum of the electron. This resulted in us measuring a value of $81.50\pm1.78\,$GeV, within the uncertainties of which the true value of $80.403\pm0.029\,$GeV falls.
 \section{Appendix A}
 \begin{figure}[H]
 	\begin{center}
@@ -276,14 +287,5 @@ Here a mass of \SI{91.2+-0}{GeV} and resolution of \SI{2.43+-0.03}{GeV} is obtai
 	\end{center}
 	\caption{Event 127 with two high energetic electrons and jets}\label{fig:myst5}
 \end{figure}
-
-
-\section{Theory}
-\input{Theory}
-
-\section{Questions to be answered before the lab}
-\input{Pre-lab Qs}
- 
 \bibliography{refs}
-
 \end{document}

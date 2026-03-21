@@ -53,5 +53,5 @@ plt.errorbar(x, y, y_err, ls='none', marker='d', capsize=10)
 p0 = [1.4e-4, 120]
 _ = olib.fit_function(model, x, y, y_err, p0, plot=True)
 plt.xlabel(r"$\theta/°$")
-plt.ylabel(r"Ratio $\frac{N(180°)}{N(\theta)}$")
+plt.ylabel(r"Ratio $\frac{N(\theta)}{N(180°)}$")
 plt.savefig(f'images/misal.pdf', dpi=500, bbox_inches="tight")

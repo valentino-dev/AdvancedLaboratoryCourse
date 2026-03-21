@@ -1,0 +1,18 @@
+\subsection{Estimated Transverse Momentum}
+
+\noindent The `W to e nu' dataset contains the properties \textbf{ptmisx} and \textbf{ptmisy}, which are the x and y components of the $E^{\text{miss}}_{\text{T}}$ vector respectively. We can use them to calculate the length of the vector itself,
+$$E^{\text{miss}}_{\text{T}} = \sqrt{(\textbf{ptmisx})^2 + (\textbf{ptmisy})^2}$$
+which is the missing transverse energy (also obtainable from the property \textbf{etmis}). Now, in the relativistic limit, the energy and absolute value of the momentum are the same, hence we can treat this missing transverse energy as the absolute momentum of the neutrino emitted by the W-boson's decay.\\
+
+\noindent This means that the transverse momentum of the W-boson (equivalent to the property \textbf{ptw}) is
+$$\textbf{ptw} = -E^{\text{miss}}_{\text{T}} = -\sqrt{(\textbf{ptmisx})^2 + (\textbf{ptmisy})^2}$$\\
+
+\subsection{Propagation of Correlated Errors}
+
+\noindent The simplest form of Gauss's error propagation law is
+\begin{equation}{\label{gausserr}}
+    \sigma_f = \sqrt{ \left(\frac{\partial f}{\partial x}\right)^2 \sigma_x^2 + \left(\frac{\partial f}{\partial y}\right)^2 \sigma_y^2 }
+\end{equation}
+where $f(x,y)$ is a function of the (here uncorrelated) variables $x$ and $y$, with $\sigma_x^2$, $\sigma_y^2$ being their variances. When $x$ and $y$ are correlated however, we introduce another term under the square root,
+$$\sigma_f = \sqrt{ \left(\frac{\partial f}{\partial x}\right)^2 \sigma_x^2 + \left(\frac{\partial f}{\partial y}\right)^2 \sigma_y^2 + 2\sigma_{xy} \left(\frac{\partial f}{\partial x}\right) \left(\frac{\partial f}{\partial y}\right)}$$
+where $\sigma_xy$ is the off-diagonal element of the covariance matrix. If however, the value of this is not known, we can find an upper estimate of the uncertainty of $f$ by simply adding up the uncertainties of $x$ and $y$.\\
