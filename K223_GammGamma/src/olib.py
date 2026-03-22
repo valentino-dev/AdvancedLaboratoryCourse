@@ -21,7 +21,10 @@ def calc_reduced_chi_sq(model, x, y, y_err, popt):
     return chi_sq / dof
 
 def fit_function(model, x, y, y_err, p0, plot=False, k=1, show_p0=False, label=None):
+    y_err = y_err+1
+    print(y_err)
     popt, pcov = curve_fit(model, x, y, p0=p0, sigma=y_err, absolute_sigma=True)
+    print(popt)
     returns = [popt, pcov]
     red_chi_sq = calc_reduced_chi_sq(model, x, y, y_err, popt)
     print(f"$\chi^2/\\text{{ddof}}: \\num{{%.2f}}$"%(red_chi_sq))
