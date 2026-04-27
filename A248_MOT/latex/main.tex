@@ -1,0 +1,86 @@
+\RequirePackage{amsthm} %https://tex.stackexchange.com/questions/687324/unknown-theoremstyle-warning-with-springer-nature-template
+\documentclass[sn-mathphys-num,icol]{sn-jnl}
+%\documentclass[sn-mathphys-num,iicol]{jnl}
+
+%\usepackage{sn-jnl.sty}
+\usepackage[pscoord]{eso-pic}% The zero point of the coordinate systemis the lower left corner of the page (the default).
+
+\usepackage[absolute,overlay]{textpos}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tikz}
+\usepackage{graphicx}% \usepackage{multirow}% \usepackage{cuted}
+\usepackage{amsmath,amssymb,amsfonts}%
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{amsthm}%
+\usepackage{gensymb}
+\usepackage{physics}
+\usepackage[locale=US]{siunitx}
+\usepackage{mathrsfs}%
+\usepackage[title]{appendix}%
+\usepackage{xcolor}%
+\usepackage{textcomp}%
+\usepackage{manyfoot}%
+\usepackage{booktabs}%
+\usepackage{algorithm}%
+\usepackage{algorithmicx}%
+\usepackage{algpseudocode}%
+\usepackage{listings}%
+\usepackage{newtxmath}%
+\usepackage{yfonts}
+\usepackage{braket}
+\usepackage{dsfont}
+\usepackage{subfig}
+\usepackage[tiny]{titlesec}%
+\usepackage[american]{babel}
+\usepackage{cleveref}
+
+\usetikzlibrary{arrows.meta, positioning, shapes.geometric, decorations.markings}
+
+\theoremstyle{thmstyleone}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\theoremstyle{thmstyletwo}
+\newtheorem{remark}{Remark}
+
+\theoremstyle{thmstylethree}
+\newtheorem{definition}{Definition}
+
+\raggedbottom
+
+\newcommand{\td}{\text{d}}
+
+\titleformat{\subsection}{}{\thesubsection}{1em}{\itshape}
+\titleformat{\subsubsection}{}{\thesubsubsection}{1em}{\itshape}
+
+\begin{document}
+
+\title{A248: MOT}
+\author*[1]{\fnm{Dhruv} \sur{Pisharody}}\email{s36drohi@uni-bonn.de}
+\author*[1]{\fnm{Angelo} \sur{Brade}}\email{s72abrad@uni-bonn.de}
+\affil*[1]{Rheinische Friedrich--Wilhelms--Universität, Bonn}
+\maketitle
+
+\section{Abstract}
+A given magneto optical trap is adjusted to trap and cool an esamble of Rubidium atoms to a fraction of a Kelvin. 
+% TODO: More 
+
+\section{Theory}
+
+\section{Setup}
+The setup consits of a laser part where the lasers are locked to the transition frequency for cooling and repumping and the main MOT part where three counterpropagating lasers cool and trap the atoms through the Zeeman shift of the magnetic field from colis in an anti-helmholz configuration (see \Cref{fig:lp}). Two lasers are set to the transition frequency
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=1\textwidth]{../images/laserpart.png}
+	\end{center}
+  \caption{Laser part to lock the frequency to the repumping and cooling transistion through polarisation spectroscopy.\cite{manuel}}\label{fig:lp}
+\end{figure}
+
+\section{Measurements}
+
+\section{Conclusion}
+
+
+\bibliography{refs}
+\end{document}
