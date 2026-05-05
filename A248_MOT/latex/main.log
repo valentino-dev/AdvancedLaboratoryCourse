@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.14)  27 APR 2026 10:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.14)  3 MAY 2026 17:57
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1370,12 +1370,12 @@ LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
 LaTeX Font Warning: Font shape `TS1/cmr/m/n' in size <5.52065> not available
 (Font)              size <6> substituted on input line 64.
 
-<../images/laserpart.png, id=28, 1030.85126pt x 828.09375pt>
-File: ../images/laserpart.png Graphic file (type png)
-<use ../images/laserpart.png>
-Package pdftex.def Info: ../images/laserpart.png  used on input line 75.
-(pdftex.def)             Requested size: 372.0pt x 298.82112pt.
-(./main.bbl)
+<../images/scheem.png, id=40, 1143.27126pt x 869.2475pt>
+File: ../images/scheem.png Graphic file (type png)
+<use ../images/scheem.png>
+Package pdftex.def Info: ../images/scheem.png  used on input line 81.
+(pdftex.def)             Requested size: 372.0pt x 282.83368pt.
+
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -1387,7 +1387,38 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [2 <../images/laserpart.png>] (./main.aux)
+ [2 <../images/scheem.png>]
+<../images/laser.png, id=68, 747.79375pt x 177.66376pt>
+File: ../images/laser.png Graphic file (type png)
+<use ../images/laser.png>
+Package pdftex.def Info: ../images/laser.png  used on input line 94.
+(pdftex.def)             Requested size: 372.0pt x 88.38164pt.
+<../images/laserpart.png, id=71, 1030.85126pt x 828.09375pt>
+File: ../images/laserpart.png Graphic file (type png)
+<use ../images/laserpart.png>
+Package pdftex.def Info: ../images/laserpart.png  used on input line 105.
+(pdftex.def)             Requested size: 372.0pt x 298.82112pt.
+<../images/mot.png, id=75, 769.87625pt x 675.52374pt>
+File: ../images/mot.png Graphic file (type png)
+<use ../images/mot.png>
+Package pdftex.def Info: ../images/mot.png  used on input line 114.
+(pdftex.def)             Requested size: 372.0pt x 326.41232pt.
+ (./main.bbl
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [3 <../images/laser.png>])
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [4 <../images/laserpart.png>]
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [5 <../images/mot.png>] (./main.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-09-10>
@@ -1398,21 +1429,21 @@ LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.47935pt have occurred.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: EFF12DBA8ED012DDDDF12111DFFB928F;415.
+(rerunfilecheck)             Checksum: C80591ACD0184B793678C9BF907938CB;721.
  ) 
 Here is how much of TeX's memory you used:
- 37289 strings out of 473579
- 724724 string characters out of 5728233
- 1075061 words of memory out of 5000000
- 59557 multiletter control sequences out of 15000+600000
- 598939 words of font info for 146 fonts, out of 8000000 for 9000
+ 37342 strings out of 473579
+ 725646 string characters out of 5728233
+ 1080061 words of memory out of 5000000
+ 59592 multiletter control sequences out of 15000+600000
+ 601855 words of font info for 155 fonts, out of 8000000 for 9000
  1151 hyphenation exceptions out of 8191
- 90i,7n,133p,449b,918s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb>
-Output written on main.pdf (2 pages, 261405 bytes).
+ 90i,7n,133p,1239b,1085s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/newtx/NewTXMI.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/newtx/txsys.pfb>
+Output written on main.pdf (5 pages, 572179 bytes).
 PDF statistics:
- 79 PDF objects out of 1000 (max. 8388607)
- 60 compressed objects within 1 object stream
- 10 named destinations out of 1000 (max. 500000)
- 58 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 146 PDF objects out of 1000 (max. 8388607)
+ 107 compressed objects within 2 object streams
+ 19 named destinations out of 1000 (max. 500000)
+ 97 words of extra memory for PDF output out of 10000 (max. 10000000)
 
