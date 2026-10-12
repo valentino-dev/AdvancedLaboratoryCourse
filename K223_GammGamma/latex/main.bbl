@@ -1,6 +1,6 @@
 %% BioMed_Central_Bib_Style_v1.01
 
-\begin{thebibliography}{2}
+\begin{thebibliography}{5}
 % BibTex style file: bmc-mathphys.bst (version 2.1), 2014-07-24
 \ifx \bisbn   \undefined \def \bisbn  #1{ISBN #1}\fi
 \ifx \binits  \undefined \def \binits#1{#1}\fi
@@ -56,6 +56,27 @@
 \endbibitem
 
 %%% 2
+\bibitem[\protect\citeauthoryear{Rosinsky}{2022}]{Rosinsky2022}
+\begin{botherref}
+\oauthor{\bsnm{Rosinsky}, \binits{P.}}:
+Aufbau und Testung der Automatisierung Winkelabhängiger $\gamma$-Messungen Im Praktikum Mit Hilfe Einer Motorisierten Messapparatur
+\end{botherref}
+\endbibitem
+
+%%% 3
+\bibitem[\protect\citeauthoryear{Steffen}{1955}]{Steffen}
+\begin{barticle}
+\bauthor{\bsnm{Steffen}, \binits{R.M.}}:
+\batitle{Extranuclear effects on angular correlations of nuclear radiations}.
+\bjtitle{Advances in Physics}
+\bvolume{4}(\bissue{15}),
+\bfpage{293}
+(\byear{1955})
+\doiurl{10.1080/00018735500101234}
+\end{barticle}
+\endbibitem
+
+%%% 4
 \bibitem[\protect\citeauthoryear{Siegbahn}{1965}]{siegbahn}
 \begin{bbook}
 \bauthor{\bsnm{Siegbahn}, \binits{K.}}:
@@ -66,6 +87,13 @@ p. \bfpage{1695}.
 \blocation{Amsterdam}
 (\byear{1965})
 \end{bbook}
+\endbibitem
+
+%%% 5
+\bibitem[\protect\citeauthoryear{}{}]{3}
+\begin{botherref}
+Lab Handout
+\end{botherref}
 \endbibitem
 
 \end{thebibliography}

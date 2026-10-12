@@ -76,8 +76,8 @@ for i in [0, 1]:
 
 X = np.linspace(min(angles), max(angles), 200)
 sigmas = [get_sigmas(models[i], X, popts[i], pcovs[i]) for i in [0, 1]]
-resolving_time = 0.03e-6
-resolving_time_err = 0.004e-6
+resolving_time = 39.71e-9
+resolving_time_err = 0.68e-9
 coincidence_rate = resolving_time * models[0](X, *popts[0]) * models[1](X, *popts[1])
 coincidence_rate_err = ((coincidence_rate/resolving_time*resolving_time_err)**2+(coincidence_rate/models[0](X, *popts[0])*sigmas[0])**2+(coincidence_rate/models[1](X, *popts[1])*sigmas[1])**2)**(1/2)
 Y = coincidence_rate
@@ -150,4 +150,11 @@ table = olib.Table(x, np.zeros(x.shape), y, y_err, 'Direct Measurment', r"$\thet
 table.saveAsPDF('latex/', 'rnd_dir_meas_data.tex')
 plt.savefig('images/direct_measurement.pdf', dpi=500, bbox_inches="tight")
 
-
+plt.clf()
+plt.xlabel(r"$\theta/°$")
+plt.ylabel(r"$N_\text{acc}/\frac{1}{s}$")
+olib.fit_function(model, x, y, y_err, p0, plot=True, label='Directly Measurment')
+plt.plot(X, Y, label='Calculated')
+plt.fill_between(X, Y-k*sigma, Y+k*sigma, alpha=0.3)
+plt.legend()
+plt.savefig(f'images/rnd_coinc_rate.pdf', dpi=500, bbox_inches="tight")

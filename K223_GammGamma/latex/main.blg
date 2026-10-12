@@ -20,49 +20,53 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: refs.bib
+Warning--entry type for "Rosinsky2022" isn't style-file defined
+--line 291 of file refs.bib
 Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
+Warning--to sort, need author or key in 3
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
-You've used 2 entries,
+You've used 5 entries,
             7480 wiz_defined-function locations,
-            1193 strings with 9775 characters,
-and the built_in function-call counts, 91468 in all, are:
-= -- 18312
-> -- 30
-< -- 12
-+ -- 12370
-- -- 19
-* -- 1216
-:= -- 15241
-add.period$ -- 2
-call.type$ -- 2
-change.case$ -- 21
-chr.to.int$ -- 26
-cite$ -- 2
-duplicate$ -- 56
-empty$ -- 202
-format.name$ -- 20
-if$ -- 24208
+            1211 strings with 10142 characters,
+and the built_in function-call counts, 203625 in all, are:
+= -- 40849
+> -- 59
+< -- 23
++ -- 27631
+- -- 41
+* -- 2647
+:= -- 33894
+add.period$ -- 3
+call.type$ -- 5
+change.case$ -- 55
+chr.to.int$ -- 50
+cite$ -- 7
+duplicate$ -- 108
+empty$ -- 400
+format.name$ -- 40
+if$ -- 53961
 int.to.chr$ -- 1
-int.to.str$ -- 3
+int.to.str$ -- 6
 missing$ -- 0
-newline$ -- 71
-num.names$ -- 10
-pop$ -- 19
+newline$ -- 99
+num.names$ -- 20
+pop$ -- 51
 preamble$ -- 1
-purify$ -- 8
+purify$ -- 19
 quote$ -- 0
-skip$ -- 11458
+skip$ -- 25552
 stack$ -- 0
-substring$ -- 7893
-swap$ -- 24
-text.length$ -- 31
+substring$ -- 17587
+swap$ -- 42
+text.length$ -- 66
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 84
-warning$ -- 0
-while$ -- 45
+type$ -- 184
+warning$ -- 1
+while$ -- 96
 width$ -- 0
-write$ -- 81
+write$ -- 127
+(There were 2 warnings)

@@ -10,6 +10,8 @@
 \usepackage{tikz}
 \usepackage{graphicx}% \usepackage{multirow}% \usepackage{cuted}
 \usepackage{amsmath,amssymb,amsfonts}%
+\usepackage{multicol}
+\usepackage{multirow}
 \usepackage{amsthm}%
 \usepackage{gensymb}
 \usepackage{physics}
@@ -55,95 +57,28 @@
 \begin{document}
 
 \title{K223: Nuclear $\gamma\gamma$ Angular Correlations}
-\author*[1]{\fnm{Dhruv} \sur{Pisharody}}\email{}
+\author*[1]{\fnm{Dhruv} \sur{Pisharody}}\email{s36drohi@uni-bonn.de}
 \author*[1]{\fnm{Angelo} \sur{Brade}}\email{s72abrad@uni-bonn.de}
 \affil*[1]{Rheinische Friedrich--Wilhelms--Universität, Bonn}
 \maketitle
+\section{Introduction}
+\input{Introduction}
+
+\section{Theory}
+\input{Theory}
+
+\section{Preparatory tasks}
+\input{Prep tasks}
+ 
+\section{Preliminary Set Up}
+\input{Preliminary Set Up}
+
+\section{Preparing and Calibrating the Setup}
+\input{Preparing and Calibrating the Setup}
+
 \section{Analysis of the Data}
 \subsection{Calibration of the SCAs}
 
-\begin{figure}[H]
-	\begin{center}
-		\includegraphics[width=1\textwidth]{../images/SCA_Calib_C.pdf}
-	\end{center}
-	\caption{SCA Spectrum for Stationary Detector}\label{fig:sca_calib_c}
-\end{figure}
-
-\begin{figure}[H]
-	\begin{center}
-		\includegraphics[width=1\textwidth]{../images/SCA_Calib_M.pdf}
-	\end{center}
-	\caption{SCA Spectrum for Moving Detector}\label{fig:sca_calib_m}
-\end{figure}
-
-\begin{figure}[H]
-	\begin{center}
-		\includegraphics[width=1\textwidth]{../images/CFD_Calib_C.pdf}
-	\end{center}
-	\caption{CFD Spectrum for Stationary Detector}\label{fig:sca_calib_c}
-\end{figure}
-
-\begin{figure}[H]
-	\begin{center}
-		\includegraphics[width=1\textwidth]{../images/CFD_Calib_M.pdf}
-	\end{center}
-	\caption{CFD Spectrum for Moving Detector}\label{fig:sca_calib_m}
-\end{figure}
-
-\begin{figure}[H]
-	\begin{center}
-		\includegraphics[width=1\textwidth]{../images/SDS00001.jpg}
-	\end{center}
-	\caption{CFD Spectrum for Moving Detector}\label{fig:sca_calib_m}
-\end{figure}
-\begin{figure}[H]
-	\begin{center}
-		\includegraphics[width=1\textwidth]{../images/SDS00002.jpg}
-	\end{center}
-	\caption{CFD Spectrum for Moving Detector}\label{fig:sca_calib_m}
-\end{figure}
-\begin{figure}[H]
-	\begin{center}
-		\includegraphics[width=1\textwidth]{../images/SDS00003.jpg}
-	\end{center}
-	\caption{CFD Spectrum for Moving Detector}\label{fig:sca_calib_m}
-\end{figure}
-\begin{figure}[H]
-	\begin{center}
-		\includegraphics[width=1\textwidth]{../images/SDS00004.jpg}
-	\end{center}
-	\caption{CFD Spectrum for Moving Detector}\label{fig:sca_calib_m}
-\end{figure}
-\begin{figure}[H]
-	\begin{center}
-		\includegraphics[width=1\textwidth]{../images/SDS00005.jpg}
-	\end{center}
-	\caption{CFD Spectrum for Moving Detector}\label{fig:sca_calib_m}
-\end{figure}
-\begin{figure}[H]
-	\begin{center}
-		\includegraphics[width=1\textwidth]{../images/SDS00006.jpg}
-	\end{center}
-	\caption{CFD Spectrum for Moving Detector}\label{fig:sca_calib_m}
-\end{figure}
-\begin{figure}[H]
-	\begin{center}
-		\includegraphics[width=1\textwidth]{../images/SDS00007.jpg}
-	\end{center}
-	\caption{CFD Spectrum for Moving Detector}\label{fig:sca_calib_m}
-\end{figure}
-\begin{figure}[H]
-	\begin{center}
-		\includegraphics[width=1\textwidth]{../images/SDS00008.jpg}
-	\end{center}
-	\caption{CFD Spectrum for Moving Detector}\label{fig:sca_calib_m}
-\end{figure}
-\begin{figure}[H]
-	\begin{center}
-		\includegraphics[width=1\textwidth]{../images/SCA_Calib.pdf}
-	\end{center}
-	\caption{CFD Spectrum for Moving Detector}\label{fig:sca_calib_m}
-\end{figure}
 
 \section{Main Analysis}
 With the constructed circuit the random measurement and main measurement are taken. For the random measurements a total of 13 angles ranging from \SI{90}{\degree} to \SI{270}{\degree} in \SI{15}{\degree} steps are taken. At each angle the count coincidence rate is measured for 10 Minutes. Since the random measurement is done in 2 runs, every angles was measured twice. For the main measurement the total runs were increased from 2 to 6 and the measuring time per angles per run was increased from 10 Minutes to 12 Minutes.
@@ -197,12 +132,10 @@ As a result of the count rates and resolution \Cref{fig:crr} is obtained.
 	\begin{center}
 		\includegraphics[width=1\textwidth]{../images/rnd_coinc_rate.pdf}
 	\end{center}
-	\caption{Accidental Coincidences Calculated through Resolving Time and Count Rates of Detector 1 and 2}\label{fig:crr}
+	\caption{Accidental Coincidences Calculated with Resolving Time and Count Rates of Detector 1 and 2 and Accidental Coincidences from the Direct Measurement.}\label{fig:crr}
 \end{figure}
-For this the functions for $N_1(\theta)$ and $N_2(\theta)$ are used. As seen a small dependency on the angle is present. More significant though, is the large uncertainty, here seen from the large confidence band colored blue. So no real information beyond Gaussian distribution can be assumed. Thus the weighted mean using the original data points for the count rates is computed to an average of $\bar{N}=\SI{0.1125+-0.0042}{\frac{1}{s}}$.
-
-The calculated coincidence rate is with \SI{4.8}{\sigma} not very close to the directly measured accidental coincidence rate, which is ranging from \SI{0.133}{} to \SI{0.175}{} (see \Cref{fig:dm}). This deviation will stem from systematic errors, where the uncertainty on some measurements are underestimated or electronic noise could have triggered more coincidences in the fast branch, then would normally be triggered by external radiation that were originally planed to be measured by the random measurement.
-
+For this the functions $N_1(\theta)$ and $N_2(\theta)$ are used to calculate the accidental coincidence rate from \Cref{eq:cos}. Here the resolving time \SI{39.71+-0.68}{ns} from the prompt curve is used. Also the fitted function from the direct measurement from \Cref{fig:dm} is shown here for comparison.
+As seen a small dependency on the angle is present for the calculated accidental coincidences. This behaviour is though more significant in the direct measurement. Both curves agree well with each other with deviations of only up to $2\sigma$ at an angle of about $\SI{225}{\degree}$. Though the agreement is good, for further calculations only the direct measurement is used since it includes also noise and other influences from the used devices.
 \subsection{Stability Check}
 To investigate the stability of the detectors over time, the main measurement is used to look at the fluctuations of the signals of the moving and stationary detector for constant angles over the multiple measurements for the different runs. Here fluctuations are defined as the standard deviation of of the signal over the different runs, since the runs happen at different points in time.
 
@@ -325,7 +258,7 @@ Here the random coincidence function $N_\text{rand}(\theta)$ corresponds to \Cre
 	\end{center}
 	\caption{Main Measurement}\label{fig:main}
 \end{figure}
-Here the fit to the angular correlation function in \Cref{eq:acf} is done. The quality $\chi^2/\text{ddof}=\SI{0.22}{}$ with parameters $N_0=\SI{5.411+-0.011}{}$, $A_{22}^\text{exp}=\SI{0.0799+-0.0037}{}$ and $A_{44}^\text{exp}=\SI{0.0067+-0.0047}{}$ is achieved. The $\chi^2$ is very small showing that at some point the uncertainties overestimated or plainly more data is needed to reduce the error. With the correction from the previous section the coefficients are adjusted to $A_{22}=\SI{0.097+-0.013}{}$ and $A_{44}=\SI{0.0045+-0.0093}{}$. Given their large uncertainties, they lie within $1\sigma$ of the literature values $A_{22}^\text{lit}=\SI{0.1020}{}$ and $A_{44}^\text{lit}=\SI{0.0091}{}$ \cite{siegbahn}. Especially $A_{44}=\SI{0.0045+-0.0093}{}$ has an uncertainty larger then the value itself.
+Here the fit to the angular correlation function in \Cref{eq:acf} is done. The quality $\chi^2/\text{ddof}=\SI{0.22}{}$ with parameters $N_0=\SI{5.411+-0.011}{}$, $A_{22}^\text{exp}=\SI{0.0799+-0.0037}{}$ and $A_{44}^\text{exp}=\SI{0.0067+-0.0047}{}$ is achieved. The $\chi^2$ is very small showing that at some point the uncertainties overestimated or plainly more data is needed to reduce the error. With the correction from the previous section the coefficients are adjusted to $A_{22}=\SI{0.097+-0.013}{}$ and $A_{44}=\SI{0.0132+-0.0093}{}$. Given their large uncertainties, they lie within $1\sigma$ of the literature values $A_{22}^\text{lit}=\SI{0.1020}{}$ and $A_{44}^\text{lit}=\SI{0.0091}{}$ \cite{siegbahn}. Especially $A_{44}=\SI{0.0045+-0.0093}{}$ has an uncertainty larger then the value itself.
 
 Last but not leas, other cascades are fitted to the experimental distribution. The chosen cascades and the fit results are in \Cref{fig:maincas} with \Cref{tab:casc}. Here the coefficients $A_{ii}=F_i(L_1L_1I_iI)\cdot F_i(L_2L_2I_fI)$ for a $I_i(L_1)I(L_2)I_f$ cascade are set to literature values of the corresponding cascade\cite{siegbahn} and only the normalisation $N_0$ is optimized.
 \begin{figure}[H]
@@ -349,9 +282,9 @@ Last but not leas, other cascades are fitted to the experimental distribution. T
 As seen, the assumed $4-2-0$ is most likely correct since the quality is here best, even though the $\chi^2$ is quite low, which shows, that more data is needed.
 
 \section{Conclusion}
-% Dhruv stuff
+In this experiment, we used a Fast-Slow coincidence setup with two detectors to measure the angular distribution of the radiation from the $\gamma-\gamma$ cascade of $^{60}$Co, first by measuring random background coincidences, and then a main measurement of the true coincidences.
 
-After collecting the data from the random and main measurement, the main analysis started. For this the random coincidence rate was determined by directly measuring the coincidence, ranging from (\SI{1.3}{\frac{1}{s}} to \SI{1.75}{\frac{1}{s}}) and by calculating it with the single count rates of the moving and stationary detector and the resolving time ($\bar{N}=\SI{0.1125+-0.0042}{\frac{1}{s}}$.
+After collecting the data from the random and main measurement, the main analysis started. For this the random coincidence rate was determined by directly measuring the coincidence, and by calculating it with the single count rates of the moving and stationary detector and the resolving time.
 
 Following the stability is measured by comparing the over-time-fluctuations with the uncertainty. There it is seen that the measurement is not stable over time. The influence on the date should still remain marginal though, each angle was measured at multiple time points.
 
@@ -359,7 +292,7 @@ Correcting for misalignment as been done by multiplying by a factor correspondin
 
 The last correction made is caused by the spacial volume of the used detector. Therefor the expansion coefficients in the angular correlation function have been corrected by a factor corresponding to a distance of \SI{50}{mm} and already known from literature\cite{siegbahn}.
 
-Finally, the angular correlation is plotted and fitted to the expansion. There coefficients $A_{22}^\text{exp}=\SI{0.0799+-0.0037}{}$ and $A_{44}^\text{exp}=\SI{0.0067+-0.0047}{}$ are measured. They are within $1\sigma$ of the literature values $A_{22}^\text{lit}=\SI{0.1020}{}$ and $A_{44}^\text{lit}=\SI{0.0091}{}$ due to their large uncertainty. Also, other cascades have been considered. There it could bee seen that the presumed 4-2-0 cascade is most likely.
+Finally, the angular correlation is plotted and fitted to the expansion. There coefficients $A_{22}=\SI{0.097+-0.013}{}$ and $A_{44}=\SI{0.0132+-0.0093}{}$ are measured. They are within $1\sigma$ of the literature values $A_{22}^\text{lit}=\SI{0.1020}{}$ and $A_{44}^\text{lit}=\SI{0.0091}{}$ due to their large uncertainty. Also, other cascades have been considered. There it could bee seen that the presumed 4-2-0 cascade is most likely.
 
 
 
