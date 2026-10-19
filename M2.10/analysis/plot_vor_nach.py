@@ -15,13 +15,13 @@ def plot_group(axis, names, title):
     """Plot each two-column time/signal file in one panel."""
     for name in names:
         time_seconds, signal = np.loadtxt(DATA_DIR / name, delimiter=",").T
-        axis.plot(time_seconds * 1e3, signal, linewidth=0.7, alpha=0.8, label=name)
+        axis.plot(time_seconds * 1e3, signal, linewidth=0.5, alpha=0.65, label=name)
 
     axis.set_title(title)
     axis.set_xlabel("Recorded time (ms)")
     axis.set_ylabel("Signal (recorded units)")
     axis.grid(True, alpha=0.3)
-    axis.legend()
+    axis.legend(fontsize=10, framealpha=0.95)
 
 
 def main():

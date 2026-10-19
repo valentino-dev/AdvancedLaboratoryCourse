@@ -1,0 +1,19 @@
+\babel@toc {american}{}\relax 
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}%
+\contentsline {section}{\numberline {2}Theoretical background}{2}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Transient-grating formation and carrier decay}{2}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Ambipolar transport}{3}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Pulse duration and spectral bandwidth}{4}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Derivation of the measured interferometric autocorrelation}{5}{subsection.2.4}%
+\contentsline {section}{\numberline {3}Experimental setup and measurement}{7}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Optical arrangement}{7}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Measurement data and calibration}{7}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Data screening and fit procedure}{9}{subsection.3.3}%
+\contentsline {section}{\numberline {4}Results}{9}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Part I: Pulse duration and spectral bandwidth}{9}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Part II: Hot-carrier cooling and electron--phonon coupling}{12}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Part III: Transient-reflectivity and transient-grating decay times}{12}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Part IV: Recombination, ambipolar diffusivity, and mobility}{15}{subsection.4.4}%
+\contentsline {section}{\numberline {5}Discussion}{15}{section.5}%
+\contentsline {section}{\numberline {6}Conclusion}{17}{section.6}%
+\contentsline {section}{AI Use Disclosure}{18}{section*.4}%
