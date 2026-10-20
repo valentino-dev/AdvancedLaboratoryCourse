@@ -1,0 +1,43 @@
+{
+  "purpose": "Temporary test of a hypothesized phase proportional to filename length",
+  "processing": "No interpolation, baseline subtraction, or normalization",
+  "uncertainties": "Mean errors are repeat-scan standard errors; individual-point, delay-calibration, and length-calibration uncertainties are unavailable.",
+  "rows": [
+    {
+      "file": "GaAs_RT_5.6_X.dat",
+      "nominal_filename_length_um": 5.6,
+      "recorded_delay_ps": 5.0,
+      "first_scan_value": 4.495e-06,
+      "retained_mean": 4.1795e-06,
+      "retained_mean_standard_error": 1.2549692136752707e-07,
+      "retained_scan_count": 12
+    },
+    {
+      "file": "GaAs_RT_6.5_X.dat",
+      "nominal_filename_length_um": 6.5,
+      "recorded_delay_ps": 5.0,
+      "first_scan_value": 4.182e-06,
+      "retained_mean": 4.0268999999999995e-06,
+      "retained_mean_standard_error": 4.723474474484974e-08,
+      "retained_scan_count": 10
+    },
+    {
+      "file": "GaAs_RT_8_X.dat",
+      "nominal_filename_length_um": 8.0,
+      "recorded_delay_ps": 5.0,
+      "first_scan_value": 3.321e-06,
+      "retained_mean": 3.4912000000000006e-06,
+      "retained_mean_standard_error": 1.0411337836971556e-07,
+      "retained_scan_count": 10
+    },
+    {
+      "file": "GaAs_RT_12_X.dat",
+      "nominal_filename_length_um": 12.0,
+      "recorded_delay_ps": 5.0,
+      "first_scan_value": 3.336e-06,
+      "retained_mean": 3.1987999999999998e-06,
+      "retained_mean_standard_error": 8.981497029387079e-08,
+      "retained_scan_count": 10
+    }
+  ]
+}

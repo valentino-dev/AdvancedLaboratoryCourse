@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1792487754.34675 "main.tex" "main.pdf" "main" 1792487757.37216 0
+["pdflatex"] 1792502886.35179 "main.tex" "main.pdf" "main" 1792502891.47835 0
   "../plots/autocorrelation_pulsewidth.png" 1792484722.46429 568471 1b342096f570b79f66eb83ad5b1b2723 ""
   "../plots/autocorrelation_residuals.png" 1792484722.7343 314071 d5abdf0b423de828857d7a387afc8a76 ""
   "../plots/excluded_scan_comparison.png" 1792412918.24688 187623 d512efe3bf46dfe90588e20dd14d8b20 ""
@@ -9,6 +9,7 @@
   "../plots/paper_model_diagnostics.png" 1792484465.33017 171487 a89ad9403b894828c5887028e54c88db ""
   "../plots/rate_vs_q2.png" 1792412925.89092 111221 f385db5522201f3edbd5db9446cc85fa ""
   "../plots/spectrum.png" 1792414500.92622 174965 c4f6d651e32fbfd5a503036e7c760d25 ""
+  "../plots/temporary_length_snapshot.pdf" 1792500016.93672 21464 b4b6952df4618a908c798b90caa48532 ""
   "../plots/vor_nach.png" 1792404153.14656 400222 cbd87807898473f1984af8d37522456b ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -138,15 +139,17 @@
   "/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1728937341 5474851 4ed67577533af4c9bcc5e8bed469707c ""
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1728937456 3325958 03a95b99139dcaa92fad834a3bb8117a ""
   "/usr/local/texlive/2024/texmf.cnf" 1728937336.35001 455 5b996dcaa0eb4ef14a83b026bc0a008c ""
+  "autocorrelation_derivation.tex" 1792502870.4202 10892 510631fbaf84055cad6c8da4c6105a5c ""
   "autocorrelation_results.tex" 1792484722.73525 721 d4de08d8f52b1de570b9bc7120606863 ""
   "figures/tutorial_autocorrelator.png" 1792398975.622 58434 c8adc2445e828b3c7de2ce0dc6d78656 ""
   "figures/tutorial_grating.png" 1792398956.44135 34208 3ac1c5944cc0159c5915681b4695f845 ""
   "figures/tutorial_heterodyne.png" 1792399044.41777 65779 85367fb38f0fb0969b9fb2f1b5695bc2 ""
   "figures/tutorial_setup.png" 1792398956.49535 72155 8255fb105d4376884f8c42c24e6c6a34 ""
-  "main.aux" 1792487757.31248 20548 fa27a1b1a8e9b9197e732e0beb9584c6 "pdflatex"
-  "main.out" 1792487757.31481 9802 a512be1508df23b845f41bf702575264 "pdflatex"
-  "main.tex" 1792487750.23261 60183 2e8027d1163d045761fc5b52af65bcff ""
-  "main.toc" 1792487757.31481 3969 c3e7f246a3619b6ea0efe566108c6c5e "pdflatex"
+  "main.aux" 1792502891.38326 22774 3e6b461d1fb14bcbd1e05e981e68f259 "pdflatex"
+  "main.out" 1792502891.38526 11682 fb39c7f8e8ba38f74c57f9700d1ef8de "pdflatex"
+  "main.tex" 1792502879.48746 52838 17b61a33696e42eeddf81f916ffc82dc ""
+  "main.toc" 1792502891.38526 4542 708120f092218873d23fbeea474d28e5 "pdflatex"
+  "temporary_length_snapshot.tex" 1792500023.35262 2623 e1cce7a1a20a4289d4db5c455b1b9aa2 ""
   "tutorial_answers.tex" 1792487750.23161 21057 9fb889ddf15f062e274c2af3385010b4 ""
   (generated)
   "main.aux"

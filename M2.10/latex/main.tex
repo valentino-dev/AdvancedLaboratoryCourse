@@ -144,139 +144,7 @@ From $\nu=c/\lambda$, differentiation gives $d\nu/d\lambda=-c/\lambda^2$; for a 
 
 The optical pulse duration can be measured with a second-order autocorrelator based on second-harmonic generation (SHG). The measured intensity is a function of the relative delay between two pulse replicas. For a Gaussian pulse, the intensity autocorrelation FWHM is $\sqrt{2}$ times the pulse-intensity FWHM. The transform-limited Gaussian time-bandwidth product is $\Delta t\Delta\nu\simeq0.441$; a larger product can indicate spectral phase/chirp, or measurement and calibration errors. A spectrometer measures wavelength, with $\Delta\nu\simeq c\Delta\lambda/\lambda_0^2$ for a narrow spectrum. This conversion and the time-bandwidth comparison assume that the fitted spectral profile is representative of the pulse spectrum and approximately Gaussian.
 
-\subsection{Derivation of the measured interferometric autocorrelation}
-The tutorial prints the following Eq.~(4.2), with $I(t)=|E(t)|^2$. It is reproduced here before checking its numerical coefficients against the defining Eq.~(4.1):
-\begin{equation}\tag{4.2}\label{eq:tutorial-iac}
-\begin{aligned}
-I_{\rm AC}(\tau)={}&\int_{-\infty}^{\infty}\!\left[I^2(t)+I^2(t-\tau)\right]\,\mathrm{d}t\\
-&+\int_{-\infty}^{\infty}\!\left[I(t)+I(t-\tau)\right]
-\operatorname{Re}\!\left\{E(t)E^*(t-\tau)\right\}\,\mathrm{d}t\\
-&+\int_{-\infty}^{\infty}\!\operatorname{Re}\!\left\{E^2(t)E^{*2}(t-\tau)\right\}\,\mathrm{d}t\\
-&+\int_{-\infty}^{\infty}\!I(t)I(t-\tau)\,\mathrm{d}t.
-\end{aligned}
-\end{equation}
-The four terms are correctly identified, but their printed relative coefficients do not follow from Eq.~(4.1). To expand that definition explicitly, write $a=I(t)$, $b=I(t-\tau)$, $z=E(t)E^*(t-\tau)$, and $|z|^2=ab$. Then
-\begin{align}
-|E(t)+E(t-\tau)|^4&=(a+b+z+z^*)^2\\
-&=a^2+b^2+2ab+2(a+b)(z+z^*)+z^2+z^{*2}+2|z|^2\\
-&=a^2+b^2+4ab+4(a+b)\operatorname{Re}z+2\operatorname{Re}z^2.
-\end{align}
-Denoting the four integrals in the printed order by $T_0,T_1,T_2,T_3$, the SHG signal therefore obeys
-\begin{equation}\label{eq:corrected-iac}
-I_{\rm AC}\propto T_0+4T_1+2T_2+4T_3.
-\end{equation}
-These relative factors cannot be absorbed into one proportionality constant. For explicit evaluation, take a Gaussian field
-\begin{equation}
-E(t)=E_0e^{-t^2/(4\sigma^2)}e^{-i\omega_0t},\qquad
-I(t)=|E(t)|^2=I_0e^{-t^2/(2\sigma^2)},\qquad I_0=|E_0|^2.
-\end{equation}
-The Gaussian integral used below is obtained by squaring it and converting to polar coordinates:
-\begin{align}
-J&=\int_{-\infty}^{\infty}e^{-u^2}\,du,\\
-J^2&=\int_{-\infty}^{\infty}\!\int_{-\infty}^{\infty}e^{-(u^2+v^2)}\,du\,dv
-=\int_0^{2\pi}\!d\varphi\int_0^\infty e^{-r^2}r\,dr
-=2\pi\left[-\frac{e^{-r^2}}{2}\right]_0^\infty=\pi,\\
-J&=\sqrt{\pi}.
-\end{align}
-The four integrals in Eq.~\eqref{eq:tutorial-iac} then evaluate as follows. The first, delay-independent term is
-\begin{align}
-T_0&=\int_{-\infty}^{\infty}[I^2(t)+I^2(t-\tau)]\,dt\\
-&=2I_0^2\int_{-\infty}^{\infty}e^{-t^2/\sigma^2}\,dt
-=2I_0^2\sqrt{\pi}\sigma.
-\end{align}
-For the fundamental-frequency term, first multiply each intensity by the field overlap. The carrier factor is
-\begin{equation}
-E(t)E^*(t-\tau)=I_0e^{-[t^2+(t-\tau)^2]/(4\sigma^2)}e^{-i\omega_0\tau}.
-\end{equation}
-The squares needed for the two fundamental overlap integrals are
-\begin{align}
-3t^2+(t-\tau)^2&=4(t-\tau/4)^2+3\tau^2/4,\\
-t^2+3(t-\tau)^2&=4(t-3\tau/4)^2+3\tau^2/4.
-\end{align}
-Thus both translated Gaussian integrals equal $\sqrt{\pi}\sigma$:
-\begin{align}
-\int_{-\infty}^{\infty} I(t)E(t)E^*(t-\tau)\,dt
-&=I_0^2e^{-i\omega_0\tau}\int e^{-[3t^2+(t-\tau)^2]/(4\sigma^2)}\,dt\\
-&=I_0^2e^{-i\omega_0\tau}e^{-3\tau^2/(16\sigma^2)}
-\int e^{-(t-\tau/4)^2/\sigma^2}\,dt\\
-&=I_0^2\sqrt{\pi}\sigma e^{-3\tau^2/(16\sigma^2)}e^{-i\omega_0\tau},\\
-\int_{-\infty}^{\infty} I(t-\tau)E(t)E^*(t-\tau)\,dt
-&=I_0^2\sqrt{\pi}\sigma e^{-3\tau^2/(16\sigma^2)}e^{-i\omega_0\tau}.
-\end{align}
-Taking the real part of their sum gives
-\begin{equation}
-T_1=2I_0^2\sqrt{\pi}\sigma e^{-3\tau^2/(16\sigma^2)}\cos(\omega_0\tau).
-\end{equation}
-For the second-harmonic field-overlap term,
-\begin{align}
-E^2(t)E^{*2}(t-\tau)
-&=I_0^2e^{-[t^2+(t-\tau)^2]/(2\sigma^2)}e^{-i2\omega_0\tau},\\
-T_2&=\operatorname{Re}\int_{-\infty}^{\infty} E^2(t)E^{*2}(t-\tau)\,dt\\
-&=I_0^2e^{-\tau^2/(4\sigma^2)}\cos(2\omega_0\tau)
-\int e^{-(t-\tau/2)^2/\sigma^2}\,dt\\
-&=I_0^2\sqrt{\pi}\sigma e^{-\tau^2/(4\sigma^2)}\cos(2\omega_0\tau).
-\end{align}
-The final intensity-overlap term has the same Gaussian integral without the cosine:
-\begin{align}
-T_3&=\int_{-\infty}^{\infty} I(t)I(t-\tau)\,dt\\
-&=I_0^2e^{-\tau^2/(4\sigma^2)}\int e^{-(t-\tau/2)^2/\sigma^2}\,dt\\
-&=I_0^2\sqrt{\pi}\sigma e^{-\tau^2/(4\sigma^2)}.
-\end{align}
-With $K=I_0^2\sqrt{\pi}\sigma$, insertion into the corrected expansion gives
-\begin{equation}\label{eq:gaussian-iac}
-I_{\rm AC}(\tau)\propto 2K+8K e^{-3\tau^2/(16\sigma^2)}\cos(\omega_0\tau)
-+K e^{-\tau^2/(4\sigma^2)}[4+2\cos(2\omega_0\tau)].
-\end{equation}
-As a normalization check, $I_{\rm AC}(0)/I_{\rm AC}(\infty)=(2+8+4+2)/2=8$ for identical, equally intense, unfiltered replicas. The fundamental overlap has a different Gaussian width from the intensity and second-harmonic overlaps. Applying the intensity-autocorrelation $\sqrt{2}$ deconvolution to a common envelope for all three terms would therefore give an incorrect pulse width.
-
-\paragraph{Fit function and delay calibration.}
-Let $x$ be recorded time in milliseconds relative to an initial peak estimate, $r=x-x_0$, and $u$ the relative optical delay in carrier cycles. To allow the vibrating mirror's speed to vary across the fit interval, use
-\begin{align}
-u(r)&=f r+b_2r^2+b_3r^3, & \tau(r)&=\frac{\lambda_0}{c}u(r),\\
-\frac{du}{dx}&=f+2b_2r+3b_3r^2, & \omega_0\tau&=2\pi u.
-\end{align}
-Here $f$ is in cycles/ms and $b_2,b_3$ are in cycles/ms$^2$ and cycles/ms$^3$. Successive raw-signal maxima initialize the polynomial; the final fit uses every raw sample within \SI{2.8}{ms} of the initial peak. The fitted mapping is required to remain monotonic within this window. It is a local empirical calibration, not an independent measurement of mirror motion.
-
-For a pulse-intensity standard deviation $s$ in optical cycles, define
-\begin{equation}
-g(u)=e^{-u^2/(4s^2)},\qquad h(u)=e^{-3u^2/(16s^2)}.
-\end{equation}
-The actual fitted function is
-\begin{equation}\label{eq:fitted-iac}
-\begin{aligned}
-S(x)={}&B+A_0g(u)
-+h(u)[C_1\cos(2\pi u)+D_1\sin(2\pi u)]\\
-&+g(u)[C_2\cos(4\pi u)+D_2\sin(4\pi u)].
-\end{aligned}
-\end{equation}
-The sine/cosine form is equivalent to a free amplitude and phase for each harmonic, since
-\begin{equation}
-C_j\cos\theta+D_j\sin\theta=R_j\cos(\theta-\phi_j),\quad
-R_j=\sqrt{C_j^2+D_j^2},\quad\phi_j=\operatorname{atan2}(D_j,C_j).
-\end{equation}
-The baseline, amplitudes, and phases remain free because the recorded voltage is not a calibrated positive SHG intensity. This relaxes the ideal amplitude ratios while preserving the derived overlap widths. The Gaussian pulse model assumes a simple carrier phase; unknown pulse chirp and detector filtering can still bias the inferred width.
-
-The pulse width follows directly from the fitted $s$:
-\begin{align}
-\sigma_t&=s\lambda_0/c,\\
-\Delta t_{\rm pulse}&=2\sqrt{2\ln2}\,s\lambda_0/c, &
-\Delta t_{\rm AC}&=\sqrt{2}\,\Delta t_{\rm pulse}.
-\end{align}
-The second relation for $\Delta t_{\rm AC}$ refers specifically to the intensity overlap $g$, not to the full interferometric trace.
-
-\paragraph{Displayed fitted envelope.}
-For arbitrary harmonic phases a convenient positive modulation bound is
-\begin{align}
-|S(x)-B|&\leq U(x),\\
-U(x)&=(|A_0|+R_2)g(u)+R_1h(u),\\
-V(x)&=U(x)/N,\\
-N&=\max_{\text{fit window}}|S_{\rm measured}(x)-B|.
-\end{align}
-Figure~\ref{fig:autocorrelation} displays the normalized fitted envelope $V(x)=U(x)/N$ alongside $(S_{\rm measured}-B)/N$. The envelope is a positive bound on the fitted autocorrelation modulation. With arbitrary fitted harmonic phases, its value need not be attained at every delay. The pulse electric-field envelope itself is
-\begin{equation}
-|E(t)|=\sqrt{I_0}e^{-t^2/(4\sigma_t^2)},\qquad |E(t)|^2=I_0e^{-t^2/(2\sigma_t^2)}.
-\end{equation}
-The pulse duration is obtained from the raw-signal fit parameter $s$, independently of the envelope normalization.
+\input{autocorrelation_derivation}
 
 \section{Experimental setup and measurement}
 \subsection{Optical arrangement}
@@ -508,6 +376,7 @@ Figure~\ref{fig:iac-residuals} documents the residual structure of the selected 
 \FloatBarrier
 
 \input{tutorial_answers}
+\input{temporary_length_snapshot}
 
 \begin{thebibliography}{9}
 \bibitem{kaertner} F. X. Kärtner, \emph{Ultrafast Optics}, MIT OpenCourseWare, course 6.977 (Spring 2005), Sec.~2.8 and Table~2.2, \href{https://ocw.mit.edu/courses/6-977-ultrafast-optics-spring-2005/f806ff596f9bffb74003360e2c05c086_MIT6_977S05_textbook.pdf}{lecture notes}.
