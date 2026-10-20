@@ -1,0 +1,101 @@
+{
+  "paper": "https://arxiv.org/abs/1805.01561",
+  "pp_three_exponential_lifetimes_ps": [
+    0.6741923543140153,
+    5.216201402134948,
+    619.4735376058879
+  ],
+  "pp_three_exponential_covariance_SE_ps": [
+    0.011440411436159753,
+    0.17143073896854205,
+    59.566456987271934
+  ],
+  "pp_normalized_RMS_two": 0.012581194305297956,
+  "pp_normalized_RMS_three": 0.0030283515704412735,
+  "pp_AICc_two": -546.5969839991276,
+  "pp_AICc_three": -723.7481341703265,
+  "pp_three_exponential_repeat_lifetimes_ps": [
+    [
+      0.6836283990624643,
+      5.242552182127564,
+      638.3425348079555
+    ],
+    [
+      0.719491228546324,
+      5.326357017993279,
+      655.9881162122032
+    ],
+    [
+      0.6541642272814182,
+      5.326902901058937,
+      623.8886547105266
+    ],
+    [
+      0.6550562305128392,
+      5.117655454705026,
+      528.7959711373428
+    ],
+    [
+      0.6621681812613484,
+      5.04959605062102,
+      659.076698525469
+    ]
+  ],
+  "fast_diffusion_m2_s": 0.020536510056046262,
+  "fast_diffusion_regression_SE_m2_s": 0.00630281740604776,
+  "slow_diffusion_m2_s": 0.0037134034634189596,
+  "slow_diffusion_regression_SE_m2_s": 0.0006957535272730158,
+  "component_rate_CI95_per_ps": [
+    [
+      [
+        0.6851686698510758,
+        0.11435153726599102
+      ],
+      [
+        0.6737855116977279,
+        0.09222456818212124
+      ],
+      [
+        0.5116018176888704,
+        0.08211687866743478
+      ],
+      [
+        0.40772201839672934,
+        0.0666495211515395
+      ]
+    ],
+    [
+      [
+        0.9841625771734344,
+        0.1571654312020561
+      ],
+      [
+        0.8614723444827744,
+        0.1240220188891613
+      ],
+      [
+        0.9355254715532344,
+        0.12604535438799028
+      ],
+      [
+        0.5767083789531097,
+        0.08361593452704096
+      ]
+    ]
+  ],
+  "paired_bootstrap_fast_minus_slow_diffusion_CI95_m2_s": [
+    0.007174875448835884,
+    0.027153109833107047
+  ],
+  "paired_bootstrap_component_diffusion_CI95_m2_s": [
+    [
+      0.009811491870079899,
+      0.002048157685580572
+    ],
+    [
+      0.032265926973554265,
+      0.005008926423215797
+    ]
+  ],
+  "uncertainty_scope": "SE denotes conditional covariance or regression standard error. Bootstrap CI resamples retained scans with fixed screening. Calibration, acquisition drift, model and selection uncertainties are unquantified. RMS and AICc are descriptive diagnostics without estimated uncertainties. AICc assumes independent equal-variance Gaussian errors; PP residual structure limits it."
+}

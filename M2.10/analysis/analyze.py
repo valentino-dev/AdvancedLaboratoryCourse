@@ -1,5 +1,6 @@
 """Analyze the supplied GaAs transient-grating, spectrum, and IAC data."""
 
+import json
 from pathlib import Path
 
 import matplotlib.pyplot as plt
@@ -8,6 +9,7 @@ import numpy as np
 from scipy.optimize import curve_fit
 from scipy.stats import linregress
 from scipy.ndimage import uniform_filter1d
+from scipy.signal import find_peaks
 
 
 PROJECT_DIR = Path(__file__).resolve().parents[1]
@@ -29,6 +31,9 @@ MICROMETRES_TO_METRES = 1e-6
 MIN_SCANS_FOR_QUALITY_SCREEN = 8
 ROBUST_SCAN_THRESHOLD = 3.5
 BOOTSTRAP_REPLICATES = 300
+SPEED_OF_LIGHT = 299_792_458.0
+GAUSSIAN_FWHM = 2 * np.sqrt(2 * np.log(2))
+GAUSSIAN_TIME_BANDWIDTH = 2 * np.log(2) / np.pi
 
 plt.style.use("seaborn-v0_8-whitegrid")
 plt.rcParams.update({
@@ -57,6 +62,15 @@ def biexponential_with_offset(delay, fast_amplitude, fast_lifetime,
     )
 
 
+def modified_scan_scores(scores):
+    """Median/MAD scores; a zero MAD gives no defensible automatic exclusions."""
+    median = np.median(scores)
+    mad = np.median(np.abs(scores - median))
+    if mad == 0:
+        return np.zeros_like(scores)
+    return 0.6745 * (scores - median) / mad
+
+
 def find_anomalous_scans(delay, scans):
     """Flag whole scans whose standardized deviation from the scan median is extreme."""
     score = np.zeros(scans.shape[1])
@@ -68,18 +82,17 @@ def find_anomalous_scans(delay, scans):
     row_median = np.median(scans, axis=1)
     row_mad = np.median(np.abs(scans - row_median[:, None]), axis=1)
     robust_scale = 1.4826 * row_mad[fit_region]
-    scale_floor = np.quantile(robust_scale, 0.25)
+    scale_floor = max(
+        np.quantile(robust_scale, 0.25),
+        np.finfo(float).eps * max(float(np.max(np.abs(scans))), np.finfo(float).tiny),
+    )
     robust_scale = np.maximum(robust_scale, scale_floor)
     standardized = (
         scans[fit_region] - row_median[fit_region, None]
     ) / robust_scale[:, None]
     score = np.sqrt(np.mean(standardized**2, axis=0))
 
-    score_median = np.median(score)
-    score_mad = np.median(np.abs(score - score_median))
-    if score_mad > 0:
-        modified_z = 0.6745 * (score - score_median) / score_mad
-        excluded = modified_z > ROBUST_SCAN_THRESHOLD
+    excluded = modified_scan_scores(score) > ROBUST_SCAN_THRESHOLD
     return score, excluded
 
 
@@ -92,7 +105,7 @@ def plot_scan_diagnostics(trace_data, output_file):
         if scans.shape[1] < MIN_SCANS_FOR_QUALITY_SCREEN:
             label = filename.removeprefix("GaAs_RT_").removesuffix("_X.dat")
             axis.text(
-                0.5, 0.5, f"All {scans.shape[1]} scans retained after inspection",
+                0.5, 0.5, f"All {scans.shape[1]} scans retained; too few for robust screen",
                 transform=axis.transAxes, ha="center", va="center",
             )
             axis.set_ylabel(f"{label}\nscan #")
@@ -139,11 +152,14 @@ def plot_excluded_scan_comparison(trace_data, output_file):
     median_trace = np.median(scans, axis=1)
     lower, upper = np.quantile(retained, [0.1, 0.9], axis=1)
     scores, _ = find_anomalous_scans(delay, scans)
-    score_median = np.median(scores)
-    score_mad = np.median(np.abs(scores - score_median))
-    modified_scores = 0.6745 * (scores - score_median) / score_mad
+    modified_scores = modified_scan_scores(scores)
 
-    figure, axes = plt.subplots(1, int(excluded.sum()), figsize=(11, 4.4), sharey=True)
+    if not excluded.any():
+        return
+    figure, axes_grid = plt.subplots(
+        1, int(excluded.sum()), figsize=(11, 4.4), sharey=True, squeeze=False
+    )
+    axes = axes_grid.ravel()
     for axis, scan_index in zip(axes, np.flatnonzero(excluded)):
         axis.fill_between(
             delay, lower * 1e6, upper * 1e6, color="0.82", alpha=0.8,
@@ -173,31 +189,45 @@ def gaussian_with_offset(wavelength, amplitude, center, sigma, offset):
     return offset + amplitude * np.exp(-0.5 * ((wavelength - center) / sigma) ** 2)
 
 
-def interferometric_autocorrelation_model(
-    time,
-    offset,
-    dc_amplitude,
-    omega_amplitude,
-    omega_phase,
-    twice_omega_amplitude,
-    twice_omega_phase,
-    center_time,
-    sigma_time,
-    fringe_frequency,
-):
-    """Gaussian-envelope IAC fit with the tutorial's omega and 2-omega terms."""
-    relative_time = time - center_time
-    envelope = np.exp(-0.5 * (relative_time / sigma_time) ** 2)
-    fundamental = omega_amplitude * np.cos(
-        2 * np.pi * fringe_frequency * relative_time + omega_phase
-    )
-    second_harmonic = twice_omega_amplitude * np.cos(
-        4 * np.pi * fringe_frequency * relative_time + twice_omega_phase
-    )
-    return offset + envelope * (dc_amplitude + fundamental + second_harmonic)
+def fringe_cycles(time_ms, center_ms, frequency_per_ms, quadratic, cubic):
+    """Optical-delay coordinate in carrier cycles, allowing a nonlinear mirror scan."""
+    relative_time = time_ms - center_ms
+    return (frequency_per_ms * relative_time + quadratic * relative_time**2
+            + cubic * relative_time**3)
 
 
-def fit_trace(delay, signal):
+def iac_basis(time_ms, center_ms, pulse_sigma_cycles, frequency_per_ms,
+              quadratic, cubic):
+    """Gaussian overlap integrals: DC/2ω and ω have different Gaussian widths."""
+    cycles = fringe_cycles(time_ms, center_ms, frequency_per_ms, quadratic, cubic)
+    intensity_overlap = np.exp(-cycles**2 / (4 * pulse_sigma_cycles**2))
+    field_overlap = np.exp(-3 * cycles**2 / (16 * pulse_sigma_cycles**2))
+    phase = 2 * np.pi * cycles
+    return np.column_stack((
+        np.ones_like(cycles), intensity_overlap,
+        field_overlap * np.cos(phase), field_overlap * np.sin(phase),
+        intensity_overlap * np.cos(2 * phase), intensity_overlap * np.sin(2 * phase),
+    ))
+
+
+def interferometric_autocorrelation_model(time_ms, offset, dc_amplitude,
+                                         cos_omega, sin_omega, cos_twice_omega,
+                                         sin_twice_omega, center_ms,
+                                         pulse_sigma_cycles, frequency_per_ms,
+                                         quadratic, cubic):
+    """Fit the tutorial overlap functions using sine/cosine amplitudes.
+
+    The fitted pulse sigma is in optical cycles, not the width of an IAC
+    envelope. Sine/cosine coefficients avoid artificial phase-boundary minima.
+    The cubic recorded-time mapping accounts for changing mirror velocity.
+    """
+    amplitudes = (offset, dc_amplitude, cos_omega, sin_omega,
+                  cos_twice_omega, sin_twice_omega)
+    return iac_basis(time_ms, center_ms, pulse_sigma_cycles, frequency_per_ms,
+                     quadratic, cubic) @ amplitudes
+
+
+def fit_trace(delay, signal, return_covariance=False):
     """Fit fast and slow exponential components after time zero."""
     fit_mask = delay >= FIT_START_PS
     fit_delay = delay[fit_mask]
@@ -215,7 +245,11 @@ def fit_trace(delay, signal):
                 (np.inf, 500.0, np.inf, 5000.0, np.inf)),
         maxfev=100_000,
     )
-    parameters[[0, 2, 4]] *= 1e-6
+    scale = np.array([1e-6, 1, 1e-6, 1, 1e-6])
+    parameters *= scale
+    covariance *= np.outer(scale, scale)
+    if return_covariance:
+        return parameters, fit_mask, covariance
     return parameters, fit_mask
 
 
@@ -256,13 +290,11 @@ def analyze_delay_traces():
             screened_scan_count += scans.shape[1]
         excluded_numbers = (np.flatnonzero(excluded) + 1).tolist()
         if scans.shape[1] < MIN_SCANS_FOR_QUALITY_SCREEN:
-            print(f"{filename}: inspected {scans.shape[1]} scans; none excluded")
+            print(f"{filename}: {scans.shape[1]} scans; robust screen not applied; all retained")
         else:
             print(f"{filename}: excluded whole scan(s) {excluded_numbers or 'none'}")
             print(f"  standardized scan-deviation scores: {np.round(quality_scores, 2)}")
-            score_median = np.median(quality_scores)
-            score_mad = np.median(np.abs(quality_scores - score_median))
-            modified_scores = 0.6745 * (quality_scores - score_median) / score_mad
+            modified_scores = modified_scan_scores(quality_scores)
             print(f"  modified scan scores: {np.round(modified_scores, 2)}")
 
         parameters, fit_mask = fit_trace(delay, mean_signal)
@@ -280,7 +312,7 @@ def analyze_delay_traces():
         if "_PP_" not in filename:
             label = f"mask {label} µm"
         axis = axes[0] if "_PP_" in filename else axes[1]
-        axis.errorbar(
+        points = axis.errorbar(
             delay,
             mean_signal,
             yerr=standard_error,
@@ -292,9 +324,11 @@ def analyze_delay_traces():
             delay[fit_mask],
             biexponential_with_offset(delay[fit_mask], *parameters),
             linewidth=1.5,
+            color=points.lines[0].get_color(),
         )
 
-    axes[0].set(title="Pump-probe ($q=0$)", xlabel="Delay (ps)")
+    axes[0].set(title="Pump-probe ($q=0$; early-time view)", xlabel="Delay (ps)")
+    axes[0].set_xlim(-1, 35)
     axes[1].set(title="Transient grating (finite $q$)", xlabel="Delay (ps)")
     axes[0].set_ylabel("Signal (a.u.)")
     for axis in axes:
@@ -322,7 +356,7 @@ def analyze_delay_traces():
     plot_excluded_scan_comparison(
         diagnostics, PLOT_DIR / "excluded_scan_comparison.png"
     )
-    residual_figure, residual_axes = plt.subplots(5, 1, figsize=(8.5, 8), sharex=True)
+    residual_figure, residual_axes = plt.subplots(5, 1, figsize=(9, 11), sharex=False)
     for axis, (filename, fit_delay, residuals, signal_range) in zip(
         residual_axes, residual_diagnostics
     ):
@@ -330,6 +364,7 @@ def analyze_delay_traces():
         axis.axhline(0, color="0.25", linewidth=0.8)
         axis.plot(fit_delay, residuals / signal_range, ".", markersize=2.2)
         axis.set_ylabel(f"{label}\n$resid./range$")
+        axis.set_xlabel("Delay (ps)")
         axis.grid(True, alpha=0.25)
     residual_axes[-1].set_xlabel("Delay (ps)")
     residual_figure.suptitle("Biexponential fit residuals (normalized by fitted-window range)")
@@ -388,14 +423,19 @@ def analyze_delay_traces():
         bootstrap_fit = linregress(q_values[1:] ** 2, np.asarray(bootstrap_rates)[1:])
         bootstrap_diffusivities.append(bootstrap_fit.slope * 1e12)
     bootstrap_diffusivities = np.asarray(bootstrap_diffusivities)
+    bootstrap_rate_ci = np.percentile(
+        1 / np.asarray(bootstrap_lifetimes)[:, :, 1], [2.5, 97.5], axis=0
+    )
+    rate_errors = np.array([rates - bootstrap_rate_ci[0], bootstrap_rate_ci[1] - rates])
     figure, axis = plt.subplots(figsize=(7, 4.8))
-    axis.scatter(
+    axis.errorbar(
         q_squared_in_1e12_per_m2[finite_grating], rates[finite_grating],
+        yerr=rate_errors[:, finite_grating], fmt="o", capsize=3,
         label="Finite-$q$ TG slow-component rates",
     )
-    axis.scatter(
+    axis.errorbar(
         q_squared_in_1e12_per_m2[~finite_grating], rates[~finite_grating],
-        marker="s", label="$q=0$ pump-probe slow-component rate",
+        yerr=rate_errors[:, ~finite_grating], fmt="s", capsize=3, label="$q=0$ pump-probe slow-component rate",
     )
     x_line = np.linspace(0, q_squared_in_1e12_per_m2.max(), 100)
     axis.plot(
@@ -406,6 +446,10 @@ def analyze_delay_traces():
         x_line, all_intercept + all_slope * x_line * 1e12,
         linestyle="--", label="Regression including $q=0$",
     )
+    axis.plot(
+        x_line, sensitivity_regression.intercept + sensitivity_regression.slope * x_line * 1e12,
+        linestyle=":", color="tab:purple", label="TG fit retaining borderline scan 4",
+    )
     axis.set(
         xlabel=r"$q^2$ ($10^{12}$ m$^{-2}$)",
         ylabel=r"Slow-component rate (ps$^{-1}$)",
@@ -415,8 +459,8 @@ def analyze_delay_traces():
         loc="upper center", bbox_to_anchor=(0.5, -0.2), ncol=2,
         fontsize=10, frameon=True,
     )
-    figure.subplots_adjust(bottom=0.27)
-    figure.savefig(PLOT_DIR / "rate_vs_q2.png", dpi=180)
+    figure.subplots_adjust(bottom=0.32)
+    figure.savefig(PLOT_DIR / "rate_vs_q2.png", dpi=180, bbox_inches="tight")
     plt.close(figure)
 
     return {
@@ -467,174 +511,171 @@ def analyze_spectrum():
     left_half_max = center - fwhm / 2
     right_half_max = center + fwhm / 2
 
-    figure, axis = plt.subplots(figsize=(8.5, 4.8))
-    axis.plot(wavelength, intensity, label="Measured spectrum")
-    axis.plot(
-        wavelength,
-        gaussian_with_offset(wavelength, *parameters),
-        label="Gaussian fit",
-    )
-    axis.axhline(
-        median_intensity,
-        color="tab:green",
-        linestyle="--",
-        label=f"Median = {median_intensity:.1f}",
-    )
-    axis.axhline(
-        half_maximum,
-        color="tab:red",
-        linestyle=":",
-        label="Fitted half-maximum",
-    )
-    axis.hlines(
-        half_maximum,
-        left_half_max,
-        right_half_max,
-        color="tab:red",
-        linewidth=2,
-    )
-    axis.axvline(center, color="tab:purple", linestyle="--", linewidth=1)
-    axis.set(
-        xlabel="Wavelength (nm; recorded)",
-        ylabel="Intensity (a.u.)",
-        title="Measured spectrum",
-    )
-    axis.legend(
-        loc="center left", bbox_to_anchor=(1.01, 0.5),
-        fontsize=10, frameon=True,
-    )
-    figure.subplots_adjust(right=0.72)
-    figure.savefig(PLOT_DIR / "spectrum.png", dpi=180)
+    figure, axes = plt.subplots(2, 1, figsize=(9, 7.5), constrained_layout=True)
+    for axis in axes:
+        axis.plot(wavelength, intensity, linewidth=1.2, label="Measured spectrum")
+        axis.plot(wavelength, gaussian_with_offset(wavelength, *parameters),
+                  linewidth=1.8, label="Gaussian fit")
+        axis.axhline(median_intensity, color="tab:green", linestyle="--",
+                     label="Whole-record median (descriptive)")
+        axis.axhline(half_maximum, color="tab:red", linestyle=":", label="Fitted half-maximum")
+        axis.hlines(half_maximum, left_half_max, right_half_max, color="tab:red", linewidth=3)
+        axis.set(xlabel="Wavelength (nm)", ylabel="Intensity (a.u.)")
+        axis.tick_params(labelsize=11)
+    axes[0].set_title("Recorded spectrum: full range")
+    axes[1].set(xlim=(center - 25, center + 25), title=f"FWHM = {fwhm:.3f} ± {GAUSSIAN_FWHM * np.sqrt(covariance[2, 2]):.3f} nm (fit SE)")
+    axes[1].legend(loc="upper center", bbox_to_anchor=(0.5, -0.21), ncol=2, fontsize=11)
+    figure.savefig(PLOT_DIR / "spectrum.png", dpi=180, bbox_inches="tight")
     plt.close(figure)
 
     return center, fitted_peak_intensity, half_maximum, fwhm, median_intensity, covariance
 
 
+def fit_autocorrelation(filename, center_wavelength_nm, window_ms=2.8,
+                        nonlinear_scan=True):
+    """Fit raw IAC samples; initialize scan calibration from successive maxima."""
+    time_seconds, signal = np.loadtxt(DATA_DIR / filename, delimiter=",").T
+    time_ms = time_seconds * 1e3
+    sample_spacing_ms = float(np.median(np.diff(time_ms)))
+    background = np.median(signal)
+    smoothed_energy = uniform_filter1d((signal - background)**2, size=301)
+    initial_center_ms = time_ms[np.argmax(smoothed_energy)]
+    fit_mask = np.abs(time_ms - initial_center_ms) <= window_ms
+    # Center the numerical coordinate to keep the polynomial well conditioned.
+    fit_time = time_ms[fit_mask] - initial_center_ms
+    fit_signal = signal[fit_mask]
+    local_mask = np.abs(fit_time) <= 0.5
+    local_signal = fit_signal[local_mask] - np.mean(fit_signal[local_mask])
+    frequencies = np.fft.rfftfreq(local_signal.size, d=sample_spacing_ms)
+    power = np.abs(np.fft.rfft(local_signal * np.hanning(local_signal.size)))**2
+    initial_frequency = frequencies[1 + np.argmax(power[1:])]
+    # Maxima initialize the fringe phase only; every raw sample enters the fit.
+    stride = 5
+    coarse_time, coarse_signal = fit_time[::stride], fit_signal[::stride]
+    minimum_distance = max(1, int(0.6 / initial_frequency / sample_spacing_ms / stride))
+    peaks, _ = find_peaks(coarse_signal, prominence=0.05 * np.ptp(coarse_signal),
+                          distance=minimum_distance)
+    if peaks.size < 10:
+        raise ValueError(f"Too few resolved fringes in {filename}")
+    cubic, quadratic, frequency, _ = np.polyfit(coarse_time[peaks],
+                                               np.arange(peaks.size), 3)
+    if not nonlinear_scan:
+        quadratic = cubic = 0.0
+    shape_guess = (0.0, 0.55 * frequency, frequency, quadratic, cubic)
+    basis = iac_basis(fit_time, *shape_guess)
+    amplitude_guess = np.linalg.lstsq(basis, fit_signal, rcond=None)[0]
+    initial_guess = np.r_[amplitude_guess, shape_guess]
+    lower = [-np.inf] * 6 + [-0.5, 0.1, initial_frequency * 0.8, -10, -5]
+    upper = [np.inf] * 6 + [0.5, 200, initial_frequency * 1.2, 10, 5]
+    if nonlinear_scan:
+        fit_model = interferometric_autocorrelation_model
+    else:
+        def fit_model(x, *parameters):
+            return interferometric_autocorrelation_model(x, *parameters, 0.0, 0.0)
+        initial_guess = initial_guess[:-2]
+        lower, upper = lower[:-2], upper[:-2]
+    parameters, covariance = curve_fit(
+        fit_model, fit_time, fit_signal, p0=initial_guess,
+        bounds=(lower, upper), x_scale="jac", maxfev=20_000,
+    )
+    if not nonlinear_scan:
+        parameters = np.r_[parameters, 0.0, 0.0]
+    relative_time = fit_time - parameters[6]
+    scan_speed = (parameters[8] + 2 * parameters[9] * relative_time
+                  + 3 * parameters[10] * relative_time**2)
+    if np.any(scan_speed <= 0):
+        raise ValueError(f"Non-monotonic fitted delay mapping in {filename}")
+    delay_per_cycle_fs = center_wavelength_nm * 1e-9 / SPEED_OF_LIGHT * 1e15
+    pulse_width_fs = GAUSSIAN_FWHM * parameters[7] * delay_per_cycle_fs
+    pulse_stderr_fs = GAUSSIAN_FWHM * np.sqrt(covariance[7, 7]) * delay_per_cycle_fs
+    fitted_signal = interferometric_autocorrelation_model(fit_time, *parameters)
+    normalized_rms = np.sqrt(np.mean((fit_signal - fitted_signal)**2)) / np.ptp(fit_signal)
+    return {
+        "filename": filename, "parameters": parameters,
+        "pulse_width_fs": pulse_width_fs, "pulse_stderr_fs": pulse_stderr_fs,
+        "normalized_rms": normalized_rms, "time_ms": fit_time,
+        "signal": fit_signal, "fitted_signal": fitted_signal,
+        "delay_per_cycle_fs": delay_per_cycle_fs,
+        "scan_frequency_range_per_ms": [float(scan_speed.min()), float(scan_speed.max())],
+    }
+
+
 def analyze_autocorrelation(center_wavelength_nm):
-    """Fit a tutorial-based IAC model and infer Gaussian pulse duration.
-
-    The model contains the fundamental and second-harmonic fringes described
-    by the tutorial's interferometric autocorrelation expression. The dominant
-    fundamental fringe has delay period lambda/c and calibrates the recorded
-    time axis locally. A Gaussian intensity autocorrelation is sqrt(2) wider
-    than the intensity pulse.
-    """
-    speed_of_light = 299_792_458.0
-    optical_fringe_delay = center_wavelength_nm * 1e-9 / speed_of_light
-    # The truncated vor2 scan does not cover the envelope wings. Fit the
-    # remaining candidates, then select the lowest normalized residual per group.
-    candidate_files = {"vor": ("vor1", "vor3"), "nach": ("nach1", "nach2", "nach3")}
-    candidates = {"vor": [], "nach": []}
-    for group, filenames in candidate_files.items():
-        for filename in filenames:
-            time, signal = np.loadtxt(DATA_DIR / filename, delimiter=",").T
-            sample_spacing = np.median(np.diff(time))
-            background = np.median(signal)
-  
-            # Smooth squared signal to locate the peak; fit the raw trace below.
-            smoothed_energy = uniform_filter1d((signal - background) ** 2, size=301)
-            initial_center = time[np.argmax(smoothed_energy)]
-            local_mask = np.abs(time - initial_center) <= 0.0005
-            local_signal = signal[local_mask] - np.mean(signal[local_mask])
-            frequencies = np.fft.rfftfreq(local_signal.size, d=sample_spacing)
-            power = np.abs(np.fft.rfft(local_signal * np.hanning(local_signal.size))) ** 2
-            initial_frequency = frequencies[1 + np.argmax(power[1:])]
-  
-            fit_mask = np.abs(time - initial_center) <= 0.002
-            initial_guess = (
-                background, 0.25, 0.9, 0.0, 0.15, 0.0,
-                initial_center, 0.0008, initial_frequency,
-            )
-            lower_bounds = (
-                background - 0.2, -3, -3, -np.pi, -3, -np.pi,
-                time.min(), sample_spacing, initial_frequency * 0.8,
-            )
-            upper_bounds = (
-                background + 0.2, 3, 3, np.pi, 3, np.pi,
-                time.max(), 0.01, initial_frequency * 1.2,
-            )
-            parameters, covariance = curve_fit(
-                interferometric_autocorrelation_model,
-                time[fit_mask],
-                signal[fit_mask],
-                p0=initial_guess,
-                bounds=(lower_bounds, upper_bounds),
-                maxfev=100_000,
-            )
-            center_time, sigma_time, carrier_frequency = parameters[6:9]
-  
-            autocorrelation_fwhm_time = 2 * np.sqrt(2 * np.log(2)) * abs(sigma_time)
-            autocorrelation_fwhm_delay = (
-                autocorrelation_fwhm_time * optical_fringe_delay * carrier_frequency
-            )
-            pulse_width_fs = autocorrelation_fwhm_delay / np.sqrt(2) * 1e15
-            pulse_gradient = np.zeros(parameters.size)
-            pulse_gradient[7] = pulse_width_fs / sigma_time
-            pulse_gradient[8] = pulse_width_fs / carrier_frequency
-            pulse_width_stderr_fs = float(
-                np.sqrt(pulse_gradient @ covariance @ pulse_gradient)
-            )
-            fitted = interferometric_autocorrelation_model(time[fit_mask], *parameters)
-            residual_fraction = np.sqrt(np.mean((signal[fit_mask] - fitted) ** 2)) / np.ptp(signal[fit_mask])
-            candidates[group].append((residual_fraction, filename, time, signal, fit_mask,
-                                      parameters, pulse_width_fs, pulse_width_stderr_fs,
-                                      autocorrelation_fwhm_delay))
-  
-    selected = {group: min(group_candidates, key=lambda candidate: candidate[0])
-                for group, group_candidates in candidates.items()}
-    figure, axes = plt.subplots(2, 1, figsize=(9, 9.5), sharex=True)
-    selected_results = {}
-    for axis, (group, title) in zip(axes, (("vor", "Before compressor"), ("nach", "After compressor"))):
-        (residual_fraction, filename, time, signal, fit_mask, parameters,
-         pulse_width_fs, pulse_width_stderr_fs, autocorrelation_fwhm_delay) = selected[group]
-        center_time, sigma_time, carrier_frequency = parameters[6:9]
-        selected_results[group] = (
-            filename, pulse_width_fs, pulse_width_stderr_fs, residual_fraction
+    """Fit candidates and display the normalized IAC modulation envelope."""
+    # vor2 remains excluded: a separate edge-signal check demonstrates that its
+    # record ends before the wings reach baseline; sampling interval alone is not a reason.
+    filenames = {"vor": ("vor1", "vor3"), "nach": ("nach1", "nach2", "nach3")}
+    candidates = {group: [fit_autocorrelation(name, center_wavelength_nm)
+                          for name in names] for group, names in filenames.items()}
+    selected = {group: min(fits, key=lambda fit: fit["normalized_rms"])
+                for group, fits in candidates.items()}
+    figure, axes = plt.subplots(2, 1, figsize=(9, 10), constrained_layout=True)
+    for axis, group, title in zip(axes, ("vor", "nach"),
+                                  ("Before compressor", "After compressor")):
+        fit = selected[group]
+        p = fit["parameters"]
+        cycles = fringe_cycles(fit["time_ms"], p[6], p[8], p[9], p[10])
+        optical_delay_fs = cycles * fit["delay_per_cycle_fs"]
+        normalization = np.max(np.abs(fit["signal"] - p[0]))
+        axis.plot(optical_delay_fs, (fit["signal"] - p[0]) / normalization,
+                  linewidth=0.55, alpha=0.55, label=f"Raw signal: {fit['filename']}")
+        g = np.exp(-cycles**2 / (4 * p[7]**2))
+        h = np.exp(-3 * cycles**2 / (16 * p[7]**2))
+        bound = (abs(p[1]) + np.hypot(p[4], p[5])) * g + np.hypot(p[2], p[3]) * h
+        axis.plot(optical_delay_fs, bound / normalization,
+                  color="tab:red", linestyle="--", linewidth=2,
+                  label=r"Fitted envelope: $U/N$")
+        axis.set_title(
+            f"{title}: {fit['pulse_width_fs']:.2f} ± {fit['pulse_stderr_fs']:.2f} fs (fit SE)",
+            fontsize=14,
         )
-        relative_delay_fs = ((time[fit_mask] - center_time) * optical_fringe_delay
-                             * carrier_frequency * 1e15)
-        measured = signal[fit_mask]
-        normalization = np.max(np.abs(measured - parameters[0]))
-        measured_line, = axis.plot(
-            relative_delay_fs, (measured - parameters[0]) / normalization,
-            linewidth=0.55, alpha=0.45, label=f"Selected trace: {filename}",
-        )
-        gaussian_envelope = np.exp(-0.5 * ((time[fit_mask] - center_time) / sigma_time) ** 2)
-        envelope_amplitude = parameters[1] + abs(parameters[2]) + abs(parameters[4])
-        fitted_envelope = envelope_amplitude * gaussian_envelope
-        axis.plot(
-            relative_delay_fs,
-            np.sqrt(np.clip(fitted_envelope / normalization, 0, None)),
-            color=measured_line.get_color(), linestyle="--", linewidth=1.8,
-            label="Fit: square-root envelope",
-        )
-        axis.set_title(title, fontsize=15)
-        axis.set_xlabel("Relative optical delay (fs; local fringe calibration)", fontsize=14)
+        axis.set_xlabel("Optical delay (fs; nonlinear fringe calibration)", fontsize=14)
+        axis.set_ylabel("Dimensionless normalized signal", fontsize=14)
         axis.tick_params(axis="both", labelsize=12)
-        axis.grid(True, alpha=0.3)
-        axis.legend(loc="upper center", bbox_to_anchor=(0.5, -0.22), ncol=1,
-                    fontsize=11, frameon=True)
-        print(
-            f"{group}: selected {filename} (normalized fit residual {residual_fraction:.4f}); "
-            f"fringe frequency {carrier_frequency / 1e3:.2f} kHz, "
-            f"pulse FWHM {pulse_width_fs:.1f} fs"
-        )
-    for group, group_candidates in candidates.items():
-        for candidate in group_candidates:
-            residual_fraction, filename, *_, pulse_width_fs, pulse_width_stderr_fs, _ = candidate
-            print(
-                f"  candidate {filename}: {pulse_width_fs:.2f} +/- "
-                f"{pulse_width_stderr_fs:.2f} fs (fit covariance), "
-                f"normalized residual {residual_fraction:.4f}"
-            )
-
-    for axis in axes:
-        axis.set_ylabel("Normalized signal and fitted envelope", fontsize=14)
-    figure.subplots_adjust(left=0.12, right=0.995, bottom=0.08, top=0.98, hspace=0.62)
-    figure.savefig(PLOT_DIR / "autocorrelation_pulsewidth.png", dpi=180)
+        axis.legend(loc="upper center", bbox_to_anchor=(0.5, -0.18), fontsize=11)
+    figure.savefig(PLOT_DIR / "autocorrelation_pulsewidth.png", dpi=180, bbox_inches="tight")
     plt.close(figure)
 
-    return selected_results
+    # Residuals show model quality without drawing fitted oscillations over the data.
+    figure, axes = plt.subplots(2, 1, figsize=(9, 6), constrained_layout=True)
+    for axis, group in zip(axes, ("vor", "nach")):
+        fit = selected[group]
+        residual = (fit["signal"] - fit["fitted_signal"]) / np.ptp(fit["signal"])
+        axis.plot(fit["time_ms"], residual, linewidth=0.45)
+        axis.axhline(0, color="black", linewidth=0.7)
+        axis.set(title=f"{fit['filename']}: normalized RMS {fit['normalized_rms']:.3f}",
+                 xlabel="Recorded time relative to initial peak (ms)", ylabel="Residual / range")
+    figure.savefig(PLOT_DIR / "autocorrelation_residuals.png", dpi=180)
+    plt.close(figure)
+
+    for fits in candidates.values():
+        for fit in fits:
+            print(f"IAC {fit['filename']}: {fit['pulse_width_fs']:.3f} +/- "
+                  f"{fit['pulse_stderr_fs']:.3f} fs (covariance), "
+                  f"normalized RMS {fit['normalized_rms']:.5f}, "
+                  f"scan frequency range {fit['scan_frequency_range_per_ms']} cycles/ms")
+    compact = {group: [{key: value.tolist() if isinstance(value, np.ndarray) else value
+                        for key, value in fit.items()
+                        if key not in ("time_ms", "signal", "fitted_signal")}
+                       for fit in fits] for group, fits in candidates.items()}
+    rows = [
+        r"% Generated by analysis/analyze.py; do not edit numerical values here.",
+        r"\begin{table}[htbp]\centering",
+        r"\caption{Gaussian pulse-intensity FWHM from the raw IAC fits. Errors are conditional covariance standard errors at fixed wavelength, excluding calibration and model uncertainty. Normalized RMS is residual RMS divided by the measured range; its uncertainty has not been estimated.}\label{tab:iac-fits}",
+        r"\begin{tabular}{lrr}\toprule",
+        r"Trace & Pulse FWHM (fs) & Normalized RMS\\\midrule",
+    ]
+    for group, fits in candidates.items():
+        for fit in fits:
+            selected_marker = r" (selected)" if fit is selected[group] else ""
+            rows.append(
+                f"{fit['filename']}{selected_marker} & "
+                f"${fit['pulse_width_fs']:.2f} \\pm {fit['pulse_stderr_fs']:.2f}$ & "
+                f"{fit['normalized_rms']:.4f}" + r"\\"
+            )
+    rows.extend([r"\bottomrule\end{tabular}", r"\end{table}"])
+    (PROJECT_DIR / "latex" / "autocorrelation_results.tex").write_text("\n".join(rows) + "\n")
+    return selected, compact
 
 
 def main():
@@ -650,7 +691,7 @@ def main():
     spectral_bandwidth_hz = (
         299_792_458.0 * spectral_bandwidth * 1e-9 / (peak_wavelength * 1e-9) ** 2
     )
-    transform_limited_duration_fs = 0.441 / spectral_bandwidth_hz * 1e15
+    transform_limited_duration_fs = GAUSSIAN_TIME_BANDWIDTH / spectral_bandwidth_hz * 1e15
 
     print(f"Spectrum peak: {peak_wavelength:.2f} nm")
     print(f"Fitted peak intensity: {peak_intensity:.2f} a.u.")
@@ -661,7 +702,7 @@ def main():
     print(f"Gaussian-fit FWHM bandwidth: {spectral_bandwidth:.2f} +/- {bandwidth_error:.2f} nm (fit covariance)")
     print(f"Approximate frequency bandwidth: {spectral_bandwidth_hz / 1e12:.2f} THz")
     print(f"Gaussian transform-limit duration: {transform_limited_duration_fs:.1f} fs")
-    selected_autocorrelations = analyze_autocorrelation(peak_wavelength)
+    selected_autocorrelations, autocorrelation_candidates = analyze_autocorrelation(peak_wavelength)
     print("\nFile, sample period (um), q (m^-1), fast lifetime (ps), slow lifetime (ps):")
     lifetime_ci = delay_results["lifetime_bootstrap_ci"]
     for index, (filename, period, wave_number, fast_lifetime, slow_lifetime, *_) in enumerate(delay_results["fits"]):
@@ -672,8 +713,11 @@ def main():
             f"tau_fast={fast_lifetime:.4g} [{fast_ci[0]:.4g}, {fast_ci[1]:.4g}], "
             f"tau_slow={slow_lifetime:.4g} [{slow_ci[0]:.4g}, {slow_ci[1]:.4g}] ps"
         )
-    print("\nSelected autocorrelation scans (single cleanest trace per group):")
-    for group, (filename, pulse_width_fs, pulse_error_fs, residual) in selected_autocorrelations.items():
+    print("\nSelected autocorrelation scans (lowest normalized RMS per group):")
+    for group, fit in selected_autocorrelations.items():
+        filename = fit["filename"]
+        pulse_width_fs, pulse_error_fs = fit["pulse_width_fs"], fit["pulse_stderr_fs"]
+        residual = fit["normalized_rms"]
         print(
             f"{group}: {filename}, {pulse_width_fs:.2f} +/- {pulse_error_fs:.2f} fs "
             f"(fit covariance), normalized residual {residual:.4f}"
@@ -701,6 +745,25 @@ def main():
     print(f"    slope = {delay_results['all_slope']:.6g} m^2/ps")
     print(f"    intercept = {delay_results['all_intercept']:.6g} ps^-1")
     print(f"    R^2 = {delay_results['all_r_squared']:.3f}")
+
+    results = {
+        "spectrum": {"center_nm": peak_wavelength, "fwhm_nm": spectral_bandwidth,
+                     "fwhm_covariance_stderr_nm": bandwidth_error,
+                     "frequency_bandwidth_hz": spectral_bandwidth_hz,
+                     "transform_limit_fs": transform_limited_duration_fs},
+        "delay": delay_results, "autocorrelation": autocorrelation_candidates,
+        "selected_autocorrelation": {group: fit["filename"]
+                                      for group, fit in selected_autocorrelations.items()},
+    }
+    def numpy_to_json(value):
+        if isinstance(value, np.ndarray):
+            return value.tolist()
+        if isinstance(value, np.generic):
+            return value.item()
+        raise TypeError(f"Cannot serialize {type(value)}")
+    (PROJECT_DIR / "analysis" / "results.json").write_text(
+        json.dumps(results, indent=2, default=numpy_to_json) + "\n"
+    )
 
 
 if __name__ == "__main__":

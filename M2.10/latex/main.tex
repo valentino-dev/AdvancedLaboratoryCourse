@@ -2,6 +2,13 @@
 \usepackage[margin=25mm]{geometry}
 \usepackage{graphicx,amsmath,amssymb,siunitx,booktabs,hyperref,placeins}
 \usepackage[american]{babel}
+\hypersetup{hidelinks,pdftitle={Ultrafast Transient-Grating Spectroscopy of GaAs}}
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\bottomfraction}{0.9}
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\floatpagefraction}{0.65}
+\setcounter{topnumber}{3}
+\setcounter{totalnumber}{5}
 \title{Ultrafast Transient-Grating Spectroscopy of GaAs}
 \author{Dhruv Pisharody \and Ahmet Kavruk \and Angelo Brade\\Rheinische Friedrich--Wilhelms--Universität Bonn}
 \date{}
@@ -9,7 +16,7 @@
 \maketitle
 
 \begin{abstract}
-Transient-grating spectroscopy probes carrier relaxation and spatial diffusion through the decay of a photoinduced grating. This report analyzes the supplied GaAs autocorrelation, spectrum, pump--probe and transient-grating traces. Complete autocorrelation scans yield selected pulse-duration estimates of \SI{81.7}{fs} before and \SI{79.0}{fs} after the compressor; their small formal fit errors do not include scan-calibration uncertainty. Biexponential fits describe the transient traces over the selected interval, while the slow finite-wave-vector rates give an exploratory ambipolar diffusivity of $(3.71\pm0.70)\times10^{-3}\,\si{\metre\squared\per\second}$. The pump--probe rate is inconsistent with the transient-grating extrapolation, limiting the physical interpretation of that estimate. The data do not directly measure hot-carrier temperature or electron--phonon coupling.
+Transient-grating spectroscopy probes carrier relaxation and spatial diffusion through the decay of a photoinduced grating. This report analyzes the supplied GaAs autocorrelation, spectrum, pump--probe and transient-grating traces. Fits with nonlinear fringe calibration yield selected Gaussian pulse-intensity FWHM estimates of $(112.89\pm0.10)\,\si{fs}$ before and $(93.902\pm0.054)\,\si{fs}$ after the compressor, above the $(83.87\pm0.24)\,\si{fs}$ Gaussian transform-limit estimate. These uncertainties are propagated formal one-standard-error values, excluding calibration and model uncertainty; fit-window variation is larger. The diffusivity uncertainty below is the regression slope standard error. Biexponential fits summarize the transient traces over the selected interval, while the slow finite-wave-vector rates give an exploratory ambipolar diffusivity of $(3.71\pm0.70)\times10^{-3}\,\si{\metre\squared\per\second}$. The pump--probe rate is inconsistent with the transient-grating extrapolation, limiting the physical interpretation of that estimate. The data do not directly measure hot-carrier temperature or electron--phonon coupling.
 \end{abstract}
 
 \tableofcontents
@@ -21,7 +28,7 @@ Ultrafast optical pulses create and probe non-equilibrium carriers in semiconduc
 This experiment uses GaAs and combines pulse characterization with pump--probe and TG measurements. The analysis follows the four tasks in the course tutorial: determine pulse duration and spectral bandwidth; assess whether the data can determine hot-carrier cooling and electron--phonon coupling; fit transient-reflectivity and TG decay times; and estimate recombination, ambipolar diffusivity and mobility. The report first derives the relevant models, then describes the optical arrangement and supplied data, and finally presents the results in that order. A final discussion compares the results with their assumptions and available literature.
 
 \section{Theoretical background}
-\subsection{Transient-grating formation and carrier decay}
+\subsection{Transient-grating formation and carrier decay}\label{sec:decay-theory}
 An ultrashort pump pulse creates electron--hole pairs in GaAs. Two pump fields with equal intensity $I_0$ and wave vectors $\mathbf{k}_1,\mathbf{k}_2$ produce the intensity pattern
 \begin{align}
 I(\mathbf{r})&=|E_1+E_2|^2\\
@@ -34,7 +41,7 @@ For an angle $\theta$ between the beams, $q=|\mathbf{k}_1-\mathbf{k}_2|=2k\sin(\
 \end{equation}
 The two-beam interference and resulting spatial carrier modulation are illustrated in Fig.~\ref{fig:tutorial-grating}.
 
-\begin{figure}[htbp]
+\begin{figure}[!htbp]
 \centering\includegraphics[width=.78\linewidth]{figures/tutorial_grating.png}
 \caption{Two crossed pump beams create a sinusoidal excitation pattern in the sample. The grating period $\Lambda_{\rm TG}$ sets the spatial wave number $q=2\pi/\Lambda_{\rm TG}$ used in the diffusion analysis. Reproduced from Fig.~4.5 of the course tutorial.}\label{fig:tutorial-grating}
 \end{figure}
@@ -58,7 +65,13 @@ Evaluation yields
 N_0(t)&=N_0(0)e^{-t/\tau_{\rm rec}},\\
 N_q(t)&=N_q(0)e^{-(D_aq^2+1/\tau_{\rm rec})t}.
 \end{align}
-For signals proportional to these populations, the $q=0$ transient-reflectivity and finite-$q$ grating traces therefore have the forms
+For heterodyne detection with a constant local oscillator and $E_{\rm dif}=\alpha N_q$,
+\begin{align}
+|E_{\rm LO}+E_{\rm dif}|^2&=|E_{\rm LO}|^2+|\alpha|^2N_q^2
+ +2\operatorname{Re}(E_{\rm LO}^*\alpha)N_q,\\
+S_{\rm het}&\propto N_q\propto e^{-(D_aq^2+1/\tau_{\rm rec})t}.
+\end{align}
+Thus the heterodyne decay rate contains $D_aq^2$, with no factor of two from squaring the grating amplitude. Assuming that the reflectivity change is also linear in the corresponding population, the $q=0$ transient-reflectivity and finite-$q$ grating traces therefore have the forms
 \begin{align}
  S_{\mathrm{pop}}(t)&=A_{\mathrm{pop}}e^{-t/\tau_{\mathrm{rec}}}+C_{\mathrm{pop}},\\
  S_{\mathrm{TG}}(t)&=A_{\mathrm{TG}}e^{-t/\tau_{\mathrm{TG}}}+C_{\mathrm{TG}},\\
@@ -104,15 +117,19 @@ G(\tau)&=\int_{-\infty}^{\infty}I(t)I(t-\tau)\,dt\\
 \end{align}
 Here $t^2+(t-\tau)^2=2(t-\tau/2)^2+\tau^2/2$ and the substitution $u=(t-\tau/2)/\sigma_t$ reduces the integral to $\sigma_t\int_{-\infty}^{\infty}e^{-u^2}du=\sqrt{\pi}\sigma_t$. The intensity half-maximum satisfies $e^{-t^2/(2\sigma_t^2)}=1/2$, so $\Delta t_{\rm pulse}=2\sqrt{2\ln2}\,\sigma_t$. The autocorrelation half-maximum satisfies $e^{-\tau^2/(4\sigma_t^2)}=1/2$, so $\Delta t_{\rm AC}=4\sqrt{\ln2}\,\sigma_t=\sqrt{2}\,\Delta t_{\rm pulse}$.
 
-The Gaussian time--bandwidth product follows by Fourier transforming the field envelope $a(t)=\sqrt{I_0}e^{-t^2/(4\sigma_t^2)}$:
+The Gaussian time--bandwidth product follows from the field envelope $a(t)=\sqrt{I_0}e^{-t^2/(4\sigma_t^2)}$. Set $F(\nu)=\int_{-\infty}^{\infty}a(t)e^{-i2\pi\nu t}\,dt$ and use $a'(t)=-t\,a(t)/(2\sigma_t^2)$. Differentiating and integrating by parts on the real axis gives
 \begin{align}
-\widetilde a(\nu)&=\int_{-\infty}^{\infty}a(t)e^{-i2\pi\nu t}\,dt\\
-&=\sqrt{I_0}\,e^{-4\pi^2\sigma_t^2\nu^2}
-\int_{-\infty}^{\infty}\exp\!\left[-\frac{(t+i4\pi\sigma_t^2\nu)^2}{4\sigma_t^2}\right]dt\\
-&=2\sqrt{\pi}\sigma_t\sqrt{I_0}\,e^{-4\pi^2\sigma_t^2\nu^2},\\
-|\widetilde a(\nu)|^2&=4\pi\sigma_t^2I_0e^{-8\pi^2\sigma_t^2\nu^2}.
+F'(\nu)&=-i2\pi\int_{-\infty}^{\infty}t\,a(t)e^{-i2\pi\nu t}\,dt\\
+&=i4\pi\sigma_t^2\int_{-\infty}^{\infty}a'(t)e^{-i2\pi\nu t}\,dt\\
+&=i4\pi\sigma_t^2\left([a(t)e^{-i2\pi\nu t}]_{-\infty}^{\infty}+i2\pi\nu F(\nu)\right)\\
+&=-8\pi^2\sigma_t^2\nu F(\nu),\\
+\int_{F(0)}^{F(\nu)}\frac{dF}{F}&=-8\pi^2\sigma_t^2\int_0^\nu\nu'\,d\nu',\\
+F(\nu)&=F(0)e^{-4\pi^2\sigma_t^2\nu^2},\qquad
+F(0)=2\sqrt{\pi}\sigma_t\sqrt{I_0},\\
+|F(\nu)|^2&=4\pi\sigma_t^2I_0e^{-8\pi^2\sigma_t^2\nu^2}.
 \end{align}
-At half maximum, $|\widetilde a(\nu)|^2=|\widetilde a(0)|^2/2$, so
+The boundary term vanishes because the Gaussian tends to zero at both limits; $F(0)$ follows by substituting $t=2\sigma_t u$ in the Gaussian integral.
+At half maximum, $|F(\nu)|^2=|F(0)|^2/2$, so
 \begin{align}
 8\pi^2\sigma_t^2\nu^2&=\ln2,\\
 \Delta\nu&=2|\nu|=\frac{\sqrt{\ln2}}{\sqrt{2}\pi\sigma_t}.
@@ -128,7 +145,7 @@ From $\nu=c/\lambda$, differentiation gives $d\nu/d\lambda=-c/\lambda^2$; for a 
 The optical pulse duration can be measured with a second-order autocorrelator based on second-harmonic generation (SHG). The measured intensity is a function of the relative delay between two pulse replicas. For a Gaussian pulse, the intensity autocorrelation FWHM is $\sqrt{2}$ times the pulse-intensity FWHM. The transform-limited Gaussian time-bandwidth product is $\Delta t\Delta\nu\simeq0.441$; a larger product can indicate spectral phase/chirp, or measurement and calibration errors. A spectrometer measures wavelength, with $\Delta\nu\simeq c\Delta\lambda/\lambda_0^2$ for a narrow spectrum. This conversion and the time-bandwidth comparison assume that the fitted spectral profile is representative of the pulse spectrum and approximately Gaussian.
 
 \subsection{Derivation of the measured interferometric autocorrelation}
-The measured second-order autocorrelation is given in the tutorial by Eq.~(4.2). With $I(t)=|E(t)|^2$, its full expression is
+The tutorial prints the following Eq.~(4.2), with $I(t)=|E(t)|^2$. It is reproduced here before checking its numerical coefficients against the defining Eq.~(4.1):
 \begin{equation}\tag{4.2}\label{eq:tutorial-iac}
 \begin{aligned}
 I_{\rm AC}(\tau)={}&\int_{-\infty}^{\infty}\!\left[I^2(t)+I^2(t-\tau)\right]\,\mathrm{d}t\\
@@ -138,7 +155,17 @@ I_{\rm AC}(\tau)={}&\int_{-\infty}^{\infty}\!\left[I^2(t)+I^2(t-\tau)\right]\,\m
 &+\int_{-\infty}^{\infty}\!I(t)I(t-\tau)\,\mathrm{d}t.
 \end{aligned}
 \end{equation}
-For explicit evaluation, take a Gaussian field
+The four terms are correctly identified, but their printed relative coefficients do not follow from Eq.~(4.1). To expand that definition explicitly, write $a=I(t)$, $b=I(t-\tau)$, $z=E(t)E^*(t-\tau)$, and $|z|^2=ab$. Then
+\begin{align}
+|E(t)+E(t-\tau)|^4&=(a+b+z+z^*)^2\\
+&=a^2+b^2+2ab+2(a+b)(z+z^*)+z^2+z^{*2}+2|z|^2\\
+&=a^2+b^2+4ab+4(a+b)\operatorname{Re}z+2\operatorname{Re}z^2.
+\end{align}
+Denoting the four integrals in the printed order by $T_0,T_1,T_2,T_3$, the SHG signal therefore obeys
+\begin{equation}\label{eq:corrected-iac}
+I_{\rm AC}\propto T_0+4T_1+2T_2+4T_3.
+\end{equation}
+These relative factors cannot be absorbed into one proportionality constant. For explicit evaluation, take a Gaussian field
 \begin{equation}
 E(t)=E_0e^{-t^2/(4\sigma^2)}e^{-i\omega_0t},\qquad
 I(t)=|E(t)|^2=I_0e^{-t^2/(2\sigma^2)},\qquad I_0=|E_0|^2.
@@ -161,7 +188,12 @@ For the fundamental-frequency term, first multiply each intensity by the field o
 \begin{equation}
 E(t)E^*(t-\tau)=I_0e^{-[t^2+(t-\tau)^2]/(4\sigma^2)}e^{-i\omega_0\tau}.
 \end{equation}
-The two overlap integrals are equal after completing the square:
+The squares needed for the two fundamental overlap integrals are
+\begin{align}
+3t^2+(t-\tau)^2&=4(t-\tau/4)^2+3\tau^2/4,\\
+t^2+3(t-\tau)^2&=4(t-3\tau/4)^2+3\tau^2/4.
+\end{align}
+Thus both translated Gaussian integrals equal $\sqrt{\pi}\sigma$:
 \begin{align}
 \int_{-\infty}^{\infty} I(t)E(t)E^*(t-\tau)\,dt
 &=I_0^2e^{-i\omega_0\tau}\int e^{-[3t^2+(t-\tau)^2]/(4\sigma^2)}\,dt\\
@@ -190,52 +222,75 @@ T_3&=\int_{-\infty}^{\infty} I(t)I(t-\tau)\,dt\\
 &=I_0^2e^{-\tau^2/(4\sigma^2)}\int e^{-(t-\tau/2)^2/\sigma^2}\,dt\\
 &=I_0^2\sqrt{\pi}\sigma e^{-\tau^2/(4\sigma^2)}.
 \end{align}
-Combining these evaluated terms gives the Gaussian-pulse form of Eq.~\eqref{eq:tutorial-iac}:
-\begin{equation}
-I_{\rm AC}(\tau)=2I_0^2\sqrt{\pi}\sigma+2I_0^2\sqrt{\pi}\sigma e^{-3\tau^2/(16\sigma^2)}\cos(\omega_0\tau)
-+I_0^2\sqrt{\pi}\sigma e^{-\tau^2/(4\sigma^2)}[1+\cos(2\omega_0\tau)].
+With $K=I_0^2\sqrt{\pi}\sigma$, insertion into the corrected expansion gives
+\begin{equation}\label{eq:gaussian-iac}
+I_{\rm AC}(\tau)\propto 2K+8K e^{-3\tau^2/(16\sigma^2)}\cos(\omega_0\tau)
++K e^{-\tau^2/(4\sigma^2)}[4+2\cos(2\omega_0\tau)].
 \end{equation}
-Thus the integrals explicitly produce fringes at $\omega_0$ and $2\omega_0$. For the measured trace, the fit uses a common Gaussian envelope for the slowly varying terms as a phenomenological approximation to these overlap functions; it fits
-\begin{equation}
-S(x)=S_0+e^{-(x-x_0)^2/(2\sigma_x^2)}\left[A_0+A_1\cos(2\pi f(x-x_0)+\phi_1)+A_2\cos(4\pi f(x-x_0)+\phi_2)\right].
-\end{equation}
-In a scan coordinate $x$ with fringe frequency $f$, one optical cycle takes $1/f$ on the recorded axis and $\lambda_0/c$ in delay. Therefore
+As a normalization check, $I_{\rm AC}(0)/I_{\rm AC}(\infty)=(2+8+4+2)/2=8$ for identical, equally intense, unfiltered replicas. The fundamental overlap has a different Gaussian width from the intensity and second-harmonic overlaps. Applying the intensity-autocorrelation $\sqrt{2}$ deconvolution to a common envelope for all three terms would therefore give an incorrect pulse width.
+
+\paragraph{Fit function and delay calibration.}
+Let $x$ be recorded time in milliseconds relative to an initial peak estimate, $r=x-x_0$, and $u$ the relative optical delay in carrier cycles. To allow the vibrating mirror's speed to vary across the fit interval, use
 \begin{align}
-\tau-\tau_0&=\frac{\lambda_0}{c}f(x-x_0),\\
-\omega_0(\tau-\tau_0)&=\frac{2\pi c}{\lambda_0}\frac{\lambda_0}{c}f(x-x_0)=2\pi f(x-x_0),\\
-2\omega_0(\tau-\tau_0)&=4\pi f(x-x_0),
+u(r)&=f r+b_2r^2+b_3r^3, & \tau(r)&=\frac{\lambda_0}{c}u(r),\\
+\frac{du}{dx}&=f+2b_2r+3b_3r^2, & \omega_0\tau&=2\pi u.
 \end{align}
-which gives the two cosine arguments in the fit. The fitted Gaussian intensity envelope is
+Here $f$ is in cycles/ms and $b_2,b_3$ are in cycles/ms$^2$ and cycles/ms$^3$. Successive raw-signal maxima initialize the polynomial; the final fit uses every raw sample within \SI{2.8}{ms} of the initial peak. The fitted mapping is required to remain monotonic within this window. It is a local empirical calibration, not an independent measurement of mirror motion.
+
+For a pulse-intensity standard deviation $s$ in optical cycles, define
 \begin{equation}
-I_{\rm env}(x)=A_{\rm env}\exp\!\left[-\frac{(x-x_0)^2}{2\sigma_x^2}\right],
-\qquad A_{\rm env}=A_0+|A_1|+|A_2|.
+g(u)=e^{-u^2/(4s^2)},\qquad h(u)=e^{-3u^2/(16s^2)}.
 \end{equation}
-In the tutorial's field-envelope notation, its square root is
+The actual fitted function is
+\begin{equation}\label{eq:fitted-iac}
+\begin{aligned}
+S(x)={}&B+A_0g(u)
++h(u)[C_1\cos(2\pi u)+D_1\sin(2\pi u)]\\
+&+g(u)[C_2\cos(4\pi u)+D_2\sin(4\pi u)].
+\end{aligned}
+\end{equation}
+The sine/cosine form is equivalent to a free amplitude and phase for each harmonic, since
 \begin{equation}
-E_{\rm env}(x)=\sqrt{I_{\rm env}(x)}=\sqrt{A_{\rm env}}\exp\!\left[-\frac{(x-x_0)^2}{4\sigma_x^2}\right],
-\qquad E_{\rm env}^2(x)=I_{\rm env}(x).
+C_j\cos\theta+D_j\sin\theta=R_j\cos(\theta-\phi_j),\quad
+R_j=\sqrt{C_j^2+D_j^2},\quad\phi_j=\operatorname{atan2}(D_j,C_j).
 \end{equation}
-Figure~\ref{fig:autocorrelation} overlays the normalized $E_{\rm env}(x)$ (the square root of the fitted intensity envelope) on the raw signal.
-The fit envelope has standard deviation $\sigma_x$ in recorded coordinate. The local scan factor is $d\tau/dx=f\lambda_0/c$, so $\sigma_\tau=(f\lambda_0/c)\sigma_x$. Its FWHM and the pulse FWHM are
+The baseline, amplitudes, and phases remain free because the recorded voltage is not a calibrated positive SHG intensity. This relaxes the ideal amplitude ratios while preserving the derived overlap widths. The Gaussian pulse model assumes a simple carrier phase; unknown pulse chirp and detector filtering can still bias the inferred width.
+
+The pulse width follows directly from the fitted $s$:
 \begin{align}
-\Delta t_{\rm AC}&=2\sqrt{2\ln2}\,\sigma_\tau
-=2\sqrt{2\ln2}\,\sigma_xf\lambda_0/c,\\
-\Delta t_{\rm pulse}&=\frac{\Delta t_{\rm AC}}{\sqrt{2}}.
+\sigma_t&=s\lambda_0/c,\\
+\Delta t_{\rm pulse}&=2\sqrt{2\ln2}\,s\lambda_0/c, &
+\Delta t_{\rm AC}&=\sqrt{2}\,\Delta t_{\rm pulse}.
 \end{align}
+The second relation for $\Delta t_{\rm AC}$ refers specifically to the intensity overlap $g$, not to the full interferometric trace.
+
+\paragraph{Displayed fitted envelope.}
+For arbitrary harmonic phases a convenient positive modulation bound is
+\begin{align}
+|S(x)-B|&\leq U(x),\\
+U(x)&=(|A_0|+R_2)g(u)+R_1h(u),\\
+V(x)&=U(x)/N,\\
+N&=\max_{\text{fit window}}|S_{\rm measured}(x)-B|.
+\end{align}
+Figure~\ref{fig:autocorrelation} displays the normalized fitted envelope $V(x)=U(x)/N$ alongside $(S_{\rm measured}-B)/N$. The envelope is a positive bound on the fitted autocorrelation modulation. With arbitrary fitted harmonic phases, its value need not be attained at every delay. The pulse electric-field envelope itself is
+\begin{equation}
+|E(t)|=\sqrt{I_0}e^{-t^2/(4\sigma_t^2)},\qquad |E(t)|^2=I_0e^{-t^2/(2\sigma_t^2)}.
+\end{equation}
+The pulse duration is obtained from the raw-signal fit parameter $s$, independently of the envelope normalization.
 
 \section{Experimental setup and measurement}
 \subsection{Optical arrangement}
-The tutorial describes a Kerr-lens mode-locked Ti:sapphire femtosecond laser. Its intensity-dependent refractive index produces self-focusing that favors pulsed operation; a prism compressor compensates dispersion and reduces pulse chirp. For autocorrelation, a Michelson interferometer creates two pulse replicas with adjustable delay and a BBO crystal generates a second-harmonic signal proportional to their temporal overlap. For the sample measurement, the beam is split into pump and probe paths; two pump beams cross on the GaAs sample and make the excitation grating. Two probe beams arranged in BOXCAR geometry provide a diffracted signal and a local oscillator. Their interference gives a heterodyne term proportional to the diffracted field, improving sensitivity over direct intensity detection. The tutorial describes phase modulation of the local oscillator with a rotating coverslip and pump modulation with a chopper; a lock-in amplifier extracts the component at the chopper frequency. The overall optical layout is shown in Fig.~\ref{fig:tutorial-setup}; the individual Michelson autocorrelator and BOXCAR detection principle are shown in Figs.~\ref{fig:tutorial-autocorrelator} and~\ref{fig:tutorial-heterodyne}..
+The tutorial describes a Kerr-lens mode-locked Ti:sapphire femtosecond laser. Its intensity-dependent refractive index produces self-focusing that favors pulsed operation; a prism compressor compensates dispersion and reduces pulse chirp. For autocorrelation, a Michelson interferometer creates two pulse replicas with adjustable delay and a BBO crystal generates a second-harmonic signal proportional to their temporal overlap. For the sample measurement, the beam is split into pump and probe paths; two pump beams cross on the GaAs sample and make the excitation grating. Two probe beams arranged in BOXCAR geometry provide a diffracted signal and a local oscillator. Their interference gives a heterodyne term proportional to the diffracted field, improving sensitivity over direct intensity detection. The tutorial describes phase modulation of the local oscillator with a rotating coverslip and pump modulation with a chopper; a lock-in amplifier extracts the component at the chopper frequency. The overall optical layout is shown in Fig.~\ref{fig:tutorial-setup}; the individual Michelson autocorrelator and BOXCAR detection principle are shown in Figs.~\ref{fig:tutorial-autocorrelator} and~\ref{fig:tutorial-heterodyne}.
 
-\begin{figure}[htbp]
+\begin{figure}[!htbp]
 \centering\includegraphics[width=.82\linewidth]{figures/tutorial_setup.png}
 \caption{Tutorial schematic of the transient-reflectivity and transient-grating apparatus, including prism compressor, pump and probe paths, delay line, chopper, BOXCAR sample geometry, detector, and lock-in amplifier. Reproduced from Fig.~4.7 of the course tutorial.}\label{fig:tutorial-setup}
 \end{figure}
-\begin{figure}[htbp]
+\begin{figure}[!htbp]
 \centering\includegraphics[width=.76\linewidth]{figures/tutorial_autocorrelator.png}
 \caption{Michelson autocorrelator schematic: the vibrating mirror varies the relative delay between pulse replicas, and a BBO crystal generates the detected second harmonic. Reproduced from Fig.~4.1 of the course tutorial.}\label{fig:tutorial-autocorrelator}
 \end{figure}
-\begin{figure}[htbp]
+\begin{figure}[!htbp]
 \centering\includegraphics[width=.76\linewidth]{figures/tutorial_heterodyne.png}
 \caption{BOXCAR heterodyne detection of the diffracted probe and reflected local oscillator, with the measured signal illustrated as a function of heterodyne phase. Reproduced from Fig.~4.6 of the course tutorial.}\label{fig:tutorial-heterodyne}
 \end{figure}
@@ -243,26 +298,37 @@ The tutorial describes a Kerr-lens mode-locked Ti:sapphire femtosecond laser. It
 \subsection{Measurement data and calibration}
 The supplied data comprise the spectrum file \texttt{spektrum.csv}, three before-compressor traces (\texttt{vor1}--\texttt{vor3}), three after-compressor traces (\texttt{nach1}--\texttt{nach3}), and five transient files: one pump--probe trace and four TG traces. Each transient file contains delay in its first column and repeated scans in the remaining columns. The measurement instructions specify delay in picoseconds and state that the actual sample grating period is one quarter of the phase-mask period encoded in each TG filename; we therefore use $\Lambda_{\rm sample}=\Lambda_{\rm mask}/4$ and $q=2\pi/\Lambda_{\rm sample}$. The exact incidence angles and an independent grating-period calibration were not supplied.
 
-The \texttt{vor2} trace is visibly truncated compared with the other before-compressor scans and has a sampling interval differing by a factor of five. It is therefore not treated as a complete pulse-width candidate. The complete candidates are ranked by normalized fit residual, and the lowest-residual trace in each compressor group is used for the reported pulse duration. The before/after files are shown together in Fig.~\ref{fig:vor-nach}; their different scan extents are apparent there.
+The before/after files are compared in Fig.~\ref{fig:vor-nach}. The \texttt{vor2} record has a fivefold shorter sampling interval and total duration. Sampling interval alone is not a reason for exclusion, since fringe calibration can accommodate it. The relevant problem is the substantial oscillation remaining at the record boundary, quantified in Part I. The other candidates are ranked by residual RMS divided by the raw-signal range in the fitted window. This chooses a representative fit for display; it does not establish which scan has the smallest physical error.
 
 \subsection{Data screening and fit procedure}
-The analysis was performed with the Python scripts in \texttt{analysis/}. For each TG dataset with at least eight repeats, the scan-level deviation score is the root-mean-square of each scan's difference from the pointwise median, standardized by the larger of the pointwise robust scale $1.4826\,\mathrm{MAD}$ and its lower-quartile floor. Scores are converted to modified scores using $z_j=0.6745(s_j-\mathrm{median}(s))/\mathrm{MAD}(s)$; scans above 3.5 are flagged. The flagged traces are inspected against the retained-scan distribution before exclusion. The quality-screen plots and the direct scan comparison are included with the transient-decay results in Figs.~\ref{fig:outlier-diagnostics} and \ref{fig:excluded-scan-comparison}.
+The analysis was performed with the Python scripts in \texttt{analysis/}. For each TG dataset with at least eight repeats, the scan-level deviation score is the root-mean-square of each scan's difference from the pointwise median, standardized by the larger of the pointwise robust scale $1.4826\,\mathrm{MAD}$ and its lower-quartile floor. Scores are converted to modified scores using $z_j=0.6745(s_j-\mathrm{median}(s))/\mathrm{MAD}(s)$; scans above 3.5 are flagged. The primary analysis excludes flagged whole scans and documents their deviations against the retained population; no individual delay points are removed. This is a statistical screen, not proof of acquisition failure, so the effect of retaining flagged scans is also calculated. The screening outcome is described in Sec.~\ref{sec:decay-results}; the flagged scans are compared directly with the retained population in Fig.~\ref{fig:excluded-scan-comparison}.
 
-The retained scans are averaged pointwise, with standard errors across repeats. The mean traces are fitted for $t\geq\SI{0.5}{ps}$ to the ordered biexponential model introduced in Sec.~2.1. A 300-replicate bootstrap resamples complete retained scans within each dataset, repeats the averaging and fitting, and propagates slow rates through the finite-$q$ regression. The resulting intervals quantify repeat-scan variability conditional on the selected traces and model. They do not include calibration or model uncertainty.
+The retained scans are averaged pointwise, with standard errors across repeats. The mean traces are fitted by unweighted least squares for $t\geq\SI{0.5}{ps}$ to the ordered biexponential model in Sec.~\ref{sec:decay-theory}, using each file through its last recorded delay. The standard errors are plotted but are not fit weights; each recorded delay has equal weight, despite nonuniform delay spacing. The PP record extends to \SI{2000}{ps}, whereas the TG records end between \SI{26.6}{ps} and \SI{57}{ps}; the different windows require a sensitivity check. A 300-replicate bootstrap resamples complete retained scans within each dataset, repeats the averaging and fitting, and propagates slow rates through the finite-$q$ regression. The resulting intervals quantify repeat-scan variability conditional on the selected traces and model. They do not include calibration or model uncertainty.
 
-Several experimental conditions needed for full reproducibility were not recorded in the supplied files: sample temperature, pump and probe fluence, spot size, sample thickness and orientation, incidence angles, and detector/lock-in settings. These missing quantities also limit the comparison with literature measurements.
+Several experimental conditions needed for full reproducibility were not recorded in the supplied files: measured sample temperature, pump and probe fluence, spot size, sample thickness and orientation, incidence angles, and detector/lock-in settings. The tutorial and \texttt{RT} filenames indicate nominal room-temperature measurements; an actual temperature reading is absent. These missing quantities also limit comparison with literature. Numerical results and sensitivity checks are saved in \texttt{analysis/results.json} and \texttt{analysis/review\_checks.json}.
+
+\subsection{Uncertainty conventions and propagation}\label{sec:uncertainty}
+Unless identified as a confidence interval, a quoted $\pm$ value denotes one conditional standard error. Nonlinear-fit errors are obtained from the parameter covariance matrix; regression errors are ordinary least-squares standard errors. Bracketed 95\% intervals for primary transient lifetimes and diffusivity are percentile intervals from resampling complete retained scans. These quantify different sources of variability and are not interchangeable. Calibration, model, trace-selection and temperature uncertainties remain unquantified and are not included in the quoted statistical errors.
+
+For a derived quantity $y=f(\mathbf p)$ with covariance matrix $\Sigma$, first-order propagation uses
+\begin{equation}
+u_y^2=\nabla f^{\mathsf T}\Sigma\nabla f.
+\end{equation}
+The full spectral covariance is retained for the peak level $A+B$, half-maximum level $A/2+B$, frequency bandwidth, and transform-limit duration. If $s$ is the fitted pulse width in carrier cycles, then $\Delta t\propto s\lambda_0$ and $\Delta\nu\propto\sigma_\lambda/\lambda_0^2$, so the time--bandwidth product is proportional to $s\sigma_\lambda/\lambda_0$. Its error propagation therefore includes the shared wavelength dependence rather than treating the derived duration and bandwidth as independent. Spectrum and IAC fit parameters from separate records are treated as independent. The common wavelength cancels in the before/after duration ratio. For the nominal intercept lifetime, $u_{1/b}=u_b/b^2$ is a first-order standard error, not a symmetric 95\% interval.
+
+Counts, file identifiers, theoretical constants, analysis thresholds and selected fit-window boundaries are specified inputs, not estimated physical results. Recorded axis coordinates are nominal; their instrument-calibration uncertainties are unavailable. Descriptive statistics such as residual RMS and scan scores are identified separately where their uncertainties have not been estimated. No uncertainty of zero is implied by an unavailable uncertainty. Propagation is reproduced by \texttt{analysis/report\_uncertainties.py}.
 
 \section{Results}
 \subsection{Part I: Pulse duration and spectral bandwidth}
-Pulse duration is obtained by converting the fitted width on the recorded scan coordinate to delay using the local fringe frequency. This conversion assumes a locally constant delay-scan speed. The selected fitted traces are shown in Fig.~\ref{fig:autocorrelation}. We exclude \texttt{vor2}: its recorded scan ends at \SI{2.8}{ms}, compared with \SI{14}{ms} for \texttt{vor1} and \texttt{vor3}, leaving the outer autocorrelation wings incompletely recorded (Fig.~\ref{fig:vor-nach}). Its sampling interval also differs by a factor of five, so its scan calibration is not directly comparable. Including it would bias the before-compressor pulse-width estimate.
+The pulse durations follow from Eq.~\eqref{eq:fitted-iac} with the nonlinear fringe calibration derived above. Figure~\ref{fig:autocorrelation} shows the selected before/after traces. We retain the exclusion of \texttt{vor2}: in the last 10\% of its record, the RMS signal relative to its whole-record median is 0.397 recorded units, compared with 0.0081 and 0.0058 for \texttt{vor1} and \texttt{vor3}. Together with Fig.~\ref{fig:vor-nach}, this shows that its right-hand wing remains appreciably oscillatory at the boundary. These edge RMS values are descriptive diagnostics with unquantified uncertainties. The median is a descriptive reference, not an independently measured baseline. A truncated trace could in principle be fitted, but would constrain the baseline and wings less reliably; we use the better-covered repeats instead.
 
-\begin{figure}[htbp]
+\begin{figure}[!htbp]
 \centering\includegraphics[width=.95\linewidth]{../plots/vor_nach.png}
 \caption{Recorded auxiliary traces grouped as before (vor) and after (nach). The horizontal axis uses recorded time converted to milliseconds.}\label{fig:vor-nach}
 \end{figure}
 
 
-The measured spectrum and Gaussian fit are shown in Fig.~\ref{fig:spectrum}. The spectrum file spans approximately \SI{345}{nm} to \SI{1041}{nm}. We fitted all recorded points with
+The measured spectrum and Gaussian fit are shown in Fig.~\ref{fig:spectrum}. The nominal wavelength coordinates (calibration uncertainty unavailable) span approximately \SI{345}{nm} to \SI{1041}{nm}. We fitted all recorded points with
 \begin{equation}
 S(\lambda)=B+A\exp\!\left[-\frac{(\lambda-\lambda_0)^2}{2\sigma_\lambda^2}\right].
 \end{equation}
@@ -272,53 +338,56 @@ e^{-(\lambda-\lambda_0)^2/(2\sigma_\lambda^2)}&=\frac12,\\
 |\lambda-\lambda_0|&=\sqrt{2\ln2}\,|\sigma_\lambda|,\\
 \Delta\lambda_{\rm FWHM}&=2\sqrt{2\ln2}\,|\sigma_\lambda|.
 \end{align}
-The fit gives a centre of \SI{788.66}{nm}, peak intensity of \SI{13302}{a.u.}, median measured intensity of \SI{2501}{a.u.}, and fitted half-maximum level of \SI{7902}{a.u.}; $\Delta\lambda_{\rm FWHM}\approx\SI{10.92}{nm}$. Applying $\Delta\nu\simeq c\Delta\lambda/\lambda_0^2$ gives $\Delta\nu\approx\SI{5.26}{THz}$. The Gaussian time-bandwidth result derived above gives $\Delta t_{\rm TL}=0.441/\Delta\nu\approx\SI{83.8}{fs}$. The median is calculated from all measured spectrum points; it is plotted as a descriptive reference and is not the fitted background $B$.
+The fit gives a centre of $(788.656\pm0.013)$ nm, peak intensity of $(13302\pm27)$ a.u., and fitted half-maximum level of $(7902\pm14)$ a.u., with $\Delta\lambda_{\rm FWHM}=(10.916\pm0.032)$ nm. Propagating the full spectral covariance through $\Delta\nu\simeq c\Delta\lambda/\lambda_0^2$ gives $\Delta\nu=(5.261\pm0.015)$ THz and $\Delta t_{\rm TL}=(2\ln2/\pi)/\Delta\nu=(83.87\pm0.24)$ fs. All quoted errors here are formal one-standard-error uncertainties, excluding calibration and model uncertainty. The median measured intensity is approximately \SI{2501}{a.u.}; its measurement uncertainty is unquantified because repeat spectra and an instrument-noise model are unavailable. The median is a descriptive statistic of all recorded wavelengths, not the fitted background $B$.
 
-\begin{figure}[htbp]
+\begin{figure}[!htbp]
 \centering\includegraphics[width=.98\linewidth]{../plots/spectrum.png}
-\caption{Measured spectrum, Gaussian fit, median level, and fitted half-maximum bandwidth.}\label{fig:spectrum}
+\caption{Measured spectrum, Gaussian fit, median level, and fitted half-maximum bandwidth. The displayed bandwidth error is a conditional fit standard error; raw-signal and wavelength-calibration uncertainties are unavailable.}\label{fig:spectrum}
 \end{figure}
 
 
-The normalized fit residuals for the complete autocorrelation candidates are 0.1222 (\texttt{vor1}), 0.1214 (\texttt{vor3}), 0.0922 (\texttt{nach1}), 0.0914 (\texttt{nach2}), and 0.0909 (\texttt{nach3}). Thus \texttt{vor3} and \texttt{nach3} are selected as the cleanest traces under this criterion. Their fitted pulse durations are \SI{81.7}{fs} and \SI{79.0}{fs}, respectively. These are individual selected-trace estimates, not averages over repeats; the corresponding time-bandwidth products are about 0.43 and 0.42. Systematic uncertainty from scan nonlinearity, model assumptions, and instrument response remains unquantified. The reported spectral bandwidth uncertainty ($\pm\SI{0.03}{nm}$) and autocorrelation fit uncertainties ($\pm\SI{0.50}{fs}$ before and $\pm\SI{0.36}{fs}$ after) are formal nonlinear-fit covariance errors only; they exclude calibration, model, and candidate-selection uncertainty. The inferred durations are slightly below the Gaussian transform limit, so these small formal errors should not be read as total experimental uncertainties.
+The candidate results are listed in Table~\ref{tab:iac-fits}. The lowest normalized residuals select \texttt{vor3} and \texttt{nach2}, giving $(112.89\pm0.10)\,\si{fs}$ and $(93.902\pm0.054)\,\si{fs}$. The respective time--bandwidth products are $0.5940\pm0.0018$ and $0.4941\pm0.0015$, both above the exact Gaussian-model limit $2\ln2/\pi$. The fitted duration decreases by $(16.823\pm0.089)\%$ after the compressor. These are propagated formal standard errors under independent spectrum and IAC fits, with their shared wavelength dependence retained; total model and calibration uncertainties remain unquantified. The change is consistent with compression under these assumptions. These selected-trace estimates are not averages over repeats.
+\input{autocorrelation_results.tex}
 
-\begin{figure}[htbp]
+The changing fringe spacing is visible directly in successive raw-signal maxima (Appendix~\ref{sec:iac-residuals}, Fig.~\ref{fig:fringe-calibration}): fitting the same windows with a constant scan speed and the corrected overlap functions gives $(74.53\pm0.39)$ fs and $(71.88\pm0.28)$ fs (conditional fit standard errors), with normalized residual RMS 0.107 and 0.080. The cubic calibration lowers those residuals to 0.0223 and 0.0134. These RMS values are descriptive fit diagnostics; uncertainties on the diagnostics have not been estimated. Thus a constant-speed fit can spuriously underestimate pulse duration. This correction was chosen from the observed fringe evolution and fit residuals, not by forcing agreement with the transform limit.
+
+Varying the fit half-window from \SI{2.0}{ms} to \SI{3.2}{ms} changes the fitted duration from $(111.65\pm0.08)$ fs to $(114.07\pm0.10)$ fs for \texttt{vor3}, and from $(92.69\pm0.05)$ fs to $(94.32\pm0.05)$ fs for \texttt{nach2} (conditional fit standard errors at fixed wavelength). The differences quantify sensitivity to the tested window choices; they are not confidence intervals for the pulse duration. The shifts exceed the conditional covariance errors of \SI{0.10}{fs} and \SI{0.05}{fs}. The errors assume independent residuals and an exact model; structured residuals, detector filtering, optical chirp, wavelength calibration, and trace selection are not included. Likewise, restricting the spectral fit to windows of $\pm50$, $\pm30$, and $\pm20$ nm about \SI{789}{nm} changes the FWHM to $(10.783\pm0.053)$, $(10.651\pm0.065)$, and $(10.434\pm0.078)$ nm, respectively, compared with $(10.916\pm0.032)$ nm for the full record (conditional fit standard errors). This background/window dependence exceeds the formal \SI{0.03}{nm} covariance error. These sensitivity ranges are diagnostics, not confidence intervals. The residuals are shown in Appendix~\ref{sec:iac-residuals}, Fig.~\ref{fig:iac-residuals}.
+
+\begin{figure}[!htbp]
 \centering\includegraphics[width=\linewidth]{../plots/autocorrelation_pulsewidth.png}
-\caption{Selected cleanest complete before and after autocorrelation traces, \texttt{vor3} and \texttt{nach3}, with fitted square-root Gaussian envelopes. Candidate quality is ranked by normalized fit residual; the truncated \texttt{vor2} scan is excluded.}\label{fig:autocorrelation}
+\caption{Selected before/after traces with nonlinear fringe calibration. The dashed curve is the normalized fitted envelope $V=U/N$, a positive bound on the fitted autocorrelation modulation. Pulse widths come from fitting the raw signal using Eq.~\eqref{eq:fitted-iac}; displayed errors are conditional fit standard errors at fixed wavelength, excluding calibration and model uncertainty.}\label{fig:autocorrelation}
 \end{figure}
 
 \FloatBarrier
 
 \subsection{Part II: Hot-carrier cooling and electron--phonon coupling}
-The tutorial asks for a hot-carrier cooling time and an average electron--phonon coupling coefficient. These data do not support either quantity as a physical measurement: the reflectivity traces record an optical response, not the carrier temperature or energy distribution, and the biexponential fit is phenomenological. In addition, the fitted interval starts at \SI{0.5}{ps}, so it cannot resolve the subpicosecond thermalization and scattering dynamics. We therefore do not identify $\tau_f$ with a cooling constant or calculate an electron--phonon coupling coefficient from it. For context, GaAs thermalization has been reported on a roughly \SI{200}{fs} scale, and average electron--LO-phonon scattering around \SI{165}{fs} for injected densities below $10^{17}\,\mathrm{cm}^{-3}$; these are microscopic times and are not directly comparable to our fitted reflectivity lifetimes \cite{hunsche,kash}. A defensible cooling constant and coupling estimate would require a calibrated carrier-temperature or energy-versus-delay measurement and the relevant excitation conditions.
+Following the email's assignment of the fast component to relaxation of photoexcited carriers, we report a conditional effective cooling-time estimate $\tau_{\rm cool}^{\rm eff}=\tau_f=\SI{0.717}{ps}$, with a 95\% repeat-scan bootstrap confidence interval of $[0.698,0.743]$ ps. Identifying it as a cooling time additionally requires that the fast reflectivity change be proportional to the carrier-temperature excess, with population and optical-response effects separated. That calibration is not supplied. The \SI{0.5}{ps} fit cutoff excludes the earliest thermalization, but does not by itself exclude picosecond cooling: the tutorial distinguishes roughly \SI{100}{fs} carrier thermalization (tutorial estimate; uncertainty not supplied) from electron--lattice equilibration over a few picoseconds \cite{tutorial}.
+
+The present data therefore support a cooling-time estimate under an optical-response model, but do not uniquely determine a carrier-temperature relaxation time. The systematic PP residuals also make the estimate sensitive to the fitted response: adding a slow contribution changes the fast time to $(0.674\pm0.011)$ ps (conditional covariance standard error; Sec.~\ref{sec:chen-model}). Neither that standard error nor the bootstrap interval above includes the uncertainty in assigning an optical decay component to cooling. The quoted effective cooling time is consequently retained as a conditional interpretation of the baseline fit.
+
+To state exactly what a coupling inference would require, assume constant volumetric heat capacities $C_e,C_l$ and an average electron--phonon coefficient $G$ after excitation:
+\begin{align}
+C_e\dot T_e&=-G(T_e-T_l), & C_l\dot T_l&=G(T_e-T_l),\\
+\Delta T&=T_e-T_l, &
+\frac{d\Delta T}{dt}&=-G\left(\frac1{C_e}+\frac1{C_l}\right)\Delta T,\\
+\int_{\Delta T(0)}^{\Delta T(t)}\frac{d\Delta T'}{\Delta T'}
+&=-G\left(\frac1{C_e}+\frac1{C_l}\right)\int_0^t dt',\\
+\Delta T(t)&=\Delta T(0)e^{-t/\tau_{\rm cool}}, &
+G&=\frac{C_eC_l}{C_e+C_l}\frac1{\tau_{\rm cool}}.
+\end{align}
+If $C_l\gg C_e$ and $\tau_{\rm cool}=\tau_f$, then $G/C_e\simeq1/\tau_f=\SI{1.394}{\per\pico\second}$, with a conditional bootstrap interval $[1.347,1.432]$ ps$^{-1}$. This is a relaxation rate under explicit assumptions, not a measured volumetric coupling coefficient in W\,m$^{-3}$\,K$^{-1}$. For nondegenerate electrons of fixed density $n$, $C_e=\partial(3nk_BT_e/2)/\partial T_e=3nk_B/2$, but $n$ and the relevant temperature dependence are unknown here. A numerical $G$ is therefore not determined.
+
+The assignment also depends on the fit window: fitting PP only through \SI{33}{ps} gives $\tau_f=(0.579\pm0.010)$ ps, whereas starting the full-record fit at \SI{1}{ps} gives $(0.96\pm0.13)$ ps (conditional fit standard errors). These changes exceed the repeat-scan interval. For context, Hunsche et al. report thermalization within \SI{200}{fs}, while Kash et al. infer an average electron--LO-phonon scattering time near \SI{165}{fs} below $10^{17}$ cm$^{-3}$ \cite{hunsche,kash}. The quoted \SI{200}{fs} is a reported upper bound and \SI{165}{fs} is an approximate literature value; associated uncertainties are not supplied in the cited abstracts. Neither microscopic time is the same observable as the effective temperature-relaxation time or our reflectivity fit component.
 
 \subsection{Part III: Transient-reflectivity and transient-grating decay times}\label{sec:decay-results}
-The scan screen flags two period-8 repeats for inspection, as shown in Fig.~\ref{fig:outlier-diagnostics}; their direct comparison with the retained population is in Fig.~\ref{fig:excluded-scan-comparison}. The retained-scan means and biexponential fits are shown in Fig.~\ref{fig:gaas-decay}; Fig.~\ref{fig:fit-residuals} shows residuals normalized by the fitted-window signal range. The normalized residual RMS is 1.26\% for pump--probe and 0.71--0.81\% for TG. The residuals show that the biexponential describes the averaged traces over the fitted interval, but do not establish a unique microscopic assignment.
+The whole-scan screen was applied to the 44 TG repeats: 12 scans for the nominal mask period 5.6, ten for 6.5, 12 for 8, and ten for 12 (filename period labels). Only scans 4 and 10 in the period-8 dataset exceeded the fixed modified-score threshold of 3.5, with scores of 3.51 and 5.26, respectively; uncertainties on these descriptive scores have not been estimated. Scan numbers count the signal columns starting at one, after the delay column. Both complete scans were excluded, leaving ten period-8 repeats; every scan in the other TG datasets was retained. All five PP repeats were retained because the robust screen requires at least eight repeats. The criterion uses the post-zero fit region and removes entire scans rather than isolated points. Scan 4 is borderline, whereas scan 10 deviates more strongly from the repeat population; their direct comparison with the retained scans is shown in Fig.~\ref{fig:excluded-scan-comparison}. These statistical deviations do not establish an acquisition fault. The sensitivity of the transport result to retaining the flagged scans is reported in Part IV.
 
-\begin{figure}[htbp]
-\centering\includegraphics[width=.98\linewidth]{../plots/gaas_decay.png}
-\caption{Mean delay traces over retained scans and biexponential fits, with delay in ps. Error bars show the standard error across retained scans.}\label{fig:gaas-decay}
-\end{figure}
-\begin{figure}[htbp]
-\centering\includegraphics[width=.98\linewidth]{../plots/gaas_fit_residuals.png}
-\caption{Biexponential fit residuals for the averaged data, normalized by the fitted-window signal range. The traces are displayed separately to make structure visible.}
-\label{fig:fit-residuals}
-\end{figure}
-\begin{figure}[htbp]
-\centering\includegraphics[width=.98\linewidth]{../plots/outlier_diagnostics.png}
-\caption{Whole-scan quality screen. Red crosses mark scans excluded by the robust scan-deviation criterion; all five pump--probe scans were retained after inspection.}\label{fig:outlier-diagnostics}
-\end{figure}
-\begin{figure}[htbp]
-\centering\includegraphics[width=.98\linewidth]{../plots/excluded_scan_comparison.png}
-\caption{The two statistically flagged scans from the phase-mask-period-8 file, compared with the all-scan pointwise median and the 10th--90th percentile band of retained scans. The vertical dotted line marks the 0.5 ps fit/screen threshold. Scan 4 is borderline; scan 10 shows the larger deviation.}\label{fig:excluded-scan-comparison}
-\end{figure}
-\FloatBarrier
+ The retained-scan means and biexponential fits are shown in Fig.~\ref{fig:gaas-decay}; Fig.~\ref{fig:fit-residuals} shows residuals normalized by the fitted-window signal range. The normalized residual RMS is 1.26\% for pump--probe and 0.71--0.81\% for TG; uncertainties on these descriptive diagnostics and the scan scores have not been estimated. These small global RMS values do not establish model adequacy: coherent residual structure remains, and the pump--probe plot spans a much longer time interval than the TG data. Each residual panel therefore uses its own delay range. A low RMS alone cannot establish a unique microscopic assignment. In particular, the PP signal continues to decrease after both fitted exponential terms have decayed, whereas the fitted background is constant. This systematic behaviour occurs in all repeats. We retain the PP data as evidence of model inadequacy, but do not use its fitted slow rate to constrain the common TG diffusion regression.
 
-
-Table~\ref{tab:tgfits} gives the fitted fast and slow decay times. The data columns are averaged only after the scan screen; the table gives 95\% bootstrap intervals from resampling retained scans, conditional on the selected traces and model. The sample periods use the supplied quarter-period correction, and the first column of each transient file is interpreted in ps.
+Table~\ref{tab:tgfits} gives the fitted fast and slow decay times. The data columns are averaged only after the scan screen; the table gives 95\% bootstrap intervals from resampling retained scans, conditional on the selected traces and model. The sample periods use the supplied quarter-period correction, and the first column of each transient file is interpreted in ps. The tabulated periods and wave numbers are nominal calibration values with unquantified uncertainties; $q=0$ denotes the PP model definition.
 \begin{table}[ht]
 \centering
-\caption{Biexponential fit lifetimes and 95\% repeat-scan bootstrap intervals. The filename value is the phase-mask period; the sample period is one quarter of that value.}
+\caption{Biexponential fit lifetimes with 95\% repeat-scan bootstrap confidence intervals. Each lifetime is written as the fitted value followed by $[\text{lower bound},\text{upper bound}]$, in ps. The bounds are the 2.5th and 97.5th percentiles of fits obtained by resampling complete retained scans. They quantify repeat-scan variability conditional on the selected scans and model, and exclude calibration and model uncertainty. The filename value is the nominal phase-mask period; the sample period is one quarter of that value. Period and wave-number calibration uncertainties are unavailable.}
 \label{tab:tgfits}
 \small
 \begin{tabular}{lrrrr}\toprule
@@ -331,43 +400,123 @@ TG 12 & 3.000 & 2.094 & 2.060 [1.708, 2.463] & 13.283 [11.970, 15.170]\\\bottomr
 \end{tabular}
 \end{table}
 
-\subsection{Part IV: Recombination, ambipolar diffusivity, and mobility}
-For the finite-$q$ TG measurements, the slow-component rates are regressed against $q^2$ as motivated by the diffusion equation. The slope is $3.71\times10^{-15}\,\si{\metre\squared\per\pico\second}$ ($R^2=0.934$), giving a TG-only ambipolar diffusion estimate $D_a=(3.71\pm0.70)\times10^{-3}\,\si{\metre\squared\per\second}$, where the stated error is the standard error of the four-point regression slope. Resampling complete retained scans gives a 95\% bootstrap interval $[2.31,4.96]\times10^{-3}\,\si{\metre\squared\per\second}$. This interval includes repeat-scan variation but not calibration or model uncertainty. Retaining borderline scan 4 while still excluding scan 10 changes the estimate by about 2\% to $3.78\times10^{-3}\,\si{\metre\squared\per\second}$ (Fig.~\ref{fig:rate-q2}).
-
-\begin{figure}[htbp]
-\centering\includegraphics[width=.98\linewidth]{../plots/rate_vs_q2.png}
-\caption{Slow-component rates against $q^2$ computed from the sample grating periods (one quarter of the phase-mask values). The finite-$q$ line gives the TG-only diffusion estimate; including the q=0 pump--probe rate gives a poor linear fit.}\label{fig:rate-q2}
+\begin{figure}[!htbp]
+\centering\includegraphics[width=.98\linewidth]{../plots/gaas_decay.png}
+\caption{Mean delay traces over retained scans and matching-color biexponential fits. The PP panel displays the first \SI{35}{ps} for readability; its fit uses the full record through \SI{2000}{ps}. Error bars show standard errors across retained scans.}\label{fig:gaas-decay}
+\end{figure}
+\begin{figure}[!htbp]
+\centering\includegraphics[width=.98\linewidth]{../plots/gaas_fit_residuals.png}
+\caption{Biexponential fit residuals for the averaged data, normalized by the fitted-window signal range. Each panel has its own delay range, so the long PP record does not compress the TG residuals.}
+\label{fig:fit-residuals}
 \end{figure}
 
-\section{Discussion}
-The pulse-characterization results are internally consistent at the level of scale: the selected pulse durations are close to the \SI{83.8}{fs} Gaussian transform-limit estimate from the measured spectrum. Both fitted durations are slightly shorter than that limit. Since the formal fit errors omit delay-axis calibration, model mismatch and candidate-selection uncertainty, the small difference should not be interpreted as a statistically established violation of the transform limit.
+\begin{figure}[!htbp]
+\centering\includegraphics[width=.98\linewidth]{../plots/excluded_scan_comparison.png}
+\caption{The two statistically flagged scans from the phase-mask-period-8 file, compared with the all-scan pointwise median and the 10th--90th percentile band of retained scans. The vertical dotted line marks the 0.5 ps fit/screen threshold. Scan 4 is borderline; scan 10 shows the larger deviation. Uncertainties on the displayed diagnostic scores have not been estimated.}\label{fig:excluded-scan-comparison}
+\end{figure}
+\FloatBarrier
 
-The reflectivity traces support effective fast and slow decay constants within the fitted interval, but the biexponential form is phenomenological. It does not uniquely map either fitted lifetime to a microscopic carrier process. In particular, the experiment did not measure carrier temperature or energy distribution. The fit begins at \SI{0.5}{ps}, too late to resolve the sub-picosecond thermalization and scattering processes relevant to hot-carrier cooling. The literature times cited in Part II describe such microscopic processes under particular excitation conditions and are not direct benchmarks for our fitted reflectivity lifetimes.
+
+The fitted lifetimes depend on the observation window. With the PP start held at \SI{0.5}{ps}, its slow lifetime changes from $(2.93\pm0.11)$ ps when fitting through \SI{33}{ps}, to $(4.91\pm0.29)$ ps through \SI{57}{ps}, $(5.33\pm0.28)$ ps through \SI{100}{ps}, and $(7.88\pm0.79)$ ps through \SI{2000}{ps} (conditional covariance standard errors for this comparison). Holding the end at \SI{2000}{ps} but moving the start to \SI{2}{ps} gives $(3.43\pm0.19)$ ps and $(375\pm50)$ ps (conditional covariance standard errors); the two components then describe different portions of the relaxation. These covariance errors are distinct from the repeat-scan bootstrap intervals in Table~\ref{tab:tgfits} and do not account for systematic model mismatch. Consequently, the labels ``fast'' and ``slow'' do not identify invariant physical channels across arbitrary fit windows.
+
+\subsection{Part IV: Recombination, ambipolar diffusivity, and mobility}
+For the finite-$q$ TG measurements, the slow-component rates are regressed by unweighted least squares against $q^2$ as motivated by the diffusion equation. The slope is $(3.71\pm0.70)\times10^{-15}\,\si{\metre\squared\per\pico\second}$ ($R^2=0.934$; diagnostic uncertainty not estimated), giving an effective ambipolar diffusivity inferred from the slow TG component, $D_a=(3.71\pm0.70)\times10^{-3}\,\si{\metre\squared\per\second}$, where the stated error is the standard error of the four-point regression slope. Resampling complete retained scans gives a 95\% bootstrap interval $[2.31,4.96]\times10^{-3}\,\si{\metre\squared\per\second}$. This interval includes repeat-scan variation but not calibration or model uncertainty. Retaining borderline scan 4 while still excluding scan 10 gives $(3.78\pm0.56)\times10^{-3}\,\si{\metre\squared\per\second}$ (Fig.~\ref{fig:rate-q2}).
+
+The present data thus permit an effective diffusion estimate under $1/\tau_{\rm TG}=1/\tau_{\rm rec}+D_aq^2$, provided the slow fitted component represents the same population across grating periods. They do not establish a unique material diffusivity: the PP rate disagrees with the TG extrapolation, and the fast and slow TG branches yield different slopes (Sec.~\ref{sec:chen-model}). We therefore interpret the value above specifically as the effective diffusivity of the slow fitted TG component. Model and grating-calibration uncertainties remain unquantified beyond the stated statistical errors.
+
+\begin{figure}[!htbp]
+\centering\includegraphics[width=.98\linewidth]{../plots/rate_vs_q2.png}
+\caption{Slow-component rates against $q^2$ computed from the sample grating periods (one quarter of the phase-mask values). The finite-$q$ line gives the TG-only diffusion estimate; including the $q=0$ pump--probe rate gives a poor linear fit. Error bars are conditional 95\% repeat-scan intervals for the rates; the dotted line shows the borderline-scan sensitivity.}\label{fig:rate-q2}
+\end{figure}
+
+Retaining both flagged scans also gives $D_a=(3.78\pm0.57)\times10^{-3}$ m$^2$/s. The diffusion slope is therefore insensitive to these two exclusions at the quoted precision. With the primary scan masks held fixed, changing the fit start to 0.2, 1.0, or \SI{2.0}{ps} gives $(3.85\pm1.02)$, $(4.36\pm1.25)$, or $(3.08\pm0.42)\times10^{-3}$ m$^2$/s, respectively; the common factor $10^{-3}$ applies to all three values. The uncertainties in these sensitivity regressions are one-standard-error slope estimates, conditional on each selected window and scan set. This window dependence is distinct from the conditional bootstrap uncertainty.
+
+\subsubsection{Additional model checks motivated by Chen et al.}\label{sec:chen-model}
+Section IV of Chen et al.~\cite{chen} derives separate signals for grating imaging, total heterodyne detection and direct diffraction. Their weak-excitation total heterodyne expression, Eq.~(4), has the structure
+\begin{equation}\label{eq:chen-total}
+H(t)\propto F(t)\left[1+\frac12 e^{-D_aq^2t}\right],\qquad
+F(t)=A_r e^{-t/\tau_r}+A_c e^{-t/\tau_c}.
+\end{equation}
+The non-diffusing term arises from the population response present in the total detected signal. The paper uses a GaAs/AlAs superlattice and a specific transmission geometry; neither its numerical lifetimes nor its fixed mixing coefficient can be transferred directly to our reflection experiment.
+
+Under the tutorial's interpretation of the supplied TG traces as phase-extracted grating amplitudes, the appropriate quantity is the phase-dependent coefficient, rather than the whole signal in Eq.~\eqref{eq:chen-total}. This distinction follows explicitly by writing
+\begin{align}
+S(t,\psi)-B&=P(t)+G(t)\cos\psi,\\
+\frac{S(t,\psi)+S(t,\psi+\pi)}{2}-B&=P(t),\\
+\frac{S(t,\psi)-S(t,\psi+\pi)}{2\cos\psi}&=G(t)\quad(\cos\psi\ne0).
+\end{align}
+The last equation isolates the grating response; it removes the additive population term. The raw phase scans and extraction metadata are unavailable, so this channel interpretation remains an experimental assumption. Adding the paper's non-diffusing term to already extracted TG amplitudes without checking their definition would mix distinct observables.
+
+For a common diffusivity acting on the two components, the isolated response would be
+\begin{align}
+G(t)&=F(t)e^{-D_aq^2t}\\
+&=A_r e^{-(1/\tau_r+D_aq^2)t}+A_c e^{-(1/\tau_c+D_aq^2)t},\\
+k_r(q)&=1/\tau_r+D_aq^2,\qquad
+k_c(q)=1/\tau_c+D_aq^2.
+\end{align}
+Both rate branches must therefore have the same slope against $q^2$. Applying the existing analysis to both fitted branches gives
+\begin{align}
+D_{\rm fast}^{\rm eff}&=(2.05\pm0.63)\times10^{-2}\ \mathrm{m^2/s},\\
+D_{\rm slow}^{\rm eff}&=(3.71\pm0.70)\times10^{-3}\ \mathrm{m^2/s},
+\end{align}
+where the uncertainties are regression standard errors. These are diagnostic slopes, not two independently established material diffusivities. A paired 300-replicate bootstrap resamples whole retained scans and refits both components together, preserving their correlation. Its conditional 95\% interval for $D_{\rm fast}^{\rm eff}-D_{\rm slow}^{\rm eff}$ is $[0.72,2.72]\times10^{-2}$ m$^2$/s. Thus the simple common-diffusivity assignment is inconsistent with the independently fitted components within the retained-scan variability. Model, fit-window, channel-definition and grating-period uncertainties are excluded. Figure~\ref{fig:paper-model-diagnostics} shows the two rate branches. The slow-branch result remains an exploratory effective estimate rather than a validated common transport coefficient.
+
+The paper also emphasizes measuring the population relaxation before constraining grating transport. Our PP residuals show that the existing biexponential-plus-constant model is inadequate over the complete record. As an empirical diagnostic, we therefore fit
+\begin{equation}
+S_{\rm PP}^{(3)}(t)=B+\sum_{j=1}^3 A_j e^{-t/\tau_j},\qquad
+0<\tau_1<\tau_2<\tau_3,
+\end{equation}
+using the same unweighted fit window and retained repeats. The resulting times are $(0.674\pm0.011)$ ps, $(5.22\pm0.17)$ ps and $(619\pm60)$ ps, with conditional covariance standard errors. The normalized residual RMS decreases from 1.26\% to 0.303\%; uncertainties on these descriptive RMS diagnostics have not been estimated. The extra slow term captures much of the monotonic residual structure, although structured residuals remain (Fig.~\ref{fig:paper-model-diagnostics}). This does not prove a third carrier process: a non-exponential response or an evolving instrumental background can also produce a slow contribution. In particular, the fitted longest time is not established as a recombination lifetime. The change in the fast fitted time further demonstrates the model dependence of the cooling proxy. The original fit is retained as the stated baseline analysis, with this alternative explicitly shown as a model-sensitivity check. The calculations are reproducible with \texttt{analysis/paper\_model\_comparison.py}.
+
+\section{Discussion}
+The revised autocorrelation analysis gives pulses longer than the spectral Gaussian transform limit, with a shorter fitted duration after compression. Correcting the unequal overlap widths and the nonuniform fringe spacing removes the earlier sub-transform-limit estimates. The displayed envelope is a visualization of the fitted modulation bound; pulse deconvolution uses the raw-signal fit parameter. Residual structure and fit-window dependence remain, so the numerical durations are effective Gaussian-model estimates. An independently measured mirror trajectory and a phase-sensitive pulse measurement would help separate scan nonlinearity, pulse chirp, and detector response.
+
+The fast PP lifetime can be quoted as a conditional cooling proxy, but the data do not establish the required proportionality between reflectivity and carrier temperature. Carrier thermalization, phonon scattering, energy cooling, and recombination are distinct processes. The cutoff at \SI{0.5}{ps} limits the earliest dynamics; the stronger reason for caution is the missing response calibration and the observed dependence on fit interval.
 
 The main transport result is the finite-$q$ TG slope shown in Fig.~\ref{fig:rate-q2}. The fit yields
 \begin{equation*}
 D_a=(3.71\pm0.70)\times10^{-3}\,\si{\metre\squared\per\second}
-\quad (\text{about }37\,\si{\centi\metre\squared\per\second}).
+\quad = (37.1\pm7.0)\,\si{\centi\metre\squared\per\second}.
 \end{equation*}
-The repeat-scan bootstrap interval is $[2.31,4.96]\times10^{-3}\,\si{\metre\squared\per\second}$. A bulk-GaAs pump--probe study reports an ambipolar diffusivity near $20\,\si{\centi\metre\squared\per\second}$ at room temperature, so the present estimate is of the same order but roughly 1.9 times larger \cite{ruzicka}. This is not a controlled like-for-like comparison because our carrier density, fluence and sample temperature are unavailable; density-dependent effects can also change GaAs diffusivity \cite{young}.
+The repeat-scan bootstrap interval is $[2.31,4.96]\times10^{-3}\,\si{\metre\squared\per\second}$. A bulk-GaAs pump--probe study reports an ambipolar diffusivity near $20\,\si{\centi\metre\squared\per\second}$ at room temperature (approximate literature value; uncertainty not specified in the cited abstract), so the present estimate is of the same order \cite{ruzicka}. This is not a controlled like-for-like comparison because our carrier density, fluence and measured sample temperature are unavailable; density-dependent effects can also change GaAs diffusivity \cite{young}.
 
-The finite-$q$ regression intercept corresponds to a nominal recombination time of \SI{16.3}{ps}. The pump--probe slow rate instead corresponds to \SI{7.878}{ps}, about twice the TG extrapolation; including the $q=0$ point reduces the linear-fit $R^2$ to 0.161. This disagreement is the central limitation of the pump--probe comparison: the $q=0$ reflectivity signal and finite-$q$ diffracted signal may weight different relaxation channels, while the simple rate law assumes one common population and one recombination intercept. Thus the TG-only slope is an exploratory estimate, and the intercept should not be reported as a measured recombination lifetime.
+The finite-$q$ regression intercept corresponds to a nominal recombination time of $(16.3\pm2.5)$ ps (first-order propagation of the regression intercept standard error). The pump--probe slow lifetime is \SI{7.878}{ps} with a conditional 95\% repeat-scan interval $[7.753,8.040]$ ps. Equivalently, its rate is $0.1269$ ps$^{-1}$ with a 95\% interval $[0.1244,0.1290]$ ps$^{-1}$, compared with the TG intercept $(0.0612\pm0.0095)$ ps$^{-1}$ (regression standard error); including the $q=0$ point reduces the linear-fit $R^2$ to 0.161 (diagnostic uncertainty not estimated). This disagreement is the central limitation of the pump--probe comparison: the $q=0$ reflectivity signal and finite-$q$ diffracted signal may weight different relaxation channels, while the simple rate law assumes one common population and one recombination intercept. Thus the TG-only slope is an exploratory estimate, and the intercept should not be reported as a measured recombination lifetime.
 
-Using $\mu_a=eD_a/(k_BT)$ at an assumed $T=\SI{300}{K}$ gives a conditional mobility of about $1.44\times10^3\,\si{\centi\metre\squared\per\volt\per\second}$. The sample temperature was not logged, and the Einstein conversion assumes non-degenerate carriers in thermal equilibrium at a common temperature. Therefore this mobility is conditional on assumptions rather than a direct measurement. Across the analysis, the main unresolved uncertainties are the delay and grating-period calibrations, the fit interval and biexponential model, limited grating-period sampling, scan-selection sensitivity, and missing acquisition metadata.
+Using $\mu_a=eD_a/(k_BT)$ at an assumed $T=\SI{300}{K}$ gives a conditional mobility of $(1.44\pm0.27)\times10^3\,\si{\centi\metre\squared\per\volt\per\second}$. The mobility uncertainty propagates only the regression slope error at fixed assumed temperature; the corresponding 95\% repeat-scan interval is $[0.89,1.92]\times10^3$ cm$^2$/(V\,s). The nominal condition is room temperature, but the actual sample temperature and its uncertainty were not logged, and the Einstein conversion assumes non-degenerate carriers in thermal equilibrium at a common temperature. Therefore this mobility is conditional on assumptions rather than a direct measurement. Across the analysis, the main unresolved uncertainties are the delay and grating-period calibrations, the fit interval and biexponential model, limited grating-period sampling, scan-selection sensitivity, and missing acquisition metadata.
 
 \section{Conclusion}
-The supplied measurements support pulse-duration estimates near \SI{80}{fs} and effective fast and slow transient-decay times. The spectral transform-limit comparison is close, although systematic uncertainties are larger than the formal fit errors. The data do not directly determine hot-carrier cooling or an electron--phonon coupling coefficient. The finite-$q$ TG rates produce an exploratory ambipolar-diffusivity estimate of $(3.71\pm0.70)\times10^{-3}\,\si{\metre\squared\per\second}$ and a conditional mobility estimate if room temperature is assumed. The mismatch between the pump--probe rate and TG extrapolation, together with sparse wave-number sampling and missing experimental metadata, prevents a firm recombination-lifetime determination or a strong literature comparison.
+The reviewed analysis gives Gaussian pulse-intensity durations of $(112.89\pm0.10)$ fs before and $(93.902\pm0.054)$ fs after compression, compared with a $(83.87\pm0.24)$ fs transform-limit estimate from the spectrum. The quoted pulse and transform-limit errors are formal standard errors; total calibration and model uncertainties remain unquantified. Correct overlap widths and nonlinear fringe calibration are essential to these results. Fit-window effects exceed formal pulse-fit errors. The transient data yield reproducible effective decay constants for a specified window, but do not uniquely identify microscopic cooling or recombination. An effective cooling-time estimate of \SI{0.717}{ps} (95\% repeat-scan interval $[0.698,0.743]$ ps) can be reported under the assumption of a temperature-sensitive optical response, with additional model and assignment uncertainty unquantified; a volumetric electron--phonon coefficient cannot be obtained without additional heat-capacity and excitation information. The finite-$q$ TG slope gives an effective slow-component diffusivity $D_a=(3.71\pm0.70)\times10^{-3}$ m$^2$/s, with conditional mobility $(1.44\pm0.27)\times10^3$ cm$^2$/(V\,s) at an assumed \SI{300}{K} (temperature uncertainty unavailable). The diffusion and mobility errors are regression standard errors and exclude calibration uncertainty. The PP/TG intercept mismatch and measured fit-window sensitivity prevent a firm common recombination-lifetime assignment. The additional checks motivated by Chen et al. expose a slow PP contribution and unequal fast/slow rate slopes, further limiting the common-population transport interpretation (Sec.~\ref{sec:chen-model}).
+
+\appendix
+\section{Autocorrelation calibration and residuals}\label{sec:iac-residuals}
+Figure~\ref{fig:iac-residuals} documents the residual structure of the selected raw-signal fits. The pulse-width analysis in Part I uses these residuals to assess the calibration and fit quality; the envelope overlay alone is not a goodness-of-fit diagnostic.
+\begin{figure}[!htbp]
+\centering\includegraphics[width=\linewidth]{../plots/autocorrelation_residuals.png}
+\caption{Selected autocorrelation fit residuals, normalized by the measured range in the fitted interval. Structured residuals remain after nonlinear fringe calibration and indicate that covariance errors alone understate uncertainty. Uncertainties on the displayed RMS diagnostics have not been estimated.}\label{fig:iac-residuals}
+\end{figure}
+\begin{figure}[!htbp]
+\centering\includegraphics[width=\linewidth]{../plots/fringe_calibration.png}
+\caption{Local fringe frequency during the selected before- and after-compressor autocorrelation scans. Blue points give the inverse recorded-time separation between successive raw-signal maxima, $f_i=1/(x_{i+1}-x_i)$, placed at the interval midpoint. The red curve is the derivative of the fitted cubic mapping from recorded time to optical-delay cycles. The dashed horizontal line shows the central frequency used in a constant-speed approximation. Toward the scan edges, the fringes are farther apart in recorded time and their local frequency decreases, supporting a nonlinear time-to-optical-delay calibration for pulse-width extraction. This frequency describes the recorded interference fringes, rather than the optical carrier frequency of the laser. Pointwise frequency uncertainties are unquantified; the plot is a calibration diagnostic.}\label{fig:fringe-calibration}
+\end{figure}
+\FloatBarrier
+
+\section{Population and transport model diagnostics}
+\begin{figure}[!htbp]
+\centering\includegraphics[width=\linewidth]{../plots/paper_model_diagnostics.png}
+\caption{Checks motivated by Section IV of Chen et al. Top: PP residuals for the baseline biexponential-plus-constant fit and an empirical three-exponential-plus-constant alternative. The extra slow term reduces the systematic long-time residual but does not identify its physical origin. Bottom: separately regressed fast and slow TG rates; error bars are conditional 95\% whole-scan bootstrap intervals. Nominal wave-number calibration uncertainties are unavailable. Both branches would have equal slopes under a shared diffusivity.}\label{fig:paper-model-diagnostics}
+\end{figure}
+\FloatBarrier
 
 \begin{thebibliography}{9}
+\bibitem{chen} K. Chen et al., ``Comparison between Grating Imaging and Transient Grating Techniques on Measuring Carrier Diffusion in Semiconductor,'' preprint (2018), \href{https://arxiv.org/abs/1805.01561}{arXiv:1805.01561v1}, especially Sec.~IV and Eqs.~(3)--(5).
 \bibitem{tutorial} Institute of Physics II, University of Cologne, \emph{M2.10: Ultrafast Transient Grating Spectroscopy}, practical-course tutorial, version December 2019, especially Eqs.~(4.2)--(4.14) and Secs.~5--6.
-\bibitem{hunsche} S. Hunsche, H. Heesel, A. Ewertz, H. Kurz, and J. H. Collet, ``Spectral-hole burning and carrier thermalization in GaAs at room temperature,'' \emph{Physical Review B} \textbf{48}, 17818 (1993), doi:10.1103/PhysRevB.48.17818.
-\bibitem{ruzicka} B. A. Ruzicka, L. K. Werake, H. Samassekou, and H. Zhao, ``Ambipolar diffusion of photo-excited carriers in bulk GaAs,'' \emph{Applied Physics Letters} \textbf{97}, 262119 (2010), doi:10.1063/1.3533664.
-\bibitem{kash} J. A. Kash, J. C. Tsang, and J. M. Hvam, ``Subpicosecond Time-Resolved Raman Spectroscopy of LO Phonons in GaAs,'' \emph{Physical Review Letters} \textbf{54}, 2151 (1985), doi:10.1103/PhysRevLett.54.2151.
-\bibitem{leheny} R. F. Leheny, J. Shah, R. L. Fork, C. V. Shank, and A. Migus, ``Dynamics of hot carrier cooling in photo-excited GaAs,'' \emph{Solid State Communications} \textbf{31}, 809--813 (1979), doi:10.1016/0038-1098(79)90393-4.
-\bibitem{young} J. F. Young and H. M. van Driel, ``Ambipolar diffusion of high-density electrons and holes in Ge, Si, and GaAs: Many-body effects,'' \emph{Physical Review B} \textbf{26}, 2147 (1982), doi:10.1103/PhysRevB.26.2147.
+\bibitem{hunsche} S. Hunsche, H. Heesel, A. Ewertz, H. Kurz, and J. H. Collet, ``Spectral-hole burning and carrier thermalization in GaAs at room temperature,'' \emph{Physical Review B} \textbf{48}, 17818 (1993), \href{https://doi.org/10.1103/PhysRevB.48.17818}{doi:10.1103/PhysRevB.48.17818}.
+\bibitem{ruzicka} B. A. Ruzicka, L. K. Werake, H. Samassekou, and H. Zhao, ``Ambipolar diffusion of photo-excited carriers in bulk GaAs,'' \emph{Applied Physics Letters} \textbf{97}, 262119 (2010), \href{https://doi.org/10.1063/1.3533664}{doi:10.1063/1.3533664}; \href{https://arxiv.org/abs/1102.1366}{arXiv:1102.1366}.
+\bibitem{kash} J. A. Kash, J. C. Tsang, and J. M. Hvam, ``Subpicosecond Time-Resolved Raman Spectroscopy of LO Phonons in GaAs,'' \emph{Physical Review Letters} \textbf{54}, 2151 (1985), \href{https://doi.org/10.1103/PhysRevLett.54.2151}{doi:10.1103/PhysRevLett.54.2151}.
+\bibitem{young} J. F. Young and H. M. van Driel, ``Ambipolar diffusion of high-density electrons and holes in Ge, Si, and GaAs: Many-body effects,'' \emph{Physical Review B} \textbf{26}, 2147 (1982), \href{https://doi.org/10.1103/PhysRevB.26.2147}{doi:10.1103/PhysRevB.26.2147}.
 \end{thebibliography}
 
 \section*{AI Use Disclosure}
 \addcontentsline{toc}{section}{AI Use Disclosure}
-Generative AI was used to assist with data-analysis code, plotting, and editing the presentation of this report. The authors reviewed the analysis, calculations, figures, and final text and remain responsible for their accuracy and conclusions.
+Generative AI (OpenAI Codex) assisted with Python analysis, plotting, mathematical derivations, literature checks, and drafting and revising this report. Calculations and figures were generated from the supplied experimental files. AI assistance does not replace independent scientific review; responsibility for the submitted analysis and conclusions remains with the authors.
 \end{document}
