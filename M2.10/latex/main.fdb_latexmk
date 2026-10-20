@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1792485940.93773 "main.tex" "main.pdf" "main" 1792485943.81311 0
+["pdflatex"] 1792487754.34675 "main.tex" "main.pdf" "main" 1792487757.37216 0
   "../plots/autocorrelation_pulsewidth.png" 1792484722.46429 568471 1b342096f570b79f66eb83ad5b1b2723 ""
   "../plots/autocorrelation_residuals.png" 1792484722.7343 314071 d5abdf0b423de828857d7a387afc8a76 ""
   "../plots/excluded_scan_comparison.png" 1792412918.24688 187623 d512efe3bf46dfe90588e20dd14d8b20 ""
@@ -65,6 +65,8 @@
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb" 1248133631 32626 4f5c1b83753b1dd3a97d1b399a005b4b ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb" 1248133631 37944 359e864bd06cde3b1cf57bb20757fb06 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb" 1248133631 31099 c85edf1dd5b9e826d67c9c7293b6786c ""
+  "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb" 1248133631 30273 87a352d78b6810ae5cfdc68d2fb827b2 ""
+  "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb" 1248133631 34694 ad62b13721ee8eda1dcc8993c8bd7041 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb" 1215737283 138258 6525c253f16cededa14c7fd0da7f67b2 ""
   "/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1461363279 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/usr/local/texlive/2024/texmf-dist/tex/generic/atbegshi/atbegshi.sty" 1575674566 24708 5584a51a7101caf7e6bbf1fc27d8f7b1 ""
@@ -141,10 +143,11 @@
   "figures/tutorial_grating.png" 1792398956.44135 34208 3ac1c5944cc0159c5915681b4695f845 ""
   "figures/tutorial_heterodyne.png" 1792399044.41777 65779 85367fb38f0fb0969b9fb2f1b5695bc2 ""
   "figures/tutorial_setup.png" 1792398956.49535 72155 8255fb105d4376884f8c42c24e6c6a34 ""
-  "main.aux" 1792485943.76215 18158 225db22d208ad13c8034c2e9f19882c9 "pdflatex"
-  "main.out" 1792485943.76275 5119 0df9b71727992adb9ecd4893ae2a2db4 "pdflatex"
-  "main.tex" 1792485936.115 59881 d93dc6646b78cca02c8d16d28f3da076 ""
-  "main.toc" 1792485943.76275 2305 7c0119e966db198141607280696845a0 "pdflatex"
+  "main.aux" 1792487757.31248 20548 fa27a1b1a8e9b9197e732e0beb9584c6 "pdflatex"
+  "main.out" 1792487757.31481 9802 a512be1508df23b845f41bf702575264 "pdflatex"
+  "main.tex" 1792487750.23261 60183 2e8027d1163d045761fc5b52af65bcff ""
+  "main.toc" 1792487757.31481 3969 c3e7f246a3619b6ea0efe566108c6c5e "pdflatex"
+  "tutorial_answers.tex" 1792487750.23161 21057 9fb889ddf15f062e274c2af3385010b4 ""
   (generated)
   "main.aux"
   "main.log"

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.14)  20 OCT 2026 10:45
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.14)  20 OCT 2026 11:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -391,8 +391,8 @@ File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count315
 \l__pdf_internal_box=\box64
 )
-(/home/angelo/Documents/AdvancedLaboratoryCourse/M2.10/latex/build-effective-in
-terpretation/main.aux)
+(/home/angelo/Documents/AdvancedLaboratoryCourse/M2.10/latex/build-tutorial-ans
+wers/main.aux)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
@@ -477,17 +477,16 @@ nslations-basic-dictionary')
 )
 Package hyperref Info: Link coloring OFF on input line 15.
 
-(/home/angelo/Documents/AdvancedLaboratoryCourse/M2.10/latex/build-effective-in
-terpretation/main.out)
-(/home/angelo/Documents/AdvancedLaboratoryCourse/M2.10/latex/build-effective-in
-terpretation/main.out)
+(/home/angelo/Documents/AdvancedLaboratoryCourse/M2.10/latex/build-tutorial-ans
+wers/main.out)
+(/home/angelo/Documents/AdvancedLaboratoryCourse/M2.10/latex/build-tutorial-ans
+wers/main.out)
 \@outlinefile=\write3
 \openout3 = `main.out'.
 
 LaTeX Font Info:    Trying to load font information for U+msa on input line 17.
 
-
-(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Trying to load font information for U+msb on input line 17.
@@ -496,19 +495,19 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 17.
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-(/home/angelo/Documents/AdvancedLaboratoryCourse/M2.10/latex/build-effective-in
-terpretation/main.toc)
+(/home/angelo/Documents/AdvancedLaboratoryCourse/M2.10/latex/build-tutorial-ans
+wers/main.toc
+
+[1
+
+{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}])
 \tf@toc=\write4
 \openout4 = `main.toc'.
 
 
 
-[1
-
-{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-
 [2]
-<figures/tutorial_grating.png, id=134, 785.93625pt x 271.0125pt>
+<figures/tutorial_grating.png, id=205, 785.93625pt x 271.0125pt>
 File: figures/tutorial_grating.png Graphic file (type png)
 <use figures/tutorial_grating.png>
 Package pdftex.def Info: figures/tutorial_grating.png  used on input line 45.
@@ -534,18 +533,18 @@ l.186 \end{align}
 [7]
 
 [8]
-<figures/tutorial_setup.png, id=257, 903.375pt x 551.05875pt>
+<figures/tutorial_setup.png, id=328, 903.375pt x 551.05875pt>
 File: figures/tutorial_setup.png Graphic file (type png)
 <use figures/tutorial_setup.png>
 Package pdftex.def Info: figures/tutorial_setup.png  used on input line 286.
 (pdftex.def)             Requested size: 373.3035pt x 227.71814pt.
-<figures/tutorial_autocorrelator.png, id=258, 840.13875pt x 569.12625pt>
+<figures/tutorial_autocorrelator.png, id=329, 840.13875pt x 569.12625pt>
 File: figures/tutorial_autocorrelator.png Graphic file (type png)
 <use figures/tutorial_autocorrelator.png>
 Package pdftex.def Info: figures/tutorial_autocorrelator.png  used on input lin
 e 290.
 (pdftex.def)             Requested size: 345.98302pt x 234.37668pt.
-<figures/tutorial_heterodyne.png, id=259, 930.47626pt x 370.38374pt>
+<figures/tutorial_heterodyne.png, id=330, 930.47626pt x 370.38374pt>
 File: figures/tutorial_heterodyne.png Graphic file (type png)
 <use figures/tutorial_heterodyne.png>
 Package pdftex.def Info: figures/tutorial_heterodyne.png  used on input line 29
@@ -559,7 +558,7 @@ Package pdftex.def Info: figures/tutorial_heterodyne.png  used on input line 29
 rodyne.png (PNG copy)>]
 
 [11]
-<../plots/vor_nach.png, id=288, 722.7pt x 505.89pt>
+<../plots/vor_nach.png, id=358, 722.7pt x 505.89pt>
 File: ../plots/vor_nach.png Graphic file (type png)
 <use ../plots/vor_nach.png>
 Package pdftex.def Info: ../plots/vor_nach.png  used on input line 326.
@@ -567,7 +566,7 @@ Package pdftex.def Info: ../plots/vor_nach.png  used on input line 326.
 
 
 [12 <../plots/vor_nach.png>]
-<../plots/spectrum.png, id=298, 658.46pt x 550.055pt>
+<../plots/spectrum.png, id=368, 658.46pt x 550.055pt>
 File: ../plots/spectrum.png Graphic file (type png)
 <use ../plots/spectrum.png>
 Package pdftex.def Info: ../plots/spectrum.png  used on input line 344.
@@ -575,7 +574,7 @@ Package pdftex.def Info: ../plots/spectrum.png  used on input line 344.
  (./autocorrelation_results.tex)
 
 [13 <../plots/spectrum.png>]
-<../plots/autocorrelation_pulsewidth.png, id=314, 658.46pt x 731.1315pt>
+<../plots/autocorrelation_pulsewidth.png, id=384, 658.46pt x 731.1315pt>
 File: ../plots/autocorrelation_pulsewidth.png Graphic file (type png)
 <use ../plots/autocorrelation_pulsewidth.png>
 Package pdftex.def Info: ../plots/autocorrelation_pulsewidth.png  used on input
@@ -588,18 +587,18 @@ Package pdftex.def Info: ../plots/autocorrelation_pulsewidth.png  used on input
 [15 <../plots/autocorrelation_pulsewidth.png>]
 
 [16]
-<../plots/gaas_decay.png, id=347, 722.7pt x 433.62pt>
+<../plots/gaas_decay.png, id=417, 722.7pt x 433.62pt>
 File: ../plots/gaas_decay.png Graphic file (type png)
 <use ../plots/gaas_decay.png>
 Package pdftex.def Info: ../plots/gaas_decay.png  used on input line 404.
 (pdftex.def)             Requested size: 446.13727pt x 267.68373pt.
-<../plots/gaas_fit_residuals.png, id=348, 650.43pt x 794.97pt>
+<../plots/gaas_fit_residuals.png, id=418, 650.43pt x 794.97pt>
 File: ../plots/gaas_fit_residuals.png Graphic file (type png)
 <use ../plots/gaas_fit_residuals.png>
 Package pdftex.def Info: ../plots/gaas_fit_residuals.png  used on input line 40
 8.
 (pdftex.def)             Requested size: 446.13727pt x 545.29112pt.
-<../plots/excluded_scan_comparison.png, id=349, 794.97pt x 317.988pt>
+<../plots/excluded_scan_comparison.png, id=419, 794.97pt x 317.988pt>
 File: ../plots/excluded_scan_comparison.png Graphic file (type png)
 <use ../plots/excluded_scan_comparison.png>
 Package pdftex.def Info: ../plots/excluded_scan_comparison.png  used on input l
@@ -615,7 +614,7 @@ c}]
 [19 <../plots/gaas_fit_residuals.png>]
 
 [20 <../plots/excluded_scan_comparison.png>]
-<../plots/rate_vs_q2.png, id=378, 456.5055pt x 315.579pt>
+<../plots/rate_vs_q2.png, id=449, 456.5055pt x 315.579pt>
 File: ../plots/rate_vs_q2.png Graphic file (type png)
 <use ../plots/rate_vs_q2.png>
 Package pdftex.def Info: ../plots/rate_vs_q2.png  used on input line 428.
@@ -629,13 +628,13 @@ Package pdftex.def Info: ../plots/rate_vs_q2.png  used on input line 428.
 [22 <../plots/rate_vs_q2.png>]
 
 [23]
-<../plots/autocorrelation_residuals.png, id=416, 650.43pt x 433.62pt>
+<../plots/autocorrelation_residuals.png, id=486, 650.43pt x 433.62pt>
 File: ../plots/autocorrelation_residuals.png Graphic file (type png)
 <use ../plots/autocorrelation_residuals.png>
 Package pdftex.def Info: ../plots/autocorrelation_residuals.png  used on input 
 line 494.
 (pdftex.def)             Requested size: 455.24411pt x 303.50546pt.
-<../plots/fringe_calibration.png, id=417, 658.46pt x 660.066pt>
+<../plots/fringe_calibration.png, id=487, 658.46pt x 660.066pt>
 File: ../plots/fringe_calibration.png Graphic file (type png)
 <use ../plots/fringe_calibration.png>
 Package pdftex.def Info: ../plots/fringe_calibration.png  used on input line 49
@@ -648,18 +647,32 @@ Package pdftex.def Info: ../plots/fringe_calibration.png  used on input line 49
 [25 <../plots/autocorrelation_residuals.png>]
 
 [26 <../plots/fringe_calibration.png>]
-<../plots/paper_model_diagnostics.png, id=433, 650.43pt x 578.16pt>
+<../plots/paper_model_diagnostics.png, id=503, 650.43pt x 578.16pt>
 File: ../plots/paper_model_diagnostics.png Graphic file (type png)
 <use ../plots/paper_model_diagnostics.png>
 Package pdftex.def Info: ../plots/paper_model_diagnostics.png  used on input li
 ne 505.
 (pdftex.def)             Requested size: 455.24411pt x 404.67395pt.
-
+ (./tutorial_answers.tex
 
 [27
 
  <../plots/paper_model_diagnostics.png>]
-Underfull \hbox (badness 1308) in paragraph at lines 515--516
+
+[28
+
+]
+
+[29]
+
+[30]
+
+[31]
+
+[32]
+
+[33])
+Underfull \hbox (badness 1308) in paragraph at lines 518--519
 \OT1/cmr/m/n/10.95 Spec-troscopy of LO Phonons in GaAs,'' \OT1/cmr/m/it/10.95 P
 hys-i-cal Re-view Let-ters \OT1/cmr/bx/n/10.95 54\OT1/cmr/m/n/10.95 , 2151 (198
 5),
@@ -667,49 +680,53 @@ hys-i-cal Re-view Let-ters \OT1/cmr/bx/n/10.95 54\OT1/cmr/m/n/10.95 , 2151 (198
 
 
 
-[28]
-(/home/angelo/Documents/AdvancedLaboratoryCourse/M2.10/latex/build-effective-in
-terpretation/main.aux)
+[34]
+
+[35]
+(/home/angelo/Documents/AdvancedLaboratoryCourse/M2.10/latex/build-tutorial-ans
+wers/main.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-09-10>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 0DF9B71727992ADB9ECD4893AE2A2DB4;5119.
+(rerunfilecheck)             Checksum: A512BE1508DF23B845F41BF702575264;9802.
  ) 
 Here is how much of TeX's memory you used:
- 15532 strings out of 473579
- 303609 string characters out of 5728233
- 696005 words of memory out of 5000000
- 38076 multiletter control sequences out of 15000+600000
+ 15628 strings out of 473579
+ 304917 string characters out of 5728233
+ 696099 words of memory out of 5000000
+ 38097 multiletter control sequences out of 15000+600000
  572365 words of font info for 89 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,14n,80p,1734b,1034s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,14n,80p,1734b,1013s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
-/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></
-usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></us
-r/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/
-local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/lo
-cal/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/loca
-l/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/
-texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/te
-xlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texli
-ve/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/
-2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/202
-4/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2024/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf
--dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2024/texmf-d
-ist/fonts/type1/public/cm-super/sfrm1000.pfb>
+/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pf
+b></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
+></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><
+/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></u
+sr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr
+/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/l
+ocal/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/loc
+al/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local
+/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/te
+xlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texli
+ve/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/
+2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/20
+24/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/202
+4/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2024/texm
+f-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/
+texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
 Output written on /home/angelo/Documents/AdvancedLaboratoryCourse/M2.10/latex/b
-uild-effective-interpretation/main.pdf (28 pages, 2941833 bytes).
+uild-tutorial-answers/main.pdf (35 pages, 2997990 bytes).
 PDF statistics:
- 574 PDF objects out of 1000 (max. 8388607)
- 474 compressed objects within 5 object streams
- 175 named destinations out of 1000 (max. 500000)
- 247 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 769 PDF objects out of 1000 (max. 8388607)
+ 656 compressed objects within 7 object streams
+ 247 named destinations out of 1000 (max. 500000)
+ 359 words of extra memory for PDF output out of 10000 (max. 10000000)
 

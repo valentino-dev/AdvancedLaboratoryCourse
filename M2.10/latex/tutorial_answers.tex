@@ -1,0 +1,251 @@
+\clearpage
+\section{Answers to the tutorial questions}\label{sec:tutorial-answers}
+This section answers the preparation questions, embedded questions, calculation tasks, and bonus question in the course tutorial~\cite{tutorial}, in their original order. The headings paraphrase the prompts. The final subsection links the analysis tasks to the experimental results. Numerical constants derived from ideal models are exact expressions or rounded mathematical values, rather than measurements with statistical uncertainties.
+
+\subsection{Preparation: optical components and laser operation}
+\textbf{What do the optical components do, and how does a solid-state laser work?}
+A prism refracts different wavelengths through different angles and can therefore separate spectral components or provide adjustable dispersion in a compressor. A waveplate introduces a phase difference between two orthogonal polarization components: a half-wave plate rotates linear polarization, while a quarter-wave plate can convert appropriately oriented linear polarization into circular polarization. A polarizer selects one polarization component. The BBO crystal converts part of the fundamental light into its second harmonic.
+
+LASER stands for \emph{Light Amplification by Stimulated Emission of Radiation}. A solid-state laser contains a pumped gain medium, a resonator with mirrors, and a partially transmitting output coupler. Pump absorption establishes a population inversion on the laser transition. A resonant photon can stimulate an excited ion to emit into the same optical mode; repeated passes amplify the light when the round-trip gain exceeds the losses. Gain saturation sets the steady output. The broad gain bandwidth of Ti:sapphire supports many longitudinal modes. Their frequencies satisfy the cavity resonance condition; for an ideal empty linear cavity of length $L$, their separation is $c/(2L)$.
+
+For equally spaced modes with locked phases, the interference is explicitly
+\begin{align}
+E(t)&=E_0e^{i\omega_0t}\sum_{m=0}^{M-1}e^{im\Delta\omega t}
+=E_0e^{i\omega_0t}\frac{1-e^{iM\Delta\omega t}}{1-e^{i\Delta\omega t}},\\
+|E(t)|^2&=|E_0|^2
+\frac{\sin^2(M\Delta\omega t/2)}{\sin^2(\Delta\omega t/2)}.
+\end{align}
+The limiting peak intensity is $M^2|E_0|^2$ at multiples of $2\pi/\Delta\omega$; adding locked modes narrows each peak. In Kerr-lens mode locking, $n=n_0+n_2I$ makes the intense beam center focus more strongly. An aperture or the spatial overlap with the pumped gain region then favors intense pulses through lower effective loss. Dispersion compensation helps maintain their short duration.
+
+\subsection{Nonlinear optics and the role of BBO}
+\textbf{Why is BBO used, and what does a nonlinear optical response mean?}
+At sufficiently strong fields, the induced polarization is not simply proportional to the applied field. Suppressing tensor indices,
+\begin{align}
+P&=\epsilon_0\bigl(\chi^{(1)}E+\chi^{(2)}E^2+\cdots\bigr),\\
+E(t)&=E_0\cos\omega t,\\
+P^{(2)}(t)&=\frac{\epsilon_0\chi^{(2)}E_0^2}{2}
+                 \bigl[1+\cos(2\omega t)\bigr].
+\end{align}
+The quadratic polarization contains an oscillation at twice the input frequency and radiates second-harmonic light. BBO is non-centrosymmetric, has a useful second-order susceptibility, and permits phase matching by crystal orientation. With suitable phase matching, weak conversion, and adequate bandwidth, $E_{2\omega}\propto E_\omega^2$, so $I_{2\omega}\propto I_\omega^2$. The \emph{field} and \emph{intensity} scaling must be distinguished. The crystal and the filter in Fig.~\ref{fig:tutorial-autocorrelator} let the detector select this nonlinear overlap signal.
+
+\subsection{Gaussian and Lorentzian time--bandwidth products}
+\textbf{What are the transform-limited constants for the two pulse shapes?}
+Both widths below are intensity FWHM values, and frequency is measured in cycles per second. For the Gaussian field $a(t)=e^{-t^2/\Gamma^2}$, the Gaussian integration derived in the theoretical background gives
+\begin{align}
+|a(t)|^2&=e^{-2t^2/\Gamma^2},&
+|\widetilde a(\nu)|^2&=\pi\Gamma^2e^{-2\pi^2\Gamma^2\nu^2},\\
+\Delta t&=\Gamma\sqrt{2\ln2},&
+\Delta\nu&=\frac{\sqrt{2\ln2}}{\pi\Gamma},\\
+K_{\rm G}&=\Delta t\,\Delta\nu=\frac{2\ln2}{\pi}\simeq0.441.
+\end{align}
+For the conventional \emph{Lorentzian field envelope}, $a(t)=1/[1+(t/a_0)^2]$, with $a_0>0$, the intensity is a squared Lorentzian. To evaluate its Fourier integral, set $\Omega=2\pi\nu$:
+\begin{equation}
+F(\Omega)=\int_{-\infty}^{\infty}
+\frac{a_0^2e^{-i\Omega t}}{(t-ia_0)(t+ia_0)}\,dt.
+\end{equation}
+For $\Omega>0$, close the contour in the lower half-plane, where the exponential decays. The contour is clockwise and encloses the pole at $-ia_0$; its semicircle contribution vanishes. Hence
+\begin{align}
+\operatorname{Res}_{z=-ia_0}
+\frac{a_0^2e^{-i\Omega z}}{(z-ia_0)(z+ia_0)}
+&=\frac{a_0^2e^{-a_0\Omega}}{-2ia_0},\\
+F(\Omega)&=-2\pi i\frac{a_0^2e^{-a_0\Omega}}{-2ia_0}
+=\pi a_0e^{-a_0\Omega}.
+\end{align}
+For $\Omega<0$, closing in the upper half-plane gives $\pi a_0e^{a_0\Omega}$; at zero, direct integration gives $a_0[\arctan(t/a_0)]_{-\infty}^{\infty}=\pi a_0$. Thus $F(\Omega)=\pi a_0e^{-a_0|\Omega|}$. The half-maximum conditions then give
+\begin{align}
+\bigl[1+(t/a_0)^2\bigr]^{-2}&=\tfrac12
+&\Rightarrow\quad \Delta t&=2a_0\sqrt{\sqrt2-1},\\
+e^{-4\pi a_0|\nu|}&=\tfrac12
+&\Rightarrow\quad \Delta\nu&=\frac{\ln2}{2\pi a_0},\\
+K_{\rm L}&=\frac{\ln2}{\pi}\sqrt{\sqrt2-1}\simeq0.142.
+\end{align}
+These conventions agree with the pulse-shape table in Kärtner's lecture notes~\cite{kaertner}. Calling the \emph{intensity} Lorentzian would specify a different pulse and would not justify using this constant. The tutorial does not specify this distinction.
+
+\subsection{Benefits, limitations, and stretching of ultrashort pulses}
+\textbf{What does the time--bandwidth product imply for an experiment?}
+Short pulses resolve fast changes and provide high peak intensity at a given pulse energy. Their necessarily broad spectrum limits spectral selectivity and may excite several transitions. High peak intensity can also cause unwanted nonlinear responses or damage, while finite pump and probe durations broaden the measured temporal response. The relevant resolution is their cross-correlation at the sample.
+
+A transform-limited pulse has no spectral phase curvature. Writing the spectral phase near $\omega_0$ as
+\begin{align}
+\phi(\omega)&=\phi_0+\phi_1(\omega-\omega_0)
+ +\tfrac12\phi_2(\omega-\omega_0)^2+\cdots,\\
+t_g(\omega)&=\frac{d\phi}{d\omega}
+=\phi_1+\phi_2(\omega-\omega_0)+\cdots
+\end{align}
+shows that nonzero $\phi_2$ gives different frequency components different arrival times. Glass, the gain crystal, and other optics can introduce this dispersion. Nonlinear phase modulation and imperfect compression can also alter the pulse. An enlarged measured time--bandwidth product can additionally reflect an incorrect shape assumption or calibration. Figure~\ref{fig:spectrum} supplies the bandwidth and Fig.~\ref{fig:autocorrelation} the pulse-duration comparison; neither alone reconstructs spectral phase.
+
+\subsection{Autocorrelator alignment and second-harmonic detection}
+\textbf{Why must the replicas overlap in space and time, and why detect the second harmonic?}
+The product $E(t)E(t-\tau)$ is appreciable only where both fields are present. Their focused spots must coincide inside BBO, their polarizations must suit the nonlinear interaction, and their path lengths must bring them within a pulse duration of each other. Steering mirrors set spatial overlap; the translation stage sets the mean delay and the vibrating mirror scans it. A mirror displacement $\Delta x$ changes the Michelson round-trip delay by $2\Delta x/c$.
+
+The time-integrated fundamental signal is
+\begin{equation}
+S_\omega(\tau)\propto 2\int |E(t)|^2dt+
+2\operatorname{Re}\int E(t)E^*(t-\tau)\,dt.
+\end{equation}
+Its delay-dependent part is a field autocorrelation. Its Fourier transform gives the spectral intensity, so it cannot by itself determine pulse stretching caused by spectral phase. Second-harmonic detection instead measures
+\begin{equation}
+S_{2\omega}(\tau)\propto\int |E(t)+E(t-\tau)|^4dt,
+\end{equation}
+which contains the intensity-overlap integral. It converts femtosecond overlap into a slowly recorded signal as the delay is scanned. For identical replicas with ideal coherent overlap, zero delay gives $16\int|E|^4dt$ and separated pulses give $2\int|E|^4dt$, hence the ideal peak-to-background ratio is $8:1$. These are theoretical ratios, not measured contrasts.
+
+\subsection{The autocorrelation envelope and the Gaussian width parameter}
+\textbf{Why can the envelope determine pulse duration, and what does the fitted Gaussian width mean?}
+For a specified pulse shape and phase model, the overlap factors vary on the pulse-duration scale while the fringes vary on the optical-period scale. The envelope therefore constrains duration without requiring the absolute optical phase. This is a model-dependent inference: an autocorrelation does not uniquely reconstruct an arbitrary pulse. In this experiment the fringes also calibrate the nonlinear delay scan (Fig.~\ref{fig:fringe-calibration}), and the actual fit uses the complete trace in Eq.~\eqref{eq:fitted-iac}.
+
+In the tutorial's expression $E(t)=e^{-t^2/\Gamma^2}$, $\Gamma$ is a Gaussian scale parameter, \emph{not} an FWHM. The two relevant half-maximum equations are
+\begin{align}
+|E(t)|=\tfrac12&\Rightarrow |t|=\Gamma\sqrt{\ln2}
+&&\Rightarrow \Delta t_{\rm field}=2\Gamma\sqrt{\ln2},\\
+I(t)=e^{-2t^2/\Gamma^2}=\tfrac12
+&\Rightarrow |t|=\Gamma\sqrt{\ln2/2}
+&&\Rightarrow \Delta t_{\rm pulse}=\Gamma\sqrt{2\ln2}.
+\end{align}
+For the isolated intensity autocorrelation, completing the square gives
+\begin{align}
+G(\tau)&=\int_{-\infty}^{\infty}
+e^{-2[t^2+(t-\tau)^2]/\Gamma^2}\,dt\\
+&=e^{-\tau^2/\Gamma^2}
+\int_{-\infty}^{\infty}e^{-4(t-\tau/2)^2/\Gamma^2}\,dt\\
+&=\frac{\Gamma}{2}e^{-\tau^2/\Gamma^2}
+\int_{-\infty}^{\infty}e^{-u^2}\,du
+=\frac{\sqrt{\pi}\Gamma}{2}e^{-\tau^2/\Gamma^2},
+\end{align}
+where $u=2(t-\tau/2)/\Gamma$. Consequently,
+\begin{equation}
+\Delta t_{\rm AC}=2\Gamma\sqrt{\ln2}
+=\sqrt2\,\Delta t_{\rm pulse}.
+\end{equation}
+The photodiode actually records integrated second-harmonic energy versus delay. The full interferometric envelope contains several overlap terms with different widths, as Eq.~\eqref{eq:gaussian-iac} shows. Dividing its entire envelope FWHM by $\sqrt2$ is therefore unjustified; that factor applies to $G(\tau)$. The report quotes the underlying fitted \emph{intensity} pulse FWHM.
+
+\subsection{Calculation tasks: diffusion solution and Fourier transformation}
+\textbf{Does the proposed density solve the diffusion equation?}
+Define $k_0=1/\tau_{\rm rec}$ and $k_q=k_0+D_aq^2$. For the proposed density,
+\begin{align}
+n(x,t)&=n_0[e^{-k_0t}+\cos(qx)e^{-k_qt}],\\
+\partial_t n&=-n_0[k_0e^{-k_0t}+k_q\cos(qx)e^{-k_qt}],\\
+\partial_x^2 n&=-n_0q^2\cos(qx)e^{-k_qt},\\
+D_a\partial_x^2n-k_0n
+&=-n_0[k_0e^{-k_0t}+(D_aq^2+k_0)\cos(qx)e^{-k_qt}]
+=\partial_t n.
+\end{align}
+It also has the required initial condition $n(x,0)=n_0[1+\cos(qx)]$.
+
+\textbf{How does the Fourier transformation produce tutorial Eq.~(4.4)?}
+To handle the ideal periodic grating without integrating a non-decaying density over the entire real line, choose a length $L$ containing an integer number of periods. Define
+\begin{equation}
+\widetilde n_k(t)=\frac1L\int_0^L n(x,t)e^{-ikx}\,dx,
+\qquad k=\frac{2\pi m}{L},\quad m\in\mathbb Z.
+\end{equation}
+Two integrations by parts yield
+\begin{align}
+\frac1L\int_0^L\partial_x^2n\,e^{-ikx}\,dx
+&=\frac1L[\partial_xn\,e^{-ikx}]_0^L
+ +\frac{ik}{L}\int_0^L\partial_xn\,e^{-ikx}\,dx\\
+&=\frac1L[\partial_xn\,e^{-ikx}]_0^L
+ +\frac{ik}{L}[n\,e^{-ikx}]_0^L
+ -\frac{k^2}{L}\int_0^L n\,e^{-ikx}\,dx\\
+&=-k^2\widetilde n_k.
+\end{align}
+The boundary terms vanish by periodicity. Transforming both sides of the diffusion equation therefore gives
+\begin{align}
+\frac{d\widetilde n_k}{dt}
+&=-(D_ak^2+k_0)\widetilde n_k,\\
+\int_{\widetilde n_k(0)}^{\widetilde n_k(t)}
+\frac{d\widetilde n_k}{\widetilde n_k}
+&=-(D_ak^2+k_0)\int_0^t dt',\\
+\widetilde n_k(t)&=\widetilde n_k(0)e^{-(D_ak^2+k_0)t}.
+\end{align}
+Initially only the coefficients at $k=0,\pm q$ are nonzero: they are $n_0,n_0/2,n_0/2$. Substitution into the inverse Fourier series recovers the proposed solution above. The same $-k^2$ rule holds for the Fourier integral of a localized density when the boundary terms vanish at infinity.
+
+\subsection{Finite wave number, uniform excitation, and diffusion measurements}
+\textbf{What are the lifetimes for finite $q$ and for $q=0$, and how is $D_a$ obtained?}
+The grating-amplitude lifetime is
+\begin{equation}
+\tau_q=\frac{1}{1/\tau_{\rm rec}+D_aq^2},
+\qquad \tau_{q=0}=\tau_{\rm rec}.
+\end{equation}
+The $q=0$ component is spatially uniform and has no lateral density gradient in this ideal model. A pump--probe population measurement approximates this case when lateral diffusion out of the probed region is negligible. A real finite spot or a depth-dependent population can introduce additional transport.
+
+Measure TG amplitude decays for several calibrated periods, calculate $q=2\pi/\Lambda_{\rm sample}$, and regress the decay rate against $q^2$. The slope gives $D_a$ and the intercept gives $1/\tau_{\rm rec}$ if all traces probe the same population. Alternatively, a matched population trace and one TG trace give
+\begin{equation}
+D_a=\frac{k_{\rm TG}(q)-k_{\rm pop}}{q^2}.
+\end{equation}
+Two finite wave numbers also suffice algebraically:
+\begin{equation}
+D_a=\frac{k(q_1)-k(q_2)}{q_1^2-q_2^2},
+\qquad k_0=k(q_1)-D_aq_1^2,
+\end{equation}
+but additional periods allow the assumed linear dependence to be checked. For the supplied data the sample period is one quarter of the mask period. Figure~\ref{fig:rate-q2} shows why the measured PP rate cannot simply be used as the common intercept.
+
+\subsection{Bonus: other optically generated gratings}
+\textbf{Which gratings can be created besides a carrier-density grating?}
+Periodic heating can produce a temperature and refractive-index grating. Periodic stress can launch coherent acoustic waves and a strain grating. Spatially varying pump polarization can create spin or polarization gratings even without a modulated total excitation intensity, provided the material and optical selection rules support them. These gratings probe thermal transport, acoustic propagation, or spin dynamics, respectively; they are possibilities rather than additional signals established in this dataset.
+
+\subsection{Heterodyne sensitivity and separation of population and grating signals}
+\textbf{Why use heterodyne detection, and how are the two contributions separated?}
+The detector measures
+\begin{equation}
+|E_{\rm LO}+E_{\rm dif}|^2
+=|E_{\rm LO}|^2+|E_{\rm dif}|^2
++2\operatorname{Re}(E_{\rm LO}^*E_{\rm dif}).
+\end{equation}
+For a weak diffracted field, mixing with a stronger local oscillator produces a term linear in $E_{\rm dif}$ that can exceed the directly detected $|E_{\rm dif}|^2$ term. It also retains phase information. Increasing the local oscillator is useful within detector and noise limits; it does not imply unlimited signal-to-noise improvement.
+
+At each pump--probe delay, scan the coverslip angle and fit the phase dependence shown in Fig.~\ref{fig:tutorial-heterodyne}. In the tutorial's model,
+\begin{align}
+S_{\rm Het}(t,\psi)&=B+S_{\rm Pop}(t)+S_{\rm TG}(t)\cos\psi,\\
+S_{\rm Pop}(t)&=\frac{S_{\rm Het}(t,0)+S_{\rm Het}(t,\pi)}{2}-B,\\
+S_{\rm TG}(t)&=\frac{S_{\rm Het}(t,0)-S_{\rm Het}(t,\pi)}{2}.
+\end{align}
+Here $B$ is a separately established instrumental offset. A full phase scan can fit an unknown phase origin as well. Opposite-phase subtraction isolates the grating term; averaging isolates the phase-independent population contribution. Pump chopping alone removes the unmodulated background but does not generally remove the pump-induced population term.
+
+The tutorial calls single-probe transient reflectivity homodyne and the added-reference TG measurement heterodyne. These names describe its detection arrangement; using a common source for pump and probe does not decide the classification. Indeed,
+\begin{equation}
+\Delta I_{\rm PP}
+=|E_{\rm probe}|^2\bigl(|r_0+\delta r|^2-|r_0|^2\bigr)
+\simeq2|E_{\rm probe}|^2\operatorname{Re}(r_0^*\delta r),
+\end{equation}
+so the reflected probe supplies an internal reference for the induced field change. In terminology that reserves heterodyne for a frequency-shifted reference, same-frequency mixing is called homodyne; the tutorial uses the broader spectroscopy convention.
+
+\textbf{How are recombination and diffusion rates separated experimentally?}
+After extracting the two phase components, fit their time dependence and use $k_{\rm TG}-k_{\rm Pop}=D_aq^2$, or vary the grating period and determine slope and intercept as above. If $E_{\rm dif}\propto n_q$, direct diffracted intensity instead decays as $|n_q|^2\propto e^{-2k_qt}$; its measured rate must be divided by two before applying the amplitude-rate law. These procedures require matched physical components. The two empirical biexponential times in Table~\ref{tab:tgfits} do not by themselves establish two microscopic populations or a unique recombination time.
+
+\subsection{Chopper, lock-in amplifier, and prism compressor}
+\textbf{How do modulation and compression help the measurement?}
+A rotating slotted chopper periodically blocks the pump. The pump-induced probe response is then modulated at a known reference frequency. A lock-in multiplies the detector signal by synchronized sine and cosine references and averages over many cycles. For $s(t)=A\cos(\Omega t+\varphi)+B$, an averaging interval containing complete cycles gives
+\begin{align}
+X&=2\langle s(t)\cos\Omega t\rangle=A\cos\varphi,\\
+Y&=-2\langle s(t)\sin\Omega t\rangle=A\sin\varphi,
+\end{align}
+because $\langle\cos^2\Omega t\rangle=\langle\sin^2\Omega t\rangle=1/2$ and the mixed and DC-reference averages vanish. Thus $\sqrt{X^2+Y^2}=|A|$. A real chopped signal contains harmonics; the lock-in selects the component at its chosen reference frequency. This suppresses DC backgrounds and noise outside the detection bandwidth, with a tradeoff between averaging time and acquisition speed.
+
+A prism compressor gives different wavelengths adjustable optical path lengths. Properly chosen prism spacing and insertion compensate accumulated dispersion so that spectral components overlap more closely in time. It improves time resolution and peak intensity at fixed pulse energy; it does not require a narrower spectrum. Residual dispersion, losses, and alignment sensitivity limit the achieved compression. The compressor location and modulation arrangement are shown in Fig.~\ref{fig:tutorial-setup}.
+
+\subsection{Ambipolar mobility limits and the band structure}
+\textbf{What do the equal- and unequal-mobility limits mean?}
+Starting from the tutorial's expression,
+\begin{align}
+\mu_a&=\frac{2\mu_e\mu_h}{\mu_e+\mu_h},\\
+\mu_e=\mu_h=\mu&\Rightarrow \mu_a=\mu,\\
+\mu_j\gg\mu_i&\Rightarrow
+\mu_a=\frac{2\mu_i}{1+\mu_i/\mu_j}\longrightarrow2\mu_i.
+\end{align}
+Equal mobilities give the same ambipolar mobility. For strongly unequal mobilities, the internal electric field couples the two species and the slower species limits the joint transport. The printed second limit in tutorial Eq.~(4.14) is a typographical error: it should state $\mu_a\simeq2\mu_i$ for $\mu_j\gg\mu_i$.
+
+Band curvature determines the effective-mass tensor:
+\begin{equation}
+(m^{*-1})_{\alpha\beta}
+=\frac{1}{\hbar^2}\frac{\partial^2E}{\partial k_\alpha\partial k_\beta}.
+\end{equation}
+For an isotropic parabolic band in the relaxation-time approximation, the steady drift follows from
+\begin{equation}
+0=q_c\mathbf E-\frac{m^*\mathbf v_d}{\tau_m}
+\quad\Rightarrow\quad
+\mu=\frac{|\mathbf v_d|}{|\mathbf E|}
+=\frac{e\tau_m}{m^*},
+\end{equation}
+where $q_c=\pm e$ and $\tau_m$ is the momentum-relaxation time. Greater curvature means smaller effective mass and, at fixed $\tau_m$, larger mobility. Scattering, band anisotropy, and occupation of different valleys also matter; band curvature alone does not determine the mobility.
+
+\subsection{Where the tutorial's analysis tasks are answered}
+Part I reports the fringe-based delay calibration, spectral bandwidth, pulse widths, and time--bandwidth comparison, with Figs.~\ref{fig:spectrum}, \ref{fig:autocorrelation}, and~\ref{fig:fringe-calibration}. Part II gives the conditional cooling-time interpretation and derives the coupling relation; a volumetric electron--phonon coefficient remains undetermined because the necessary heat-capacity and excitation information is missing. Part III gives the transient-reflectivity and TG decay constants with confidence intervals in Table~\ref{tab:tgfits}. Part IV and the discussion assess the effective diffusion coefficient, conditional mobility, literature comparison, and failure of a common recombination intercept. These answers retain the distinction between measured optical decay times and model-dependent material quantities.

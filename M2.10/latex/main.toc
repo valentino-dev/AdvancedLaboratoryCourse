@@ -22,4 +22,18 @@
 \contentsline {section}{\numberline {6}Conclusion}{24}{section.6}%
 \contentsline {section}{\numberline {A}Autocorrelation calibration and residuals}{24}{appendix.A}%
 \contentsline {section}{\numberline {B}Population and transport model diagnostics}{27}{appendix.B}%
-\contentsline {section}{AI Use Disclosure}{28}{section*.6}%
+\contentsline {section}{\numberline {C}Answers to the tutorial questions}{28}{appendix.C}%
+\contentsline {subsection}{\numberline {C.1}Preparation: optical components and laser operation}{28}{subsection.C.1}%
+\contentsline {subsection}{\numberline {C.2}Nonlinear optics and the role of BBO}{28}{subsection.C.2}%
+\contentsline {subsection}{\numberline {C.3}Gaussian and Lorentzian time--bandwidth products}{29}{subsection.C.3}%
+\contentsline {subsection}{\numberline {C.4}Benefits, limitations, and stretching of ultrashort pulses}{29}{subsection.C.4}%
+\contentsline {subsection}{\numberline {C.5}Autocorrelator alignment and second-harmonic detection}{30}{subsection.C.5}%
+\contentsline {subsection}{\numberline {C.6}The autocorrelation envelope and the Gaussian width parameter}{30}{subsection.C.6}%
+\contentsline {subsection}{\numberline {C.7}Calculation tasks: diffusion solution and Fourier transformation}{31}{subsection.C.7}%
+\contentsline {subsection}{\numberline {C.8}Finite wave number, uniform excitation, and diffusion measurements}{31}{subsection.C.8}%
+\contentsline {subsection}{\numberline {C.9}Bonus: other optically generated gratings}{32}{subsection.C.9}%
+\contentsline {subsection}{\numberline {C.10}Heterodyne sensitivity and separation of population and grating signals}{32}{subsection.C.10}%
+\contentsline {subsection}{\numberline {C.11}Chopper, lock-in amplifier, and prism compressor}{33}{subsection.C.11}%
+\contentsline {subsection}{\numberline {C.12}Ambipolar mobility limits and the band structure}{33}{subsection.C.12}%
+\contentsline {subsection}{\numberline {C.13}Where the tutorial's analysis tasks are answered}{34}{subsection.C.13}%
+\contentsline {section}{AI Use Disclosure}{35}{section*.6}%
