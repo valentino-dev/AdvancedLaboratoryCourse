@@ -1,0 +1,45 @@
+\babel@toc {american}{}\relax 
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}%
+\contentsline {section}{\numberline {2}Theoretical background}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Transient-grating formation and carrier decay}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Ambipolar transport}{4}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Pulse duration and spectral bandwidth}{5}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Derivation of the measured interferometric autocorrelation}{6}{subsection.2.4}%
+\contentsline {subsubsection}{\numberline {2.4.1}Measured signal and expansion of the tutorial formula}{7}{subsubsection.2.4.1}%
+\contentsline {subsubsection}{\numberline {2.4.2}Evaluation of the Gaussian overlap integrals}{7}{subsubsection.2.4.2}%
+\contentsline {subsubsection}{\numberline {2.4.3}Pulse FWHM versus autocorrelation-envelope width}{9}{subsubsection.2.4.3}%
+\contentsline {subsubsection}{\numberline {2.4.4}Recorded-time calibration and the fitted signal}{9}{subsubsection.2.4.4}%
+\contentsline {section}{\numberline {3}Experimental setup and measurement}{10}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Optical arrangement}{10}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Measurement data and calibration}{10}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Data screening and fit procedure}{12}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Uncertainty conventions and propagation}{13}{subsection.3.4}%
+\contentsline {section}{\numberline {4}Results}{14}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Part I: Pulse duration and spectral bandwidth}{14}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Part II: Hot-carrier cooling and electron--phonon coupling}{18}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Part III: Transient-reflectivity and transient-grating decay times}{18}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Part IV: Recombination, ambipolar diffusivity, and mobility}{22}{subsection.4.4}%
+\contentsline {subsubsection}{\numberline {4.4.1}Additional model checks motivated by Chen et al.}{24}{subsubsection.4.4.1}%
+\contentsline {section}{\numberline {5}Discussion}{25}{section.5}%
+\contentsline {section}{\numberline {6}Conclusion}{26}{section.6}%
+\contentsline {section}{\numberline {A}Autocorrelation calibration and residuals}{26}{appendix.A}%
+\contentsline {section}{\numberline {B}Population and transport model diagnostics}{29}{appendix.B}%
+\contentsline {section}{\numberline {C}Answers to the tutorial questions}{31}{appendix.C}%
+\contentsline {subsection}{\numberline {C.1}Preparation: optical components and laser operation}{31}{subsection.C.1}%
+\contentsline {subsection}{\numberline {C.2}Nonlinear optics and the role of BBO}{31}{subsection.C.2}%
+\contentsline {subsection}{\numberline {C.3}Gaussian and Lorentzian time--bandwidth products}{32}{subsection.C.3}%
+\contentsline {subsection}{\numberline {C.4}Benefits, limitations, and stretching of ultrashort pulses}{32}{subsection.C.4}%
+\contentsline {subsection}{\numberline {C.5}Autocorrelator alignment and second-harmonic detection}{33}{subsection.C.5}%
+\contentsline {subsection}{\numberline {C.6}The autocorrelation envelope and the Gaussian width parameter}{33}{subsection.C.6}%
+\contentsline {subsection}{\numberline {C.7}Calculation tasks: diffusion solution and Fourier transformation}{34}{subsection.C.7}%
+\contentsline {subsection}{\numberline {C.8}Finite wave number, uniform excitation, and diffusion measurements}{34}{subsection.C.8}%
+\contentsline {subsection}{\numberline {C.9}Bonus: other optically generated gratings}{35}{subsection.C.9}%
+\contentsline {subsection}{\numberline {C.10}Heterodyne sensitivity and separation of population and grating signals}{35}{subsection.C.10}%
+\contentsline {subsection}{\numberline {C.11}Chopper, lock-in amplifier, and prism compressor}{36}{subsection.C.11}%
+\contentsline {subsection}{\numberline {C.12}Ambipolar mobility limits and the band structure}{36}{subsection.C.12}%
+\contentsline {subsection}{\numberline {C.13}Where the tutorial's analysis tasks are answered}{37}{subsection.C.13}%
+\contentsline {section}{\numberline {D}Statistical methods and interpretation}{38}{appendix.D}%
+\contentsline {subsection}{\numberline {D.1}Bootstrapping}{38}{subsection.D.1}%
+\contentsline {subsection}{\numberline {D.2}Repeat-scan bootstrap intervals}{38}{subsection.D.2}%
+\contentsline {subsection}{\numberline {D.3}Coefficient of determination $R^2$}{39}{subsection.D.3}%
+\contentsline {section}{AI Use Disclosure}{40}{section*.4}%

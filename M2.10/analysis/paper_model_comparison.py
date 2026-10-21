@@ -119,8 +119,8 @@ def main():
         bootstrap_slopes, [2.5, 97.5], axis=0).tolist()
     results['uncertainty_scope'] = (
         'SE denotes conditional covariance or regression standard error. Bootstrap '
-        'CI resamples retained scans with fixed screening. Calibration, acquisition '
-        'drift, model and selection uncertainties are unquantified. RMS and AICc '
+        'CI resamples retained scans with fixed screening. Supplied delays and grating '
+        'spacings are treated as exact. Acquisition drift, model and selection uncertainties are unquantified. RMS and AICc '
         'are descriptive diagnostics without estimated uncertainties. AICc assumes '
         'independent equal-variance Gaussian errors; PP residual structure limits it.'
     )

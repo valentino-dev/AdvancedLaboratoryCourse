@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.14)  21 OCT 2026 11:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.14)  21 OCT 2026 14:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -391,8 +391,8 @@ File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count315
 \l__pdf_internal_box=\box64
 )
-(/home/angelo/Documents/AdvancedLaboratoryCourse/M2.10/latex/build-restored-ind
-ependent/main.aux)
+(/home/angelo/Documents/AdvancedLaboratoryCourse/M2.10/latex/build-exact-delay-
+grating/main.aux)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
@@ -477,10 +477,10 @@ nslations-basic-dictionary')
 )
 Package hyperref Info: Link coloring OFF on input line 15.
 
-(/home/angelo/Documents/AdvancedLaboratoryCourse/M2.10/latex/build-restored-ind
-ependent/main.out)
-(/home/angelo/Documents/AdvancedLaboratoryCourse/M2.10/latex/build-restored-ind
-ependent/main.out)
+(/home/angelo/Documents/AdvancedLaboratoryCourse/M2.10/latex/build-exact-delay-
+grating/main.out)
+(/home/angelo/Documents/AdvancedLaboratoryCourse/M2.10/latex/build-exact-delay-
+grating/main.out)
 \@outlinefile=\write3
 \openout3 = `main.out'.
 
@@ -496,8 +496,8 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 17.
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-(/home/angelo/Documents/AdvancedLaboratoryCourse/M2.10/latex/build-restored-ind
-ependent/main.toc
+(/home/angelo/Documents/AdvancedLaboratoryCourse/M2.10/latex/build-exact-delay-
+grating/main.toc
 
 [1
 
@@ -508,7 +508,7 @@ ependent/main.toc
 
 
 [2]
-<figures/tutorial_grating.png, id=230, 785.93625pt x 271.0125pt>
+<figures/tutorial_grating.png, id=246, 785.93625pt x 271.0125pt>
 File: figures/tutorial_grating.png Graphic file (type png)
 <use figures/tutorial_grating.png>
 Package pdftex.def Info: figures/tutorial_grating.png  used on input line 45.
@@ -530,24 +530,24 @@ pdfTeX warning (ext4): destination with the same identifier (name{equation.2.42
 }) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.79 \end{align}
-                ]
+l.67 \end{equation}
+                   ]
 
 [8]
 
 [9])
-<figures/tutorial_setup.png, id=360, 903.375pt x 551.05875pt>
+<figures/tutorial_setup.png, id=373, 903.375pt x 551.05875pt>
 File: figures/tutorial_setup.png Graphic file (type png)
 <use figures/tutorial_setup.png>
 Package pdftex.def Info: figures/tutorial_setup.png  used on input line 156.
 (pdftex.def)             Requested size: 373.3035pt x 227.71814pt.
-<figures/tutorial_autocorrelator.png, id=361, 840.13875pt x 569.12625pt>
+<figures/tutorial_autocorrelator.png, id=374, 840.13875pt x 569.12625pt>
 File: figures/tutorial_autocorrelator.png Graphic file (type png)
 <use figures/tutorial_autocorrelator.png>
 Package pdftex.def Info: figures/tutorial_autocorrelator.png  used on input lin
 e 160.
 (pdftex.def)             Requested size: 345.98302pt x 234.37668pt.
-<figures/tutorial_heterodyne.png, id=362, 930.47626pt x 370.38374pt>
+<figures/tutorial_heterodyne.png, id=375, 930.47626pt x 370.38374pt>
 File: figures/tutorial_heterodyne.png Graphic file (type png)
 <use figures/tutorial_heterodyne.png>
 Package pdftex.def Info: figures/tutorial_heterodyne.png  used on input line 16
@@ -560,135 +560,135 @@ Package pdftex.def Info: figures/tutorial_heterodyne.png  used on input line 16
 [11 <./figures/tutorial_setup.png (PNG copy)> <./figures/tutorial_autocorrelato
 r.png (PNG copy)>]
 
-[12 <./figures/tutorial_heterodyne.png (PNG copy)>]
-<../plots/vor_nach.png, id=391, 722.7pt x 505.89pt>
+[12{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.en
+c} <./figures/tutorial_heterodyne.png (PNG copy)>]
+
+[13]
+<../plots/vor_nach.png, id=419, 722.7pt x 505.89pt>
 File: ../plots/vor_nach.png Graphic file (type png)
 <use ../plots/vor_nach.png>
-Package pdftex.def Info: ../plots/vor_nach.png  used on input line 196.
+Package pdftex.def Info: ../plots/vor_nach.png  used on input line 206.
 (pdftex.def)             Requested size: 432.48051pt x 302.73352pt.
 
 
-[13 <../plots/vor_nach.png>]
-<../plots/spectrum.png, id=401, 658.46pt x 550.055pt>
+[14 <../plots/vor_nach.png>]
+<../plots/spectrum.png, id=434, 658.46pt x 550.055pt>
 File: ../plots/spectrum.png Graphic file (type png)
 <use ../plots/spectrum.png>
-Package pdftex.def Info: ../plots/spectrum.png  used on input line 214.
+Package pdftex.def Info: ../plots/spectrum.png  used on input line 224.
 (pdftex.def)             Requested size: 446.13727pt x 372.69794pt.
- (./autocorrelation_results.tex)
+ (./figure_fit_details/spectrum.tex)
+(./autocorrelation_results.tex)
 
-[14]
-<../plots/autocorrelation_pulsewidth.png, id=417, 658.46pt x 731.1315pt>
+[15 <../plots/spectrum.png>]
+<../plots/autocorrelation_pulsewidth.png, id=447, 658.46pt x 519.541pt>
 File: ../plots/autocorrelation_pulsewidth.png Graphic file (type png)
 <use ../plots/autocorrelation_pulsewidth.png>
 Package pdftex.def Info: ../plots/autocorrelation_pulsewidth.png  used on input
- line 227.
-(pdftex.def)             Requested size: 455.24411pt x 505.49649pt.
+ line 238.
+(pdftex.def)             Requested size: 455.24411pt x 359.20508pt.
+ (./figure_fit_details/iac.tex)
 
+[16]
 
-[15 <../plots/spectrum.png>]
+[17 <../plots/autocorrelation_pulsewidth.png>]
 
-[16 <../plots/autocorrelation_pulsewidth.png>]
-
-[17]
-<../plots/gaas_decay.png, id=451, 722.7pt x 433.62pt>
+[18]
+<../plots/gaas_decay.png, id=478, 722.7pt x 433.62pt>
 File: ../plots/gaas_decay.png Graphic file (type png)
 <use ../plots/gaas_decay.png>
-Package pdftex.def Info: ../plots/gaas_decay.png  used on input line 274.
+Package pdftex.def Info: ../plots/gaas_decay.png  used on input line 286.
 (pdftex.def)             Requested size: 446.13727pt x 267.68373pt.
-<../plots/gaas_fit_residuals.png, id=452, 650.43pt x 794.97pt>
+ (./figure_fit_details/decays.tex)
+<../plots/gaas_fit_residuals.png, id=480, 650.43pt x 794.97pt>
 File: ../plots/gaas_fit_residuals.png Graphic file (type png)
 <use ../plots/gaas_fit_residuals.png>
-Package pdftex.def Info: ../plots/gaas_fit_residuals.png  used on input line 27
-8.
+Package pdftex.def Info: ../plots/gaas_fit_residuals.png  used on input line 29
+1.
 (pdftex.def)             Requested size: 446.13727pt x 545.29112pt.
-<../plots/excluded_scan_comparison.png, id=453, 794.97pt x 317.988pt>
+<../plots/excluded_scan_comparison.png, id=481, 794.97pt x 317.988pt>
 File: ../plots/excluded_scan_comparison.png Graphic file (type png)
 <use ../plots/excluded_scan_comparison.png>
 Package pdftex.def Info: ../plots/excluded_scan_comparison.png  used on input l
-ine 284.
+ine 297.
 (pdftex.def)             Requested size: 446.13727pt x 178.46022pt.
 
 
-[18{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.en
-c}]
+[19]
 
-[19 <../plots/gaas_decay.png>]
+[20 <../plots/gaas_decay.png>]
 
-[20 <../plots/gaas_fit_residuals.png>]
-
-[21 <../plots/excluded_scan_comparison.png>]
-<../plots/rate_vs_q2.png, id=482, 456.5055pt x 315.579pt>
+[21 <../plots/gaas_fit_residuals.png>]
+<../plots/rate_vs_q2.png, id=505, 456.5055pt x 315.579pt>
 File: ../plots/rate_vs_q2.png Graphic file (type png)
 <use ../plots/rate_vs_q2.png>
-Package pdftex.def Info: ../plots/rate_vs_q2.png  used on input line 298.
+Package pdftex.def Info: ../plots/rate_vs_q2.png  used on input line 313.
 (pdftex.def)             Requested size: 446.13727pt x 308.41298pt.
+ (./figure_fit_details/diffusion.tex)
 
-
-[22
-
-]
+[22 <../plots/excluded_scan_comparison.png>]
 
 [23 <../plots/rate_vs_q2.png>]
 
 [24]
-<../plots/autocorrelation_residuals.png, id=519, 650.43pt x 433.62pt>
+
+[25]
+<../plots/autocorrelation_residuals.png, id=547, 650.43pt x 433.62pt>
 File: ../plots/autocorrelation_residuals.png Graphic file (type png)
 <use ../plots/autocorrelation_residuals.png>
 Package pdftex.def Info: ../plots/autocorrelation_residuals.png  used on input 
-line 364.
+line 382.
 (pdftex.def)             Requested size: 455.24411pt x 303.50546pt.
-<../plots/fringe_calibration.png, id=520, 658.46pt x 660.066pt>
+<../plots/fringe_calibration.png, id=548, 658.46pt x 660.066pt>
 File: ../plots/fringe_calibration.png Graphic file (type png)
 <use ../plots/fringe_calibration.png>
-Package pdftex.def Info: ../plots/fringe_calibration.png  used on input line 36
-8.
+Package pdftex.def Info: ../plots/fringe_calibration.png  used on input line 38
+6.
 (pdftex.def)             Requested size: 455.24411pt x 456.36255pt.
+ (./figure_fit_details/fringes.tex)
 
+[26]
 
-[25]
+[27 <../plots/autocorrelation_residuals.png>]
 
-[26 <../plots/autocorrelation_residuals.png>]
-
-[27 <../plots/fringe_calibration.png>]
-<../plots/paper_model_diagnostics.png, id=536, 650.43pt x 578.16pt>
+[28 <../plots/fringe_calibration.png>]
+<../plots/paper_model_diagnostics.png, id=566, 650.43pt x 578.16pt>
 File: ../plots/paper_model_diagnostics.png Graphic file (type png)
 <use ../plots/paper_model_diagnostics.png>
 Package pdftex.def Info: ../plots/paper_model_diagnostics.png  used on input li
-ne 375.
+ne 394.
 (pdftex.def)             Requested size: 455.24411pt x 404.67395pt.
- (./tutorial_answers.tex
 
-[28
-
- <../plots/paper_model_diagnostics.png>]
+(./figure_fit_details/paper_diagnostics.tex)
 
 [29
 
 ]
 
-[30]
+[30 <../plots/paper_model_diagnostics.png>] (./tutorial_answers.tex
 
-[31]
+[31
+
+]
 
 [32]
 
 [33]
 
-[34]) (./temporary_length_snapshot.tex
+[34]
 
 [35]
-<../plots/temporary_length_snapshot.pdf, id=641, 650.43pt x 433.62pt>
-File: ../plots/temporary_length_snapshot.pdf Graphic file (type pdf)
-<use ../plots/temporary_length_snapshot.pdf>
-Package pdftex.def Info: ../plots/temporary_length_snapshot.pdf  used on input 
-line 10.
-(pdftex.def)             Requested size: 455.24411pt x 303.50546pt.
-)
 
-[36
+[36]) (./statistical_methods.tex
 
- <../plots/temporary_length_snapshot.pdf>]
-Underfull \hbox (badness 1308) in paragraph at lines 389--390
+[37]
+
+[38
+
+])
+
+[39]
+Underfull \hbox (badness 1308) in paragraph at lines 409--410
 \OT1/cmr/m/n/10.95 Spec-troscopy of LO Phonons in GaAs,'' \OT1/cmr/m/it/10.95 P
 hys-i-cal Re-view Let-ters \OT1/cmr/bx/n/10.95 54\OT1/cmr/m/n/10.95 , 2151 (198
 5),
@@ -696,51 +696,55 @@ hys-i-cal Re-view Let-ters \OT1/cmr/bx/n/10.95 54\OT1/cmr/m/n/10.95 , 2151 (198
 
 
 
-[37]
-(/home/angelo/Documents/AdvancedLaboratoryCourse/M2.10/latex/build-restored-ind
-ependent/main.aux)
+[40]
+(/home/angelo/Documents/AdvancedLaboratoryCourse/M2.10/latex/build-exact-delay-
+grating/main.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-09-10>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: C6E50115240FB50E0680A3BDC3EE27B8;11412.
+(rerunfilecheck)             Checksum: D539535FF91B27C295F640AA1BDBDF9B;11943.
  ) 
 Here is how much of TeX's memory you used:
- 15667 strings out of 473579
- 306136 string characters out of 5728233
- 695907 words of memory out of 5000000
- 38122 multiletter control sequences out of 15000+600000
- 572365 words of font info for 89 fonts, out of 8000000 for 9000
+ 15726 strings out of 473579
+ 307589 string characters out of 5728233
+ 694867 words of memory out of 5000000
+ 38154 multiletter control sequences out of 15000+600000
+ 573690 words of font info for 93 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,14n,80p,1734b,995s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,14n,80p,1825b,1034s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
 /usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pf
 b></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
-></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><
-/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></u
-sr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr
-/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/l
-ocal/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/loc
-al/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local
-/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/te
-xlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texli
-ve/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/
-2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/20
-24/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/202
-4/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2024/texm
-f-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/
-texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
+></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb>
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></
+usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></us
+r/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/
+local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/lo
+cal/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/loca
+l/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/
+texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/te
+xlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texli
+ve/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/
+2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/202
+4/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2024/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2024/texmf-dist
+/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-
+dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2024/texmf-di
+st/fonts/type1/public/cm-super/sfrm1095.pfb>
 Output written on /home/angelo/Documents/AdvancedLaboratoryCourse/M2.10/latex/b
-uild-restored-independent/main.pdf (37 pages, 3575985 bytes).
+uild-exact-delay-grating/main.pdf (40 pages, 3263453 bytes).
 PDF statistics:
- 879 PDF objects out of 1000 (max. 8388607)
- 714 compressed objects within 8 object streams
- 255 named destinations out of 1000 (max. 500000)
- 404 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 865 PDF objects out of 1000 (max. 8388607)
+ 738 compressed objects within 8 object streams
+ 259 named destinations out of 1000 (max. 500000)
+ 423 words of extra memory for PDF output out of 10000 (max. 10000000)
 

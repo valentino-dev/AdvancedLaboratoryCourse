@@ -126,7 +126,7 @@ def main():
     results['conventions'] = {
         'pairs': '[estimate, conditional one-standard-error uncertainty]',
         'ci': '95% retained-whole-scan bootstrap percentile intervals',
-        'exclusions': 'No calibration, model, selection or assumed-temperature uncertainty included.',
+        'exclusions': 'Supplied PP/TG delays and grating spacings are exact inputs. Wavelength calibration, model, selection and assumed-temperature uncertainty are not included.',
         'dependence': 'Full spectral covariance retained; common wavelength cancels in compression ratio.'
     }
     (analysis.PROJECT_DIR/'analysis/uncertainties.json').write_text(json.dumps(results,indent=2)+'\n')

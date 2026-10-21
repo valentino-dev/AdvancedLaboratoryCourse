@@ -1,0 +1,60 @@
+\clearpage
+\section{Statistical methods and interpretation}\label{app:statistics}
+
+\subsection{Bootstrapping}\label{app:bootstrap}
+Bootstrapping estimates the sampling variability of a calculated result by repeatedly resampling the available measurements. Sampling is performed \emph{with replacement}: the same measurement can occur more than once in a resampled dataset, while another may be absent. Each resample contains the same number of measurements as the original dataset. The complete analysis is repeated on every resample, producing a distribution of estimates rather than a single fitted value.
+
+In this report the resampling unit is a complete retained scan. Suppose a file contains $n$ retained scans $S_1(t),\ldots,S_n(t)$, recorded at the same delay coordinates. For replicate $r$, draw $n$ indices independently and uniformly from $\{1,\ldots,n\}$:
+\[
+J_1^{(r)},\ldots,J_n^{(r)},\qquad
+\overline S^{*(r)}(t)=\frac1n\sum_{j=1}^{n}S_{J_j^{(r)}}(t).
+\]
+Fit this resampled mean with the same biexponential function, fit interval, and numerical procedure as the original mean. Repeat this for $R=300$ resamples. For a lifetime, the resulting estimates are $\tau^{*(1)},\ldots,\tau^{*(R)}$. The reported central estimate remains the fit to the original retained-scan mean; it is not replaced by the mean of the bootstrap estimates.
+
+For quantities involving several files, scans are resampled separately within each file. Each replicate then repeats all relevant fits and derived calculations. In particular, slow lifetimes are converted to rates and regressed against the unchanged $q^2$ coordinates, treated as exact to obtain a bootstrap diffusion estimate. The paired fast/slow diagnostic uses the same resampled scans for both components, preserving their correlation.
+
+Resampling whole scans preserves relationships between delay points within a scan. Treating all individual delay points as independent would discard that structure. The method nevertheless assumes that the retained scans adequately represent repeat measurements under comparable conditions; it cannot recover sources of variability absent from those scans.
+
+\subsection{Repeat-scan bootstrap intervals}\label{app:bootstrap-intervals}
+A \emph{repeat-scan bootstrap interval} summarizes the spread of the estimates obtained by the procedure above. The conditional 95\% percentile interval for a parameter $\theta$ is
+\[
+\mathrm{CI}_{95\%}(\theta)=
+\left[Q_{0.025}(\theta^*),\;Q_{0.975}(\theta^*)\right],
+\]
+where $Q_p$ denotes the $p$ quantile of the bootstrap estimates. Its endpoints are the 2.5th and 97.5th percentiles, enclosing the middle 95\% of those estimates. The interval need not be symmetric about the original estimate.
+
+The quantiles are calculated by sorting the $N$ bootstrap estimates as $x_0\leq x_1\leq\cdots\leq x_{N-1}$ and applying NumPy's default linear interpolation. With indices starting at zero and $0<p<1$, define
+\[
+h=(N-1)p,\qquad j=\lfloor h\rfloor,\qquad a=h-j.
+\]
+The quantile is the interpolated value
+\[
+Q_p=(1-a)x_j+a x_{j+1}.
+\]
+An integer $h$ gives $a=0$ and selects a sorted estimate directly; otherwise the quantile lies between its two neighboring estimates. The implementation uses \texttt{np.percentile} with the requested percentages 2.5 and 97.5.
+
+For the $N=300$ replicates used here, the lower bound is
+\[
+h=299(0.025)=7.475,
+\qquad Q_{0.025}=0.525x_7+0.475x_8,
+\]
+between the eighth and ninth smallest estimates. The upper bound is
+\[
+h=299(0.975)=291.525,
+\qquad Q_{0.975}=0.475x_{291}+0.525x_{292},
+\]
+between the 292nd and 293rd smallest estimates. These bounds are taken from the ordered bootstrap distribution, rather than calculated as the fitted value plus or minus a multiple of its standard deviation.
+
+These intervals estimate uncertainty arising from variation among the retained repeated scans, conditional on the chosen model, fit window, and fixed scan-selection masks. The supplied PP/TG delays and grating spacings are assumed exact. The intervals do not include uncertainty in the excluded-scan selection, unrepresented acquisition drift, or an unsuitable physical model. A narrow interval can therefore coexist with systematic residuals. The interval is also different from a conditional covariance standard error written as $\pm u$: the two calculations describe different sources of statistical variability. A 95\% confidence interval is not a statement that 95\% of individual measurements lie inside its bounds, or a guaranteed probability statement about this particular realized interval.
+
+Derived quantities are recalculated for each resample. For example, $k^{*(r)}=1/\tau^{*(r)}$ supplies a bootstrap distribution of rates. Since the reciprocal is decreasing for positive lifetimes, lifetime bounds $[L,U]$ correspond to rate bounds $[1/U,1/L]$. The plotted rate intervals are calculated directly from the resampled rates. Neither symmetric lifetime errors nor their reciprocals should be treated as automatically symmetric rate errors.
+
+\subsection{Coefficient of determination \texorpdfstring{$R^2$}{R-squared}}\label{app:r-squared}
+The coefficient of determination $R^2$ describes how much of the variation in the fitted decay rates is accounted for by a straight line. For rates $k_i=1/\tau_{s,i}$, their mean $\overline{k}$, and the line predictions $\widehat{k}_i=b+D_aq_i^2$, it is defined as
+\[
+R^2=1-\frac{\sum_i(k_i-\widehat{k}_i)^2}
+{\sum_i(k_i-\overline{k})^2}.
+\]
+The numerator measures the squared deviations from the fitted line; the denominator measures the squared deviations from the mean rate. For the unweighted least-squares regressions with a freely fitted intercept used here, $R^2=1$ means that all points lie on the line, whereas $R^2=0$ means that the line predicts no better than the constant mean. This interpretation requires nonzero variation in the rates.
+
+The TG-only value $R^2=0.934$ corresponds to 93.4\% of the rate variation accounted for by the line; including PP gives $R^2=0.161$, or 16.1\%. These are descriptive statistics with unestimated uncertainties, calculated for four and five points, respectively. Their comparison is not a formal statistical test. A high $R^2$ alone does not validate the physical model, quantify parameter uncertainty, or account for model mismatch and systematic residuals. It also does not show that the fitted slow components represent the same microscopic process in every dataset.

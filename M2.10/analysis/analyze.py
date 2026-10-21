@@ -592,6 +592,7 @@ def fit_autocorrelation(filename, center_wavelength_nm, window_ms=2.8,
     normalized_rms = np.sqrt(np.mean((fit_signal - fitted_signal)**2)) / np.ptp(fit_signal)
     return {
         "filename": filename, "parameters": parameters,
+        "covariance": covariance,
         "pulse_width_fs": pulse_width_fs, "pulse_stderr_fs": pulse_stderr_fs,
         "normalized_rms": normalized_rms, "time_ms": fit_time,
         "signal": fit_signal, "fitted_signal": fitted_signal,
@@ -609,7 +610,7 @@ def analyze_autocorrelation(center_wavelength_nm):
                           for name in names] for group, names in filenames.items()}
     selected = {group: min(fits, key=lambda fit: fit["normalized_rms"])
                 for group, fits in candidates.items()}
-    figure, axes = plt.subplots(2, 1, figsize=(9, 10), constrained_layout=True)
+    figure, axes = plt.subplots(2, 1, figsize=(9, 7), constrained_layout=True)
     for axis, group, title in zip(axes, ("vor", "nach"),
                                   ("Before compressor", "After compressor")):
         fit = selected[group]

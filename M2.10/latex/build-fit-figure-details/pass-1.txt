@@ -1,0 +1,447 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./main.tex
+LaTeX2e <2024-06-01> patch level 2
+L3 programming layer <2024-09-10>
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2024/02/08 v1.4n Standard LaTeX document class
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/size11.clo))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/geometry/geometry.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/iftex/ifvtex.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/iftex/iftex.sty)))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-def/pdftex.def)))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/siunitx/siunitx.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/translations/translations.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/etoolbox/etoolbox.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/infwarerr/infwarerr.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tools/array.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/booktabs/booktabs.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pdfescape/pdfescape.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hycolor/hycolor.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/refcount/refcount.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/gettitlestring/gettitlestring.s
+ty (/usr/local/texlive/2024/texmf-dist/tex/latex/kvoptions/kvoptions.sty)))
+(/usr/local/texlive/2024/texmf-dist/tex/generic/stringenc/stringenc.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/intcalc/intcalc.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/puenc.def)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/url/url.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/bitset/bitset.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/atbegshi-ltx.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/atveryend-ltx.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+
+(/usr/local/texlive/2024/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+))) (/usr/local/texlive/2024/texmf-dist/tex/latex/placeins/placeins.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/babel/babel.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/babel/txtbabel.def)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/babel-english/american.ldf
+(/usr/local/texlive/2024/texmf-dist/tex/generic/babel-english/english.ldf)))
+(/usr/local/texlive/2024/texmf-dist/tex/generic/babel/locale/en/babel-american.
+tex) (/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/color.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/mathcolor.ltx))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def)
+(/home/angelo/Documents/AdvancedLaboratoryCourse/M2.10/latex/build-fit-figure-d
+etails/main.aux)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+(/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/translations/translations-basic-d
+ictionary-english.trsl) (./main.out) (./main.out)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd) (./main.toc
+[1{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}])
+[2]
+
+LaTeX Warning: Reference `fig:tutorial-grating' on page 3 undefined on input li
+ne 42.
+
+
+[3 <./figures/tutorial_grating.png (PNG copy)>]
+[4]
+
+LaTeX Warning: Citation `young' on page 5 undefined on input line 108.
+
+
+[5] (./autocorrelation_derivation.tex
+[6]
+[7
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.42
+}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.79 \end{align}
+                ]
+
+LaTeX Warning: Reference `eq:corrected-iac' on page 8 undefined on input line 1
+13.
+
+
+LaTeX Warning: Reference `eq:gaussian-iac' on page 8 undefined on input line 13
+1.
+
+
+[8]
+
+LaTeX Warning: Reference `fig:fringe-calibration' on page 9 undefined on input 
+line 162.
+
+
+LaTeX Warning: Reference `fig:fringe-calibration' on page 9 undefined on input 
+line 164.
+
+
+[9]
+
+LaTeX Warning: Reference `sec:uncertainty' on page 10 undefined on input line 1
+96.
+
+)
+
+LaTeX Warning: Reference `fig:tutorial-setup' on page 10 undefined on input lin
+e 153.
+
+
+LaTeX Warning: Reference `fig:tutorial-autocorrelator' on page 10 undefined on 
+input line 153.
+
+
+LaTeX Warning: Reference `fig:tutorial-heterodyne' on page 10 undefined on inpu
+t line 153.
+
+
+LaTeX Warning: Reference `fig:vor-nach' on page 10 undefined on input line 171.
+
+
+
+LaTeX Warning: Reference `sec:decay-results' on page 10 undefined on input line
+ 174.
+
+
+LaTeX Warning: Reference `fig:excluded-scan-comparison' on page 10 undefined on
+ input line 174.
+
+
+[10]
+[11 <./figures/tutorial_setup.png (PNG copy)> <./figures/tutorial_autocorrelato
+r.png (PNG copy)>]
+
+LaTeX Warning: Reference `sec:decay-theory' on page 12 undefined on input line 
+176.
+
+
+[12 <./figures/tutorial_heterodyne.png (PNG copy)>]
+
+LaTeX Warning: Reference `eq:fitted-iac' on page 13 undefined on input line 193
+.
+
+
+LaTeX Warning: Reference `fig:autocorrelation' on page 13 undefined on input li
+ne 193.
+
+
+LaTeX Warning: Reference `fig:vor-nach' on page 13 undefined on input line 193.
+
+
+
+LaTeX Warning: Reference `fig:spectrum' on page 13 undefined on input line 201.
+
+
+
+[13 <../plots/vor_nach.png>] (./figure_fit_details/spectrum.tex)
+
+LaTeX Warning: Reference `tab:iac-fits' on page 14 undefined on input line 220.
+
+
+(./autocorrelation_results.tex)
+
+LaTeX Warning: Reference `sec:iac-residuals' on page 14 undefined on input line
+ 223.
+
+
+LaTeX Warning: Reference `fig:fringe-calibration' on page 14 undefined on input
+ line 223.
+
+
+LaTeX Warning: Reference `sec:iac-residuals' on page 14 undefined on input line
+ 225.
+
+
+LaTeX Warning: Reference `fig:iac-residuals' on page 14 undefined on input line
+ 225.
+
+
+[14]
+[15 <../plots/spectrum.png>] (./figure_fit_details/iac.tex)
+
+LaTeX Warning: Reference `eq:fitted-iac' on page 16 undefined on input line 230
+.
+
+
+LaTeX Warning: Reference `eq:fitted-iac' on page 16 undefined on input line 230
+.
+
+
+LaTeX Warning: Float too large for page by 95.24603pt on input line 231.
+
+
+[16]
+[17 <../plots/autocorrelation_pulsewidth.png>]
+
+LaTeX Warning: Citation `tutorial' on page 18 undefined on input line 236.
+
+
+LaTeX Warning: Reference `sec:chen-model' on page 18 undefined on input line 23
+8.
+
+
+LaTeX Warning: Citation `hunsche' on page 18 undefined on input line 252.
+
+
+LaTeX Warning: Citation `kash' on page 18 undefined on input line 252.
+
+
+LaTeX Warning: Reference `fig:excluded-scan-comparison' on page 18 undefined on
+ input line 255.
+
+
+[18]
+
+LaTeX Warning: Reference `fig:gaas-decay' on page 19 undefined on input line 25
+7.
+
+
+LaTeX Warning: Reference `fig:fit-residuals' on page 19 undefined on input line
+ 257.
+
+
+LaTeX Warning: Reference `tab:tgfits' on page 19 undefined on input line 259.
+
+(./figure_fit_details/decays.tex
+
+LaTeX Warning: Reference `tab:tgfits' on page 19 undefined on input line 13.
+
+) (./figure_fit_details/decay_residuals.tex
+
+LaTeX Warning: Reference `tab:tgfits' on page 19 undefined on input line 13.
+
+)
+
+LaTeX Warning: Float too large for page by 50.50917pt on input line 285.
+
+
+[19{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.en
+c}]
+[20 <../plots/gaas_decay.png>]
+[21 <../plots/gaas_fit_residuals.png>]
+
+LaTeX Warning: Reference `tab:tgfits' on page 22 undefined on input line 294.
+
+
+LaTeX Warning: Reference `fig:rate-q2' on page 22 undefined on input line 297.
+
+
+LaTeX Warning: Reference `sec:chen-model' on page 22 undefined on input line 29
+9.
+
+(./figure_fit_details/diffusion.tex)
+[22 <../plots/excluded_scan_comparison.png>]
+[23 <../plots/rate_vs_q2.png>]
+
+LaTeX Warning: Citation `chen' on page 24 undefined on input line 310.
+
+
+LaTeX Warning: Reference `eq:chen-total' on page 24 undefined on input line 317
+.
+
+
+LaTeX Warning: Reference `fig:paper-model-diagnostics' on page 24 undefined on 
+input line 337.
+
+
+LaTeX Warning: Reference `fig:paper-model-diagnostics' on page 24 undefined on 
+input line 344.
+
+
+[24]
+
+LaTeX Warning: Reference `fig:rate-q2' on page 25 undefined on input line 351.
+
+
+LaTeX Warning: Citation `ruzicka' on page 25 undefined on input line 356.
+
+
+LaTeX Warning: Citation `young' on page 25 undefined on input line 356.
+
+
+[25]
+
+LaTeX Warning: Reference `sec:chen-model' on page 26 undefined on input line 36
+3.
+
+
+LaTeX Warning: Reference `fig:iac-residuals' on page 26 undefined on input line
+ 367.
+
+(./figure_fit_details/iac_residuals.tex) (./figure_fit_details/fringes.tex)
+
+LaTeX Warning: Float too large for page by 19.75313pt on input line 377.
+
+
+[26]
+[27 <../plots/autocorrelation_residuals.png>]
+[28 <../plots/fringe_calibration.png>]
+(./figure_fit_details/paper_diagnostics.tex)
+
+LaTeX Warning: Float too large for page by 14.32124pt on input line 385.
+
+
+[29]
+[30 <../plots/paper_model_diagnostics.png>] (./tutorial_answers.tex
+
+LaTeX Warning: Citation `tutorial' on page 31 undefined on input line 3.
+
+
+LaTeX Warning: Reference `fig:tutorial-autocorrelator' on page 31 undefined on 
+input line 29.
+
+
+[31]
+
+LaTeX Warning: Citation `kaertner' on page 32 undefined on input line 62.
+
+
+LaTeX Warning: Reference `fig:spectrum' on page 32 undefined on input line 75.
+
+
+LaTeX Warning: Reference `fig:autocorrelation' on page 32 undefined on input li
+ne 75.
+
+
+[32]
+
+LaTeX Warning: Reference `fig:fringe-calibration' on page 33 undefined on input
+ line 94.
+
+
+LaTeX Warning: Reference `eq:fitted-iac' on page 33 undefined on input line 94.
+
+
+
+LaTeX Warning: Reference `eq:gaussian-iac' on page 33 undefined on input line 1
+19.
+
+
+[33]
+[34]
+
+LaTeX Warning: Reference `fig:rate-q2' on page 35 undefined on input line 179.
+
+
+LaTeX Warning: Reference `fig:tutorial-heterodyne' on page 35 undefined on inpu
+t line 195.
+
+
+[35]
+
+LaTeX Warning: Reference `tab:tgfits' on page 36 undefined on input line 212.
+
+
+LaTeX Warning: Reference `fig:tutorial-setup' on page 36 undefined on input lin
+e 223.
+
+
+[36]
+
+LaTeX Warning: Reference `fig:spectrum' on page 37 undefined on input line 251.
+
+
+
+LaTeX Warning: Reference `fig:autocorrelation' on page 37 undefined on input li
+ne 251.
+
+
+LaTeX Warning: Reference `fig:fringe-calibration' on page 37 undefined on input
+ line 251.
+
+
+LaTeX Warning: Reference `tab:tgfits' on page 37 undefined on input line 251.
+
+) (./temporary_length_snapshot.tex
+[37]
+
+LaTeX Warning: Reference `fig:temporary-length' on page 38 undefined on input l
+ine 7.
+
+)
+[38 <../plots/temporary_length_snapshot.pdf>]
+Underfull \hbox (badness 1308) in paragraph at lines 397--398
+\OT1/cmr/m/n/10.95 Spec-troscopy of LO Phonons in GaAs,'' \OT1/cmr/m/it/10.95 P
+hys-i-cal Re-view Let-ters \OT1/cmr/bx/n/10.95 54\OT1/cmr/m/n/10.95 , 2151 (198
+5),
+
+[39]
+(/home/angelo/Documents/AdvancedLaboratoryCourse/M2.10/latex/build-fit-figure-d
+etails/main.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ )
+(see the transcript file for additional information)</usr/local/texlive/2024/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf
+-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/texlive/2024/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2024/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2024/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/font
+s/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2024/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmss8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmtt10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts
+/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-s
+uper/sfrm1000.pfb>
+Output written on /home/angelo/Documents/AdvancedLaboratoryCourse/M2.10/latex/b
+uild-fit-figure-details/main.pdf (39 pages, 3429276 bytes).
+Transcript written on /home/angelo/Documents/AdvancedLaboratoryCourse/M2.10/lat
+ex/build-fit-figure-details/main.log.
