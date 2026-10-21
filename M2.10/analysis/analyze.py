@@ -601,7 +601,7 @@ def fit_autocorrelation(filename, center_wavelength_nm, window_ms=2.8,
 
 
 def analyze_autocorrelation(center_wavelength_nm):
-    """Fit candidates and display the normalized IAC modulation envelope."""
+    """Fit candidates and display normalized IAC traces with their fitted signals."""
     # vor2 remains excluded: a separate edge-signal check demonstrates that its
     # record ends before the wings reach baseline; sampling interval alone is not a reason.
     filenames = {"vor": ("vor1", "vor3"), "nach": ("nach1", "nach2", "nach3")}
@@ -618,13 +618,11 @@ def analyze_autocorrelation(center_wavelength_nm):
         optical_delay_fs = cycles * fit["delay_per_cycle_fs"]
         normalization = np.max(np.abs(fit["signal"] - p[0]))
         axis.plot(optical_delay_fs, (fit["signal"] - p[0]) / normalization,
-                  linewidth=0.55, alpha=0.55, label=f"Raw signal: {fit['filename']}")
-        g = np.exp(-cycles**2 / (4 * p[7]**2))
-        h = np.exp(-3 * cycles**2 / (16 * p[7]**2))
-        bound = (abs(p[1]) + np.hypot(p[4], p[5])) * g + np.hypot(p[2], p[3]) * h
-        axis.plot(optical_delay_fs, bound / normalization,
-                  color="tab:red", linestyle="--", linewidth=2,
-                  label=r"Fitted envelope: $U/N$")
+                  color="tab:blue", linewidth=1.0, alpha=0.65,
+                  label=f"Measured: {fit['filename']}")
+        axis.plot(optical_delay_fs, (fit["fitted_signal"] - p[0]) / normalization,
+                  color="tab:orange", linewidth=0.8, linestyle="--",
+                  label="Fitted IAC signal")
         axis.set_title(
             f"{title}: {fit['pulse_width_fs']:.2f} ± {fit['pulse_stderr_fs']:.2f} fs (fit SE)",
             fontsize=14,
@@ -636,7 +634,7 @@ def analyze_autocorrelation(center_wavelength_nm):
     figure.savefig(PLOT_DIR / "autocorrelation_pulsewidth.png", dpi=180, bbox_inches="tight")
     plt.close(figure)
 
-    # Residuals show model quality without drawing fitted oscillations over the data.
+    # Separate residual panels show deviations obscured by the signal overlay.
     figure, axes = plt.subplots(2, 1, figsize=(9, 6), constrained_layout=True)
     for axis, group in zip(axes, ("vor", "nach")):
         fit = selected[group]

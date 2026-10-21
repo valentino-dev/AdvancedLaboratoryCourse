@@ -1,0 +1,145 @@
+{
+  "joint_two": {
+    "lifetimes_ps": [
+      1.0302320969956715,
+      10.835683285859206
+    ],
+    "diffusion_m2_s": 0.0031508844504117574,
+    "objective": 0.0006959925040694721,
+    "channels": [
+      {
+        "name": "GaAs_RT_PP_X.dat",
+        "normalized_rms": 0.016386670814127684,
+        "amplitudes_micro_file_units": [
+          155.086474035292,
+          30.62626173267604
+        ],
+        "offset_micro_file_units": 35.302711445836344
+      },
+      {
+        "name": "GaAs_RT_5.6_X.dat",
+        "normalized_rms": 0.00821494115580639,
+        "amplitudes_micro_file_units": [
+          3.317354922518195,
+          2.3105038687229973
+        ],
+        "offset_micro_file_units": 3.1102359498253116
+      },
+      {
+        "name": "GaAs_RT_6.5_X.dat",
+        "normalized_rms": 0.00941410077413209,
+        "amplitudes_micro_file_units": [
+          2.9326110902072093,
+          2.278856414849797
+        ],
+        "offset_micro_file_units": 2.902854395742682
+      },
+      {
+        "name": "GaAs_RT_8_X.dat",
+        "normalized_rms": 0.009815598799386009,
+        "amplitudes_micro_file_units": [
+          4.566148720208263,
+          3.2285928611410064
+        ],
+        "offset_micro_file_units": 1.7779889124042414
+      },
+      {
+        "name": "GaAs_RT_12_X.dat",
+        "normalized_rms": 0.013229247610106324,
+        "amplitudes_micro_file_units": [
+          3.70171846309491,
+          3.3434290924123378
+        ],
+        "offset_micro_file_units": 1.297418279132319
+      }
+    ],
+    "log_parameters": [
+      0.029784113746002473,
+      2.282938474791895,
+      -5.760072087646841
+    ]
+  },
+  "joint_three": {
+    "lifetimes_ps": [
+      0.7838439668034469,
+      4.789753483852427,
+      387.56459385993963
+    ],
+    "diffusion_m2_s": 0.0038036345596922645,
+    "objective": 0.0002868204099153122,
+    "channels": [
+      {
+        "name": "GaAs_RT_PP_X.dat",
+        "normalized_rms": 0.005999599342107265,
+        "amplitudes_micro_file_units": [
+          165.26433872883848,
+          36.71155087419612,
+          10.070600960997176
+        ],
+        "offset_micro_file_units": 33.487147235895634
+      },
+      {
+        "name": "GaAs_RT_5.6_X.dat",
+        "normalized_rms": 0.008262834553228368,
+        "amplitudes_micro_file_units": [
+          2.794425265804898,
+          2.1538734732810454,
+          0.9668698932573173
+        ],
+        "offset_micro_file_units": 3.0172943486565504
+      },
+      {
+        "name": "GaAs_RT_6.5_X.dat",
+        "normalized_rms": 0.007276354990560795,
+        "amplitudes_micro_file_units": [
+          2.588037078536597,
+          1.9437622556989997,
+          1.0909102351451367
+        ],
+        "offset_micro_file_units": 2.7242669409428593
+      },
+      {
+        "name": "GaAs_RT_8_X.dat",
+        "normalized_rms": 0.007630190405193888,
+        "amplitudes_micro_file_units": [
+          3.7132630904995936,
+          3.1387566149398562,
+          1.5295280627864207
+        ],
+        "offset_micro_file_units": 1.3781671065746435
+      },
+      {
+        "name": "GaAs_RT_12_X.dat",
+        "normalized_rms": 0.008449002025523605,
+        "amplitudes_micro_file_units": [
+          2.101735791002002,
+          3.765859618653736,
+          1.5267104546811832
+        ],
+        "offset_micro_file_units": 0.6672810720220068
+      }
+    ],
+    "log_parameters": [
+      -0.24354530037360142,
+      1.3877706501310707,
+      5.947446932173469,
+      -5.571798206292239
+    ]
+  }
+}
+Bootstrap 25/200
+Bootstrap 50/200
+Bootstrap 75/200
+Bootstrap 100/200
+Bootstrap 125/200
+Bootstrap 150/200
+Bootstrap 175/200
+Bootstrap 200/200
+Bootstrap 25/200
+Bootstrap 50/200
+Bootstrap 75/200
+Bootstrap 100/200
+Bootstrap 125/200
+Bootstrap 150/200
+Bootstrap 175/200
+Bootstrap 200/200

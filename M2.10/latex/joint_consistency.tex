@@ -1,0 +1,55 @@
+\subsubsection{Joint consistency check of PP and TG}\label{sec:joint-consistency}
+A direct test of shared relaxation fits the PP and all four TG traces simultaneously:
+\begin{equation}\label{eq:joint-model}
+S_d(t)=B_d+\sum_{j=1}^{m}A_{dj}
+\exp\!\left[-\left(\frac{1}{\tau_j}+Dq_d^2\right)t\right],
+\qquad q_{\rm PP}=0 .
+\end{equation}
+The ordered lifetimes $\tau_j$ and nonnegative diffusivity $D$ are shared; each dataset $d$ has its own constant $B_d$ and nonnegative amplitudes $A_{dj}$. This allows reflectivity and diffraction to weight the same relaxation modes differently. The test compares $m=2$ and $m=3$, retaining the original scan exclusions and the \SI{0.5}{ps} starting delay. Initially each trace uses its complete available post-cutoff record. It assumes phase-extracted TG amplitudes, linear optical response, and one common diffusivity for all components.
+
+To prevent the larger PP signal from dominating solely because of its amplitude, define $R_d$ as the measured signal range in the fitted window and minimize
+\begin{equation}
+\mathcal L=\sum_d\frac{1}{n_d}\sum_{i=1}^{n_d}
+\left[\frac{\overline S_d(t_i)-S_d(t_i)}{R_d}\right]^2 .
+\end{equation}
+Each dataset contributes its squared normalized residual RMS. This is a chosen comparison metric, not a noise-calibrated chi-squared statistic. Linear amplitudes and offsets are solved at each nonlinear step, with multiple starting values for the lifetimes and diffusion coefficient. As a more flexible reference, three exponentials are also fitted independently to each trace. This reference has independent rates, so it need not obey Eq.~\eqref{eq:joint-model}.
+
+The normalized residual RMS values are:
+\begin{center}
+\begin{tabular}{lrrr}
+\toprule
+Trace & Joint two-exp. & Joint three-exp. & Independent three-exp.\\
+\midrule
+PP & 1.639\% & 0.600\% & 0.303\%\\
+TG 5.6 & 0.822\% & 0.826\% & 0.681\%\\
+TG 6.5 & 0.941\% & 0.728\% & 0.672\%\\
+TG 8 & 0.982\% & 0.763\% & 0.692\%\\
+TG 12 & 1.323\% & 0.845\% & 0.646\%\\
+\bottomrule
+\end{tabular}
+\end{center}
+These RMS values are descriptive diagnostics with unestimated uncertainties. The shared third component improves the total objective and the PP tail, although it does not improve every channel separately. Figures~\ref{fig:joint-pp} and~\ref{fig:joint-tg} show that structured residuals remain, particularly in PP. Independent fits are more flexible by construction; their lower RMS is not by itself a statistical rejection of the shared model. Some independent TG third lifetimes are poorly constrained and approach the broad numerical search limit, so they are not assigned physical meanings.
+
+For uncertainties, 200 bootstrap replicates resample whole retained scans independently within each dataset and refit the shared three-component model. The scan masks and primary normalization factors remain fixed; all replicates converged. To test whether PP's much longer record controls the inference, the entire calculation is repeated using only the common interval from \SI{0.5}{ps} to \SI{26.6}{ps}, with a further 200 successful bootstrap replicates.
+
+\begin{table}[!htbp]
+\centering
+\caption{Shared three-exponential fit parameters, followed by conditional 95\% whole-scan bootstrap intervals in brackets. The full-record fit uses each dataset's own final delay. The common-window fit truncates every dataset at \SI{26.6}{ps}. Calibration, model, and scan-selection uncertainties are excluded. These parameters describe the assumed joint model, rather than established microscopic lifetimes or material diffusivity.}\label{tab:joint-parameters}
+\begin{tabular}{lrr}
+\toprule
+Parameter & Full records & Common window\\
+\midrule
+$\tau_1$ (ps) & 0.784 [0.723, 0.844] & 0.528 [0.477, 0.583]\\
+$\tau_2$ (ps) & 4.79 [4.30, 5.27] & 1.72 [1.49, 2.18]\\
+$\tau_3$ (ps) & 388 [326, 464] & 9.71 [8.56, 13.11]\\
+$D$ ($10^{-3}$ m$^2$/s) & 3.80 [2.94, 4.56] & 0.53 [$0^{*}$, 1.81]\\
+\bottomrule
+\end{tabular}
+
+\smallskip
+\parbox{.95\linewidth}{\small $^{*}$The lower percentile reaches the numerical lower bound $D=10^{-8}$ m$^2$/s, shown as zero at the table's precision. The common-window fit therefore does not establish a positive diffusion coefficient away from the boundary.}
+\end{table}
+
+The full-record shared model can describe much of both PP and TG with channel-dependent amplitudes. Thus comparing individual biexponential lifetimes was not sufficient to rule out all shared multi-component descriptions: a biexponential approximation can combine the underlying components differently in different channels. Nevertheless, the large changes in Table~\ref{tab:joint-parameters} demonstrate that the shared parameters are not stable against the observation window. Restricting the window removes information about the long PP tail and changes the effective decomposition; the components cannot then be assumed to retain the same physical identities. Removing the $1/n_d$ factor from the objective, while retaining range normalization, changes the full-record solution only slightly; this weighting check does not remove the window dependence.
+
+The stronger test therefore improves empirical consistency without establishing a unique common population model. A third exponential alone does not validate recombination or diffusion assignments. The original slow-TG slope remains the report's conditional baseline estimate, and the joint fit is a separate model check. Raw phase-channel metadata, a controlled matching of acquisition windows, and a justified optical-response model would be needed for a stronger physical interpretation. The calculation and bootstrap samples are saved by \texttt{analysis/joint\_pp\_tg.py} in \texttt{analysis/joint\_pp\_tg.json}.

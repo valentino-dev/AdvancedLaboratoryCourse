@@ -209,13 +209,13 @@ INPUT ./figures/tutorial_grating.png
 INPUT ./figures/tutorial_grating.png
 INPUT ./figures/tutorial_grating.png
 INPUT ./figures/tutorial_grating.png
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
 INPUT ./autocorrelation_derivation.tex
 INPUT ./autocorrelation_derivation.tex
 INPUT ./autocorrelation_derivation.tex
 INPUT ./autocorrelation_derivation.tex
 INPUT autocorrelation_derivation.tex
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm
-INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
 INPUT ./figures/tutorial_setup.png
 INPUT ./figures/tutorial_setup.png
 INPUT ./figures/tutorial_setup.png

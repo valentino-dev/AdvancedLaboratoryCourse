@@ -108,6 +108,8 @@ D_i&=\frac{k_BT}{e}\mu_i\quad(i=e,h)\\
 The Einstein step assumes non-degenerate carriers at a common temperature. At high carrier density, many-body and degeneracy effects can change $D_a$ \cite{young}.
 
 \subsection{Pulse duration and spectral bandwidth}
+An autocorrelator splits each incoming laser pulse into two \emph{pulse replicas}: copies that travel through separate interferometer arms and are then recombined. Their \emph{optical delay} $\tau$ is the difference between their arrival times at the nonlinear crystal. For total propagation distances $L_1$ and $L_2$ in air, neglecting dispersion, $\tau\simeq(L_2-L_1)/c$. Equal travel times give $\tau=0$ and maximum temporal overlap. Moving one Michelson mirror by $\Delta z$ changes the round-trip path length by $2\Delta z$, so the delay changes by $\Delta\tau=2\Delta z/c$ (with the sign set by the chosen arm). Scanning this delay measures how the overlap changes, from which the pulse duration can be inferred under an assumed pulse shape.
+
 For a Gaussian pulse intensity $I(t)=I_0e^{-t^2/(2\sigma_t^2)}$, the intensity autocorrelation is
 \begin{align}
 G(\tau)&=\int_{-\infty}^{\infty}I(t)I(t-\tau)\,dt\\
@@ -223,7 +225,7 @@ Varying the fit half-window from \SI{2.0}{ms} to \SI{3.2}{ms} changes the fitted
 
 \begin{figure}[!htbp]
 \centering\includegraphics[width=\linewidth]{../plots/autocorrelation_pulsewidth.png}
-\caption{Selected before/after traces with nonlinear fringe calibration. The dashed curve is the normalized fitted envelope $V=U/N$, a positive bound on the fitted autocorrelation modulation. Pulse widths come from fitting the raw signal using Eq.~\eqref{eq:fitted-iac}; displayed errors are conditional fit standard errors at fixed wavelength, excluding calibration and model uncertainty.}\label{fig:autocorrelation}
+\caption{Selected before/after traces with nonlinear fringe calibration: blue curves show the measured signals and orange dashed curves show the fitted IAC signals from Eq.~\eqref{eq:fitted-iac}. Both use the same fitted-baseline subtraction and normalization by the maximum absolute deviation of the measured signal from that baseline. Displayed pulse-width errors are conditional fit standard errors at fixed wavelength, excluding calibration and model uncertainty.}\label{fig:autocorrelation}
 \end{figure}
 
 \FloatBarrier
@@ -337,7 +339,7 @@ S_{\rm PP}^{(3)}(t)=B+\sum_{j=1}^3 A_j e^{-t/\tau_j},\qquad
 using the same unweighted fit window and retained repeats. The resulting times are $(0.674\pm0.011)$ ps, $(5.22\pm0.17)$ ps and $(619\pm60)$ ps, with conditional covariance standard errors. The normalized residual RMS decreases from 1.26\% to 0.303\%; uncertainties on these descriptive RMS diagnostics have not been estimated. The extra slow term captures much of the monotonic residual structure, although structured residuals remain (Fig.~\ref{fig:paper-model-diagnostics}). This does not prove a third carrier process: a non-exponential response or an evolving instrumental background can also produce a slow contribution. In particular, the fitted longest time is not established as a recombination lifetime. The change in the fast fitted time further demonstrates the model dependence of the cooling proxy. The original fit is retained as the stated baseline analysis, with this alternative explicitly shown as a model-sensitivity check. The calculations are reproducible with \texttt{analysis/paper\_model\_comparison.py}.
 
 \section{Discussion}
-The revised autocorrelation analysis gives pulses longer than the spectral Gaussian transform limit, with a shorter fitted duration after compression. Correcting the unequal overlap widths and the nonuniform fringe spacing removes the earlier sub-transform-limit estimates. The displayed envelope is a visualization of the fitted modulation bound; pulse deconvolution uses the raw-signal fit parameter. Residual structure and fit-window dependence remain, so the numerical durations are effective Gaussian-model estimates. An independently measured mirror trajectory and a phase-sensitive pulse measurement would help separate scan nonlinearity, pulse chirp, and detector response.
+The revised autocorrelation analysis gives pulses longer than the spectral Gaussian transform limit, with a shorter fitted duration after compression. Correcting the unequal overlap widths and the nonuniform fringe spacing removes the earlier sub-transform-limit estimates. Pulse durations are obtained directly from the raw-signal fit parameter. Residual structure and fit-window dependence remain, so the numerical durations are effective Gaussian-model estimates. An independently measured mirror trajectory and a phase-sensitive pulse measurement would help separate scan nonlinearity, pulse chirp, and detector response.
 
 The fast PP lifetime can be quoted as a conditional cooling proxy, but the data do not establish the required proportionality between reflectivity and carrier temperature. Carrier thermalization, phonon scattering, energy cooling, and recombination are distinct processes. The cutoff at \SI{0.5}{ps} limits the earliest dynamics; the stronger reason for caution is the missing response calibration and the observed dependence on fit interval.
 
@@ -357,7 +359,7 @@ The reviewed analysis gives Gaussian pulse-intensity durations of $(112.89\pm0.1
 
 \appendix
 \section{Autocorrelation calibration and residuals}\label{sec:iac-residuals}
-Figure~\ref{fig:iac-residuals} documents the residual structure of the selected raw-signal fits. The pulse-width analysis in Part I uses these residuals to assess the calibration and fit quality; the envelope overlay alone is not a goodness-of-fit diagnostic.
+Figure~\ref{fig:iac-residuals} documents the residual structure of the selected raw-signal fits. The pulse-width analysis in Part I uses these residuals to assess the calibration and fit quality.
 \begin{figure}[!htbp]
 \centering\includegraphics[width=\linewidth]{../plots/autocorrelation_residuals.png}
 \caption{Selected autocorrelation fit residuals, normalized by the measured range in the fitted interval. Structured residuals remain after nonlinear fringe calibration and indicate that covariance errors alone understate uncertainty. Uncertainties on the displayed RMS diagnostics have not been estimated.}\label{fig:iac-residuals}

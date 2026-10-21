@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1792502886.35179 "main.tex" "main.pdf" "main" 1792502891.47835 0
-  "../plots/autocorrelation_pulsewidth.png" 1792484722.46429 568471 1b342096f570b79f66eb83ad5b1b2723 ""
-  "../plots/autocorrelation_residuals.png" 1792484722.7343 314071 d5abdf0b423de828857d7a387afc8a76 ""
+["pdflatex"] 1792574450.22706 "main.tex" "main.pdf" "main" 1792574456.04359 0
+  "../plots/autocorrelation_pulsewidth.png" 1792506243.45913 1141911 bd162c9f0278393b9562e3ead4287ab5 ""
+  "../plots/autocorrelation_residuals.png" 1792506243.91312 314071 d5abdf0b423de828857d7a387afc8a76 ""
   "../plots/excluded_scan_comparison.png" 1792412918.24688 187623 d512efe3bf46dfe90588e20dd14d8b20 ""
   "../plots/fringe_calibration.png" 1792485294.29381 259584 4727d4fd48507f1a317d6b2641080112 ""
   "../plots/gaas_decay.png" 1792412917.34088 147881 aaf3f032a3413b28bc12ea09f27cfb87 ""
@@ -139,16 +139,16 @@
   "/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1728937341 5474851 4ed67577533af4c9bcc5e8bed469707c ""
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1728937456 3325958 03a95b99139dcaa92fad834a3bb8117a ""
   "/usr/local/texlive/2024/texmf.cnf" 1728937336.35001 455 5b996dcaa0eb4ef14a83b026bc0a008c ""
-  "autocorrelation_derivation.tex" 1792502870.4202 10892 510631fbaf84055cad6c8da4c6105a5c ""
-  "autocorrelation_results.tex" 1792484722.73525 721 d4de08d8f52b1de570b9bc7120606863 ""
+  "autocorrelation_derivation.tex" 1792506116.74353 11334 9b81092d72a80fe1c57d8b7e5421aa95 ""
+  "autocorrelation_results.tex" 1792506243.91432 721 d4de08d8f52b1de570b9bc7120606863 ""
   "figures/tutorial_autocorrelator.png" 1792398975.622 58434 c8adc2445e828b3c7de2ce0dc6d78656 ""
   "figures/tutorial_grating.png" 1792398956.44135 34208 3ac1c5944cc0159c5915681b4695f845 ""
   "figures/tutorial_heterodyne.png" 1792399044.41777 65779 85367fb38f0fb0969b9fb2f1b5695bc2 ""
   "figures/tutorial_setup.png" 1792398956.49535 72155 8255fb105d4376884f8c42c24e6c6a34 ""
-  "main.aux" 1792502891.38326 22774 3e6b461d1fb14bcbd1e05e981e68f259 "pdflatex"
-  "main.out" 1792502891.38526 11682 fb39c7f8e8ba38f74c57f9700d1ef8de "pdflatex"
-  "main.tex" 1792502879.48746 52838 17b61a33696e42eeddf81f916ffc82dc ""
-  "main.toc" 1792502891.38526 4542 708120f092218873d23fbeea474d28e5 "pdflatex"
+  "main.aux" 1792574455.94629 22775 9f160047cf6030e11171a11e5a44be7d "pdflatex"
+  "main.out" 1792574455.94929 11412 c6e50115240fb50e0680a3bdc3ee27b8 "pdflatex"
+  "main.tex" 1792574443.53624 53545 c9542c1231181545ac953df2b1ee9e13 ""
+  "main.toc" 1792574455.94929 4428 1d2be014874dd9f382d6081cd508808c "pdflatex"
   "temporary_length_snapshot.tex" 1792500023.35262 2623 e1cce7a1a20a4289d4db5c455b1b9aa2 ""
   "tutorial_answers.tex" 1792487750.23161 21057 9fb889ddf15f062e274c2af3385010b4 ""
   (generated)

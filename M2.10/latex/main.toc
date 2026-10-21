@@ -9,11 +9,10 @@
 \contentsline {subsubsection}{\numberline {2.4.2}Evaluation of the Gaussian overlap integrals}{7}{subsubsection.2.4.2}%
 \contentsline {subsubsection}{\numberline {2.4.3}Pulse FWHM versus autocorrelation-envelope width}{8}{subsubsection.2.4.3}%
 \contentsline {subsubsection}{\numberline {2.4.4}Recorded-time calibration and the fitted signal}{9}{subsubsection.2.4.4}%
-\contentsline {subsubsection}{\numberline {2.4.5}What the displayed envelope represents}{9}{subsubsection.2.4.5}%
 \contentsline {section}{\numberline {3}Experimental setup and measurement}{10}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Optical arrangement}{10}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Measurement data and calibration}{12}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Data screening and fit procedure}{12}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.2}Measurement data and calibration}{10}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Data screening and fit procedure}{10}{subsection.3.3}%
 \contentsline {subsection}{\numberline {3.4}Uncertainty conventions and propagation}{12}{subsection.3.4}%
 \contentsline {section}{\numberline {4}Results}{13}{section.4}%
 \contentsline {subsection}{\numberline {4.1}Part I: Pulse duration and spectral bandwidth}{13}{subsection.4.1}%

@@ -1,6 +1,8 @@
 \subsection{Derivation of the measured interferometric autocorrelation}
 \label{sec:iac-derivation}
-The measured quantity is the integrated second-harmonic signal as a function of the delay between two pulse replicas. This subsection derives that signal, relates its Gaussian overlap widths to the pulse-intensity FWHM, and states the model implemented in \texttt{analysis/analyze.py}. The integration variable $t$ is time within a pulse, $\tau$ is the optical delay between replicas, and $x$ is the much slower recorded oscilloscope time.
+Interferometric autocorrelation (IAC) measures the integrated second-harmonic signal as a function of the delay between two pulse replicas. This subsection derives that signal, relates its Gaussian overlap widths to the pulse-intensity FWHM, and states the model implemented in \texttt{analysis/analyze.py}. The integration variable $t$ is time within a pulse, $\tau$ is the optical delay between replicas, and $x$ is the much slower recorded oscilloscope time.
+
+Recorded time is the timestamp at which the oscilloscope samples the signal while the mirror scans. The recorded-time separation $\Delta x=x_{i+1}-x_i$ between neighboring fringe maxima is therefore the elapsed acquisition time between these maxima, expressed here in milliseconds. It differs from the femtosecond-scale optical delay between the pulse replicas. Mirror motion connects the two: a faster change of optical path produces more fringes per unit recorded time, without changing the laser's optical frequency.
 
 \subsubsection{Measured signal and expansion of the tutorial formula}
 Assume identical replicas, an instantaneous second-order response, weak conversion, and phase matching over the relevant bandwidth. The second-harmonic field is proportional to the square of the combined fundamental field. A detector integrating over the pulse therefore records
@@ -159,6 +161,13 @@ u(r)&=fr+b_2r^2+b_3r^3,&
 \end{align}
 Here $f$, $b_2$, and $b_3$ have units of cycles/ms, cycles/ms$^2$, and cycles/ms$^3$, respectively. One fundamental fringe cycle corresponds to a delay change $\lambda_0/c$. A constant scan speed would give $b_2=b_3=0$; the changing fringe spacing in Fig.~\ref{fig:fringe-calibration} motivates allowing a nonlinear mapping. Successive maxima initialize it, and the fitted derivative is checked to be positive throughout the sampled fit window. This is an empirical calibration rather than an independent measurement of mirror displacement.
 
+The blue points in Fig.~\ref{fig:fringe-calibration} are calculated from pairs of successive detected maxima in the raw signal. For maxima at recorded times $x_i$ and $x_{i+1}$, their horizontal coordinate and vertical value are
+\begin{equation}
+x_{{\rm mid},i}=\frac{x_i+x_{i+1}}{2},
+\qquad f_i=\frac{1}{x_{i+1}-x_i}.
+\end{equation}
+Thus each point represents the inverse fringe spacing, in cycles per millisecond, placed halfway between its two peaks. Closer maxima give a higher value. The code uses SciPy's \texttt{find\_peaks} function within the fitted window, with a prominence threshold of 5\% of that window's raw-signal range and a minimum separation of approximately $0.6/f$, converted to sample indices. Here $f$ is the fitted central fringe rate. The peak positions come from the measured samples, but their selection is therefore not fully independent of the fit. Noise, missed maxima, or extra detected maxima can affect these estimates; pointwise uncertainties have not been quantified. The red curve instead shows $du/dx$ from the fitted cubic mapping. Agreement supports the delay calibration, but does not independently establish a particular mechanical trajectory.
+
 Write the pulse-intensity standard deviation in optical cycles as $s=c\sigma_t/\lambda_0$. The overlap functions then become
 \begin{equation}
 g(u)=e^{-u^2/(4s^2)},\qquad
@@ -185,27 +194,3 @@ The fitted width is converted directly to the pulse duration:
 \boxed{\Delta t_{\rm pulse}=2\sqrt{2\ln2}\,s\lambda_0/c.}
 \end{equation}
 No envelope-FWHM deconvolution is used in this conversion. The uncertainty conventions in Sec.~\ref{sec:uncertainty} distinguish formal fit errors from calibration and model uncertainty.
-
-\subsubsection{What the displayed envelope represents}
-For either harmonic, define
-\begin{equation}
-R_j=\sqrt{C_j^2+D_j^2},\qquad
-\phi_j=\operatorname{atan2}(D_j,C_j),\qquad
-C_j\cos\theta+D_j\sin\theta=R_j\cos(\theta-\phi_j).
-\end{equation}
-Since $|\cos\theta|\leq1$ and $g,h\geq0$, the triangle inequality gives
-\begin{align}
-|S_{\rm fit}(x)-B|
-&\leq |A_0|g(u)+R_1h(u)+R_2g(u)=U(x),\\
-U(x)&=(|A_0|+R_2)g(u)+R_1h(u),\\
-V(x)&=\frac{U(x)}{N},\qquad
-N=\max_{\text{fit window}}|S_{\rm measured}(x)-B|.
-\end{align}
-Figure~\ref{fig:autocorrelation} shows this normalized positive bound $V$ together with $(S_{\rm measured}-B)/N$. The phases of the harmonics need not attain their maxima simultaneously, so $U$ need not touch every fitted fringe maximum. It bounds the fitted modulation, not the measurement noise.
-
-For clarity, the pulse-field envelope and its square are instead
-\begin{equation}
-|E(t)|=\sqrt{I_0}\,e^{-t^2/(4\sigma_t^2)},
-\qquad |E(t)|^2=I_0e^{-t^2/(2\sigma_t^2)}=I(t).
-\end{equation}
-The plotted $U$ is an autocorrelation-modulation bound as a function of delay; it is not the pulse intensity $I(t)$. Taking $\sqrt{U}$ would therefore not recover the electric-field envelope. The displayed curve uses $U/N$ directly, while the duration comes from the fitted parameter $s$.
