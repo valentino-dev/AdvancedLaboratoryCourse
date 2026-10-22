@@ -1,6 +1,6 @@
 \clearpage
 \section{Answers to the tutorial questions}\label{sec:tutorial-answers}
-This section answers the preparation questions, embedded questions, calculation tasks, and bonus question in the course tutorial~\cite{tutorial}, in their original order. The headings paraphrase the prompts. The final subsection links the analysis tasks to the experimental results. Numerical constants derived from ideal models are exact expressions or rounded mathematical values, rather than measurements with statistical uncertainties.
+The following answers address the preparation questions, calculations, and bonus question in the tutorial~\cite{tutorial}, in their original order. They complement the theory and analysis in the main text. Constants obtained from the ideal models are given as exact expressions or rounded values and do not carry measurement uncertainties.
 
 \subsection{Preparation: optical components and laser operation}
 \textbf{What do the optical components do, and how does a solid-state laser work?}
@@ -26,7 +26,7 @@ E(t)&=E_0\cos\omega t,\\
 P^{(2)}(t)&=\frac{\epsilon_0\chi^{(2)}E_0^2}{2}
                  \bigl[1+\cos(2\omega t)\bigr].
 \end{align}
-The quadratic polarization contains an oscillation at twice the input frequency and radiates second-harmonic light. BBO is non-centrosymmetric, has a useful second-order susceptibility, and permits phase matching by crystal orientation. With suitable phase matching, weak conversion, and adequate bandwidth, $E_{2\omega}\propto E_\omega^2$, so $I_{2\omega}\propto I_\omega^2$. The \emph{field} and \emph{intensity} scaling must be distinguished. The crystal and the filter in Fig.~\ref{fig:tutorial-autocorrelator} let the detector select this nonlinear overlap signal.
+The quadratic term oscillates at twice the incident frequency and produces second-harmonic light. BBO is suitable because its non-centrosymmetric structure permits a second-order response and its orientation can be adjusted for phase matching. For weak conversion and sufficient bandwidth, the field satisfies $E_{2\omega}\propto E_\omega^2$, giving $I_{2\omega}\propto I_\omega^2$ for the intensity. The BBO crystal and filter in Fig.~\ref{fig:tutorial-autocorrelator} allow us to detect this nonlinear overlap signal.
 
 \subsection{Gaussian and Lorentzian time--bandwidth products}
 \textbf{What are the transform-limited constants for the two pulse shapes?}
@@ -180,7 +180,7 @@ but additional periods allow the assumed linear dependence to be checked. For th
 
 \subsection{Bonus: other optically generated gratings}
 \textbf{Which gratings can be created besides a carrier-density grating?}
-Periodic heating can produce a temperature and refractive-index grating. Periodic stress can launch coherent acoustic waves and a strain grating. Spatially varying pump polarization can create spin or polarization gratings even without a modulated total excitation intensity, provided the material and optical selection rules support them. These gratings probe thermal transport, acoustic propagation, or spin dynamics, respectively; they are possibilities rather than additional signals established in this dataset.
+An optical grating can also be formed by heating the sample periodically, which changes its temperature and refractive index. Periodic stress can launch acoustic waves and create a strain grating. With suitable optical selection rules, a spatially varying pump polarization can produce a spin or polarization grating even at constant total intensity. Such measurements can be used to study heat transport, acoustic propagation, and spin dynamics. These are possible extensions of the technique; the present data do not establish these additional signals.
 
 \subsection{Heterodyne sensitivity and separation of population and grating signals}
 \textbf{Why use heterodyne detection, and how are the two contributions separated?}

@@ -1,0 +1,198 @@
+{
+  "transients": {
+    "GaAs_RT_PP_X.dat": {
+      "chi_squared": 7056.12982078735,
+      "reduced_chi_squared": 119.595420691311,
+      "point_count": 64,
+      "parameter_count": 5,
+      "degrees_of_freedom": 59,
+      "error_source": "Pointwise standard error of retained-scan mean"
+    },
+    "GaAs_RT_5.6_X.dat": {
+      "chi_squared": 11.269729867006745,
+      "reduced_chi_squared": 0.17338045949241146,
+      "point_count": 70,
+      "parameter_count": 5,
+      "degrees_of_freedom": 65,
+      "error_source": "Pointwise standard error of retained-scan mean"
+    },
+    "GaAs_RT_6.5_X.dat": {
+      "chi_squared": 19.008870765036583,
+      "reduced_chi_squared": 0.29244416561594744,
+      "point_count": 70,
+      "parameter_count": 5,
+      "degrees_of_freedom": 65,
+      "error_source": "Pointwise standard error of retained-scan mean"
+    },
+    "GaAs_RT_8_X.dat": {
+      "chi_squared": 60.925779497482345,
+      "reduced_chi_squared": 0.9373196845766515,
+      "point_count": 70,
+      "parameter_count": 5,
+      "degrees_of_freedom": 65,
+      "error_source": "Pointwise standard error of retained-scan mean"
+    },
+    "GaAs_RT_12_X.dat": {
+      "chi_squared": 46.99353441956784,
+      "reduced_chi_squared": 0.6618807664727865,
+      "point_count": 76,
+      "parameter_count": 5,
+      "degrees_of_freedom": 71,
+      "error_source": "Pointwise standard error of retained-scan mean"
+    }
+  },
+  "pp_three": {
+    "chi_squared": 112.81602084031627,
+    "reduced_chi_squared": 1.9792284357950223,
+    "point_count": 64,
+    "parameter_count": 7,
+    "degrees_of_freedom": 57
+  },
+  "regressions": {
+    "slow_tg": {
+      "chi_squared": 1.6292189319870483,
+      "reduced_chi_squared": 0.8146094659935241,
+      "point_count": 4,
+      "parameter_count": 2,
+      "degrees_of_freedom": 2,
+      "standard_errors_per_ps": [
+        0.010582596215843178,
+        0.008459685628811525,
+        0.011372245679499599,
+        0.0046178272908225185
+      ],
+      "error_source": "Whole-scan bootstrap standard deviation of fitted rates"
+    },
+    "slow_with_pp": {
+      "chi_squared": 531.283551053009,
+      "reduced_chi_squared": 177.09451701766966,
+      "point_count": 5,
+      "parameter_count": 2,
+      "degrees_of_freedom": 3,
+      "standard_errors_per_ps": [
+        0.0012601295206193272,
+        0.010582596215843178,
+        0.008459685628811525,
+        0.011372245679499599,
+        0.0046178272908225185
+      ],
+      "error_source": "Whole-scan bootstrap standard deviation of fitted rates"
+    },
+    "slow_keep_scan4": {
+      "chi_squared": 1.1057731828657846,
+      "reduced_chi_squared": 0.5528865914328923,
+      "point_count": 4,
+      "parameter_count": 2,
+      "degrees_of_freedom": 2,
+      "standard_errors_per_ps": [
+        0.010582596215843178,
+        0.008459685628811525,
+        0.009320821946233581,
+        0.0046178272908225185
+      ],
+      "error_source": "Whole-scan bootstrap standard deviation of fitted rates"
+    },
+    "fast_tg": {
+      "chi_squared": 2.1377096285899553,
+      "reduced_chi_squared": 1.0688548142949776,
+      "point_count": 4,
+      "parameter_count": 2,
+      "degrees_of_freedom": 2,
+      "standard_errors_per_ps": [
+        0.07268430915817828,
+        0.054308352877404424,
+        0.11491221662862432,
+        0.047824164274623826
+      ],
+      "error_source": "Whole-scan bootstrap standard deviation of fitted rates"
+    }
+  },
+  "sensitivity_fits": [
+    {
+      "chi_squared": 2.671860567110189,
+      "reduced_chi_squared": 0.14062424037422047,
+      "point_count": 24,
+      "parameter_count": 5,
+      "degrees_of_freedom": 19,
+      "label": "PP, 0.5--33 ps"
+    },
+    {
+      "chi_squared": 28.778954271830393,
+      "reduced_chi_squared": 1.4389477135915196,
+      "point_count": 25,
+      "parameter_count": 5,
+      "degrees_of_freedom": 20,
+      "label": "PP, 0.5--57 ps"
+    },
+    {
+      "chi_squared": 39.77643351468119,
+      "reduced_chi_squared": 1.8941158816514851,
+      "point_count": 26,
+      "parameter_count": 5,
+      "degrees_of_freedom": 21,
+      "label": "PP, 0.5--100 ps"
+    },
+    {
+      "chi_squared": 7056.12982078735,
+      "reduced_chi_squared": 119.595420691311,
+      "point_count": 64,
+      "parameter_count": 5,
+      "degrees_of_freedom": 59,
+      "label": "PP, 0.5--2000 ps"
+    },
+    {
+      "chi_squared": 6949.4172353233935,
+      "reduced_chi_squared": 128.69291176524803,
+      "point_count": 59,
+      "parameter_count": 5,
+      "degrees_of_freedom": 54,
+      "label": "PP, 1--2000 ps"
+    },
+    {
+      "chi_squared": 578.9180010070212,
+      "reduced_chi_squared": 11.133038480904254,
+      "point_count": 57,
+      "parameter_count": 5,
+      "degrees_of_freedom": 52,
+      "label": "PP, 2--2000 ps"
+    },
+    {
+      "chi_squared": 2.640257320496735,
+      "reduced_chi_squared": 1.3201286602483675,
+      "point_count": 4,
+      "parameter_count": 2,
+      "degrees_of_freedom": 2,
+      "label": "TG slow-rate line, start 0.2 ps"
+    },
+    {
+      "chi_squared": 4.92686352274227,
+      "reduced_chi_squared": 2.463431761371135,
+      "point_count": 4,
+      "parameter_count": 2,
+      "degrees_of_freedom": 2,
+      "label": "TG slow-rate line, start 1 ps"
+    },
+    {
+      "chi_squared": 0.33614313805901463,
+      "reduced_chi_squared": 0.16807156902950732,
+      "point_count": 4,
+      "parameter_count": 2,
+      "degrees_of_freedom": 2,
+      "label": "TG slow-rate line, start 2 ps"
+    },
+    {
+      "chi_squared": 1.1817538552983053,
+      "reduced_chi_squared": 0.5908769276491527,
+      "point_count": 4,
+      "parameter_count": 2,
+      "degrees_of_freedom": 2,
+      "label": "TG slow-rate line, all scans retained"
+    }
+  ],
+  "unavailable": {
+    "spectrum": "No pointwise measurement uncertainties or independent noise model",
+    "iac": "No pointwise measurement uncertainties or independent noise model",
+    "fringe_derivative": "Not independently fitted; derived from the IAC fit"
+  },
+  "interpretation": "Descriptive diagonal diagnostics for existing unweighted fits. Correlations between delay points are omitted and error scales are estimated. N-p is a nominal denominator, not a calibrated reference distribution; no formal chi-squared goodness-of-fit probability is inferred. Diagnostic uncertainties are not estimated. Delays and spacings are exact inputs."
+}

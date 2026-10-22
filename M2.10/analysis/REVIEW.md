@@ -46,7 +46,7 @@ Compile from `latex/` with `pdflatex -interaction=nonstopmode -halt-on-error mai
 
 ## Remaining limitations
 
-Unknown detector filtering, pulse chirp, excitation density, actual sample temperature and independent geometrical/time calibration remain experimental limitations. The cubic scan mapping and Gaussian overlap model improve agreement with the data but do not uniquely reconstruct the pulse's spectral phase. Bootstrap and covariance intervals remain conditional on their models and acquisition assumptions.
+Unknown detector filtering, pulse chirp, excitation density and actual sample temperature remain experimental limitations. The supplied PP/TG delays and grating spacings are treated as exact inputs. The cubic autocorrelation scan mapping and Gaussian overlap model improve agreement with the data but do not uniquely reconstruct the pulse's spectral phase. Bootstrap and covariance intervals remain conditional on their models and acquisition assumptions.
 
 ## Uncertainty reporting update
 
@@ -55,3 +55,16 @@ The report now pairs physical estimates with conditional standard errors or expl
 ## Additional paper: Chen et al. (arXiv:1805.01561v1)
 
 The newly supplied paper motivates channel-specific signal models and a paired-bootstrap comparison of fast/slow diffusion slopes. `paper_model_comparison.py` writes `paper_model_comparison.json` and `plots/paper_model_diagnostics.png`. The report adds the phase-separation derivation, the shared-slope check, and a three-exponential PP sensitivity fit. The alternative PP lifetimes have conditional covariance errors; they do not identify the slow contribution as recombination. The primary fit remains explicitly a baseline model.
+
+## Figure details and reduced chi-squared
+
+After updating the primary analysis and paper comparison, run:
+
+```bash
+OPENBLAS_NUM_THREADS=1 MPLBACKEND=Agg python analysis/fit_chi_squared.py
+OPENBLAS_NUM_THREADS=1 MPLBACKEND=Agg python analysis/figure_fit_details.py
+```
+
+The first script writes `fit_chi_squared.json`, using repeat-mean standard errors for signal fits and whole-scan-bootstrap rate standard deviations for rate regressions. It includes the fit-window and scan-selection alternatives quoted in the report. The second writes the figure formulas, parameter tables and chi-squared labels, including the additional-diagnostic table for Appendix D.4.
+
+These are diagonal descriptive diagnostics for the existing unweighted fits; temporal correlations and finite-repeat error estimation prevent a formal chi-squared reference test. No fitted values are changed. Spectrum and IAC statistics are unavailable without a pointwise measurement-error model. The fringe-frequency curves are derived from the IAC fit and receive no independent statistic. Estimating a noise variance from the same residual sum of squares to obtain a reduced chi-squared of one is not used.

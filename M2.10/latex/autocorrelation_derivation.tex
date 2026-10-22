@@ -1,8 +1,8 @@
 \subsection{Derivation of the measured interferometric autocorrelation}
 \label{sec:iac-derivation}
-Interferometric autocorrelation (IAC) measures the integrated second-harmonic signal as a function of the delay between two pulse replicas. This subsection derives that signal, relates its Gaussian overlap widths to the pulse-intensity FWHM, and states the model implemented in \texttt{analysis/analyze.py}. The integration variable $t$ is time within a pulse, $\tau$ is the optical delay between replicas, and $x$ is the much slower recorded oscilloscope time.
+In interferometric autocorrelation (IAC), we measure the integrated second-harmonic signal while changing the delay between two pulse replicas. To obtain a pulse duration from this signal, we first derive the Gaussian overlap terms and then relate the optical delay to the recorded time. We use $t$ for time within a pulse, $\tau$ for the optical delay between replicas, and $x$ for the much slower oscilloscope time.
 
-Recorded time is the timestamp at which the oscilloscope samples the signal while the mirror scans. The recorded-time separation $\Delta x=x_{i+1}-x_i$ between neighboring fringe maxima is therefore the elapsed acquisition time between these maxima, expressed here in milliseconds. It differs from the femtosecond-scale optical delay between the pulse replicas. Mirror motion connects the two: a faster change of optical path produces more fringes per unit recorded time, without changing the laser's optical frequency.
+The oscilloscope records the signal as the mirror moves. The recorded-time separation $\Delta x=x_{i+1}-x_i$ is the time elapsed between two neighboring fringe maxima, expressed here in milliseconds. The optical delay between the pulses is instead on the femtosecond scale. Mirror motion connects these two times: if the optical path changes more quickly, more fringes pass in the same recorded interval. The laser's optical frequency is unchanged.
 
 \subsubsection{Measured signal and expansion of the tutorial formula}
 Assume identical replicas, an instantaneous second-order response, weak conversion, and phase matching over the relevant bandwidth. The second-harmonic field is proportional to the square of the combined fundamental field. A detector integrating over the pulse therefore records
@@ -21,7 +21,7 @@ I_{\rm AC}(\tau)={}&\int_{-\infty}^{\infty}[I^2(t)+I^2(t-\tau)]\,dt\\
 &+\int_{-\infty}^{\infty}I(t)I(t-\tau)\,dt .
 \end{aligned}
 \end{equation}
-Here $I(t)=|E(t)|^2$. Denote the four printed integrals, in order, by $T_0,T_1,T_2,T_3$. Their relative coefficients must be checked against the defining fourth power. Set
+Here $I(t)=|E(t)|^2$. We denote the four integrals by $T_0,T_1,T_2,T_3$. To find their relative coefficients, we expand the fourth power explicitly. With
 \begin{equation}
 a=|E(t)|^2,\qquad b=|E(t-\tau)|^2,\qquad
 z=E(t)E^*(t-\tau),\qquad zz^*=ab.
@@ -38,7 +38,7 @@ The identities $z+z^*=2\operatorname{Re}z$ and $z^2+z^{*2}=2\operatorname{Re}(z^
 \begin{equation}\label{eq:corrected-iac}
 S_{\rm SHG}=\eta(T_0+4T_1+2T_2+4T_3).
 \end{equation}
-Thus the printed Eq.~(4.2) identifies the contributions but omits their relative factors. A single overall normalization cannot correct these omissions.
+The expansion gives relative factors of 1, 4, 2, and 4. These factors are missing from the printed Eq.~(4.2), so we include them when calculating the signal. They cannot be absorbed into one common normalization.
 
 \subsubsection{Evaluation of the Gaussian overlap integrals}
 Take an unchirped Gaussian field with intensity standard deviation $\sigma_t$:
@@ -72,6 +72,16 @@ z=E(t)E^*(t-\tau)
 e^{-i\omega_0t}e^{i\omega_0(t-\tau)}
 =I_0e^{-[t^2+(t-\tau)^2]/(4\sigma_t^2)}e^{-i\omega_0\tau}.
 \end{equation}
+In the definition of $T_1$, the real part is taken before integration. It can be moved outside the integral because $w(t)=I(t)+I(t-\tau)$ is real and the Gaussian integrals converge absolutely. At fixed $\tau$,
+\begin{align*}
+T_1&=\int_{-\infty}^{\infty}w(t)\operatorname{Re}z(t)\,dt\\
+&=\frac12\int_{-\infty}^{\infty}w(t)[z(t)+z^*(t)]\,dt\\
+&=\frac12\left[\int_{-\infty}^{\infty}w(t)z(t)\,dt
++\left(\int_{-\infty}^{\infty}w(t)z(t)\,dt\right)^*\right]\\
+&=\operatorname{Re}\int_{-\infty}^{\infty}w(t)z(t)\,dt.
+\end{align*}
+The third line uses $\int w z^*\,dt=(\int w z\,dt)^*$ for real $w$. Thus the complex overlaps may be integrated first and their real parts taken afterward, without assuming that $z$ is real.
+
 Completing the square separately for its two intensity factors gives
 \begin{align}
 3t^2+(t-\tau)^2&=4(t-\tau/4)^2+3\tau^2/4,\\
@@ -119,7 +129,7 @@ S_{\rm SHG}(\tau)=\eta Q\bigl\{2
 [4+2\cos(2\omega_0\tau)]\bigr\}.
 \end{aligned}
 \end{equation}
-The cosine terms therefore arise from the relative optical carrier phase, not from an independently assumed oscillation. At $\tau=0$, the expression gives $16\eta Q$; for separated pulses it tends to $2\eta Q$. Their ratio is the ideal $8:1$ interferometric contrast.
+The cosine terms follow directly from the relative carrier phase of the two replicas. At zero delay, the result is $16\eta Q$, while for separated pulses it tends to $2\eta Q$. This gives the expected ideal interferometric contrast of $8:1$.
 
 \subsubsection{Pulse FWHM versus autocorrelation-envelope width}
 The pulse duration quoted in this report is the \emph{intensity} FWHM. Its half-maximum condition gives
@@ -141,7 +151,7 @@ h(\tau_{1/2})=\tfrac12
 \Delta\tau_h&=8\sigma_t\sqrt{\ln2/3}
 =\sqrt{8/3}\,\Delta t_{\rm pulse}.
 \end{align}
-The two widths are unequal. Only the isolated intensity autocorrelation $T_3=Qg$ has the familiar $\sqrt2$ deconvolution factor. The complete interferometric modulation combines $g$ and $h$ and is not one Gaussian; its envelope FWHM cannot be divided by $\sqrt2$ to obtain the pulse duration.
+The two overlap functions therefore have different widths. The factor $\sqrt2$ relates the isolated intensity autocorrelation $T_3=Qg$ to the pulse duration. Since the full interferometric signal contains both $g$ and $h$, applying this factor to the width of its complete envelope would give an incorrect duration.
 
 The tutorial's alternative field notation $E(t)\propto e^{-t^2/\Gamma^2}$ corresponds to $\Gamma=2\sigma_t$. Hence
 \begin{equation}
@@ -186,11 +196,11 @@ The baseline and harmonic coefficients are independent fit parameters. In the id
 B=2\eta Q,\quad A_0=4\eta Q,\quad C_1=8\eta Q,\quad
 C_2=2\eta Q,\quad D_1=D_2=0.
 \end{equation}
-Allowing them to vary accommodates departures from the ideal recorded amplitudes and phases while retaining the Gaussian overlap widths. This is a phenomenological extension of the ideal SHG model; it does not establish a physical detector-transfer function or remove possible chirp bias.
+In the fit, we allow these coefficients to vary so that the measured amplitudes and phases need not match the ideal values. The Gaussian overlap widths are retained. This makes the fit more flexible, but does not determine the detector response or account fully for chirp.
 
 The fitted width is converted directly to the pulse duration:
 \begin{equation}
 \sigma_t=s\lambda_0/c,\qquad
 \boxed{\Delta t_{\rm pulse}=2\sqrt{2\ln2}\,s\lambda_0/c.}
 \end{equation}
-No envelope-FWHM deconvolution is used in this conversion. The uncertainty conventions in Sec.~\ref{sec:uncertainty} distinguish formal fit errors from calibration and model uncertainty.
+We thus obtain the pulse duration directly from the fitted $s$. The conversion does not require measuring an envelope width. The associated statistical errors and the remaining calibration and model uncertainties are discussed in Sec.~\ref{sec:uncertainty}.

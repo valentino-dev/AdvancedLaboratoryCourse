@@ -2,14 +2,14 @@
 \section{Statistical methods and interpretation}\label{app:statistics}
 
 \subsection{Bootstrapping}\label{app:bootstrap}
-Bootstrapping estimates the sampling variability of a calculated result by repeatedly resampling the available measurements. Sampling is performed \emph{with replacement}: the same measurement can occur more than once in a resampled dataset, while another may be absent. Each resample contains the same number of measurements as the original dataset. The complete analysis is repeated on every resample, producing a distribution of estimates rather than a single fitted value.
+To estimate how repeat measurements affect a fitted result, we use bootstrapping. We repeatedly draw measurements from the available dataset \emph{with replacement}. A measurement can therefore be selected more than once, while another may be left out. Each resample has the same size as the original dataset. Repeating the analysis for these resamples gives a distribution of fitted values, whose spread describes the repeat variability.
 
-In this report the resampling unit is a complete retained scan. Suppose a file contains $n$ retained scans $S_1(t),\ldots,S_n(t)$, recorded at the same delay coordinates. For replicate $r$, draw $n$ indices independently and uniformly from $\{1,\ldots,n\}$:
+We resample complete retained scans. If a file contains $n$ scans $S_1(t),\ldots,S_n(t)$ at the same delays, we draw $n$ indices independently and uniformly from $\{1,\ldots,n\}$ for each resample $r$. Its mean is
 \[
 J_1^{(r)},\ldots,J_n^{(r)},\qquad
 \overline S^{*(r)}(t)=\frac1n\sum_{j=1}^{n}S_{J_j^{(r)}}(t).
 \]
-Fit this resampled mean with the same biexponential function, fit interval, and numerical procedure as the original mean. Repeat this for $R=300$ resamples. For a lifetime, the resulting estimates are $\tau^{*(1)},\ldots,\tau^{*(R)}$. The reported central estimate remains the fit to the original retained-scan mean; it is not replaced by the mean of the bootstrap estimates.
+We fit this mean using the same function, interval, and procedure as for the original data. Repeating the calculation $R=300$ times gives lifetime estimates $\tau^{*(1)},\ldots,\tau^{*(R)}$. The value reported in the results is still the fit to the original mean; the resampled fits are used to estimate its uncertainty.
 
 For quantities involving several files, scans are resampled separately within each file. Each replicate then repeats all relevant fits and derived calculations. In particular, slow lifetimes are converted to rates and regressed against the unchanged $q^2$ coordinates, treated as exact to obtain a bootstrap diffusion estimate. The paired fast/slow diagnostic uses the same resampled scans for both components, preserving their correlation.
 
@@ -58,3 +58,21 @@ R^2=1-\frac{\sum_i(k_i-\widehat{k}_i)^2}
 The numerator measures the squared deviations from the fitted line; the denominator measures the squared deviations from the mean rate. For the unweighted least-squares regressions with a freely fitted intercept used here, $R^2=1$ means that all points lie on the line, whereas $R^2=0$ means that the line predicts no better than the constant mean. This interpretation requires nonzero variation in the rates.
 
 The TG-only value $R^2=0.934$ corresponds to 93.4\% of the rate variation accounted for by the line; including PP gives $R^2=0.161$, or 16.1\%. These are descriptive statistics with unestimated uncertainties, calculated for four and five points, respectively. Their comparison is not a formal statistical test. A high $R^2$ alone does not validate the physical model, quantify parameter uncertainty, or account for model mismatch and systematic residuals. It also does not show that the fitted slow components represent the same microscopic process in every dataset.
+
+\subsection{Reduced chi-squared diagnostics}\label{app:chi-squared}
+If a fitted curve $f(x_i;\widehat{\boldsymbol\theta})$ is compared with $N$ observations $y_i$ having standard errors $s_i$, a diagonal reduced chi-squared statistic is
+\[
+\chi^2_\nu=\frac{1}{\nu}\sum_{i=1}^{N}
+\frac{[y_i-f(x_i;\widehat{\boldsymbol\theta})]^2}{s_i^2},
+\qquad \nu=N-p,
+\]
+where $p$ is the number of independently fitted parameters. The nominal denominators use $p=5$ for a biexponential plus constant, $p=7$ for three exponentials plus constant, and $p=2$ for a straight line. The numerical values are descriptive diagnostics; uncertainties on these statistics have not been estimated.
+
+For PP and TG mean traces, $s_i$ is the sample standard deviation across retained scans at delay $t_i$, divided by the square root of the number of retained scans. For rate regressions, $s_i$ is the standard deviation of that rate's 300 whole-scan bootstrap estimates. It is not the half-width of its 95\% percentile interval. The regression retaining borderline scan 4 uses a separate resampling calculation for that scan selection. The supplied delay and grating coordinates remain exact inputs.
+
+The fits minimize unweighted squared residuals, while this statistic divides the residuals by estimated errors afterwards. In addition, delay points within a scan may be correlated, and the errors are estimated from a finite number of repeats. The diagonal sum neglects these correlations. We therefore use $N-p$ as a nominal number of degrees of freedom and do not assign a formal goodness-of-fit probability or rejection threshold. A large value indicates deviations that are large compared with the estimated repeat variability. It must be interpreted together with the residual plots; a value near unity alone does not validate the model.
+
+The single spectrum and IAC records have no supplied pointwise measurement errors or independent noise model, so their reduced chi-squared is marked unavailable. This also applies to their fit-window variants. Setting a common noise variance equal to $\widehat s^2=\sum_i[y_i-f(x_i)]^2/(N-p)$ would force $\chi^2_\nu=1$ by construction and provide no independent check. The fringe-frequency curves are derivatives of the IAC fits, not separate fits to the blue points; no additional reduced chi-squared is assigned to them.
+
+The main-fit diagnostics accompany the figures. The following values cover the additional fit-window and all-scan alternatives quoted in the text. Scan-selection masks remain fixed when varying the fit window. Each rate-line variant uses rate standard deviations from a separate 300-replicate whole-scan bootstrap; the supplied delay and grating coordinates remain fixed. The same diagonal and unweighted-fit limitations apply, and uncertainties on these diagnostic values have not been estimated.
+\input{figure_fit_details/chi_sensitivity}

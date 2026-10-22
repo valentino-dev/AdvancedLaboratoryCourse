@@ -11,15 +11,15 @@
 \contentsline {subsubsection}{\numberline {2.4.4}Recorded-time calibration and the fitted signal}{9}{subsubsection.2.4.4}%
 \contentsline {section}{\numberline {3}Experimental setup and measurement}{10}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Optical arrangement}{10}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Measurement data and calibration}{10}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.2}Measurement data and calibration}{12}{subsection.3.2}%
 \contentsline {subsection}{\numberline {3.3}Data screening and fit procedure}{12}{subsection.3.3}%
 \contentsline {subsection}{\numberline {3.4}Uncertainty conventions and propagation}{13}{subsection.3.4}%
-\contentsline {section}{\numberline {4}Results}{14}{section.4}%
+\contentsline {section}{\numberline {4}Analysis and results}{14}{section.4}%
 \contentsline {subsection}{\numberline {4.1}Part I: Pulse duration and spectral bandwidth}{14}{subsection.4.1}%
 \contentsline {subsection}{\numberline {4.2}Part II: Hot-carrier cooling and electron--phonon coupling}{18}{subsection.4.2}%
 \contentsline {subsection}{\numberline {4.3}Part III: Transient-reflectivity and transient-grating decay times}{18}{subsection.4.3}%
 \contentsline {subsection}{\numberline {4.4}Part IV: Recombination, ambipolar diffusivity, and mobility}{22}{subsection.4.4}%
-\contentsline {subsubsection}{\numberline {4.4.1}Additional model checks motivated by Chen et al.}{24}{subsubsection.4.4.1}%
+\contentsline {subsubsection}{\numberline {4.4.1}Comparison of population and grating decay models}{24}{subsubsection.4.4.1}%
 \contentsline {section}{\numberline {5}Discussion}{25}{section.5}%
 \contentsline {section}{\numberline {6}Conclusion}{26}{section.6}%
 \contentsline {section}{\numberline {A}Autocorrelation calibration and residuals}{26}{appendix.A}%
@@ -42,4 +42,5 @@
 \contentsline {subsection}{\numberline {D.1}Bootstrapping}{38}{subsection.D.1}%
 \contentsline {subsection}{\numberline {D.2}Repeat-scan bootstrap intervals}{38}{subsection.D.2}%
 \contentsline {subsection}{\numberline {D.3}Coefficient of determination $R^2$}{39}{subsection.D.3}%
-\contentsline {section}{AI Use Disclosure}{40}{section*.4}%
+\contentsline {subsection}{\numberline {D.4}Reduced chi-squared diagnostics}{39}{subsection.D.4}%
+\contentsline {section}{AI Use Disclosure}{41}{section*.4}%
